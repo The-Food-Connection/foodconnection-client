@@ -6,8 +6,10 @@ import Home from "./components/Home";
 import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 import RecipeList from "./components/RecipeList";
+import Recipe from "./components/Recipe";
 import NotFound from "./components/NotFound";
 import AuthProvider from "./contexts/AuthProvider";
+import ProtectedRoute from "./utils/ProtectedRoute";
 // import AuthProvider from "../contexts/AuthProvider";
 
 function App() {
@@ -16,12 +18,12 @@ function App() {
       <AuthProvider>
         <Router>
           <NavigationBar />
-          THE FOOD CONNECTION
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/login" exact component={Login} />
             <Route path="/sign-up" exact component={SignUp} />
-            <Route path="/recipes" exact component={RecipeList} />
+            <ProtectedRoute path="/recipes" exact component={RecipeList} />
+            <ProtectedRoute path="/recipes/:id" exact component={Recipe} />
             <Route render={() => <h1>404 Page not found</h1>} />
           </Switch>
           <Footer />
