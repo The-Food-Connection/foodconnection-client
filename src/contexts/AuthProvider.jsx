@@ -10,6 +10,7 @@ const reducer = (state, action) => {
   switch (action.type) {
 		case "login":
 			localStorage.setItem('token', action.token)
+			localStorage.setItem('username', action.username)
 			return {
 				...state,
 				loggedIn: true,
@@ -17,6 +18,7 @@ const reducer = (state, action) => {
 			};
     case "sign-out":
 			localStorage.removeItem('token');
+      localStorage.removeItem('username');
       return {
 				loggedIn: false
 			};
