@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
-
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBLink } from "mdbreact"
+import { bottom } from '@popperjs/core';
 
 export default function RecipeList() {
 
@@ -13,7 +12,7 @@ export default function RecipeList() {
     const response = await fetch(process.env.REACT_APP_API_URL + "/recipes", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
+      }
     });
 
     const data = await response.json();
@@ -25,23 +24,23 @@ export default function RecipeList() {
     fetchRecipes();
   }, []);
 
-
   return (
     <div>
+    <h1>RECIPES</h1>
       {recipes.map((recipe) => (
-        <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src={recipe.image} />
-          <Card.Body>
-            <Card.Title>{recipe.recipe_name}</Card.Title>
-            <Card.Text>
+        <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="mdb-color darken-1" expand="md" key={recipe.id}>
+          <MDBCardImage variant="top" src={recipe.image} />
+          <MDBCardBody>
+            <MDBCardTitle>{recipe.recipe_name}</MDBCardTitle>
+            <MDBCardText>
               {recipe.cuisine}
-            </Card.Text>
-            <Card.Text>
+            </MDBCardText>
+            <MDBCardText>
               {recipe.meal_type}
-            </Card.Text>
-            <Button variant="primary">Learn more</Button>
-          </Card.Body>
-        </Card>
+            </MDBCardText>
+            <MDBLink to={`/recipes/${recipe.id}`} className="btn btn-primary">Learn more</MDBLink>
+          </MDBCardBody>
+        </MDBCard>
       ))}
     </div>
   )
