@@ -57,7 +57,7 @@ export default function Recipe({ match }) {
               <MDBCardText>
                 Serves: {recipe.serves}
               </MDBCardText>
-              {recipe.ratings.length > 0 ?
+              {recipe.ratings && recipe.ratings.length > 0 ?
                 <>
                   <h3>Ratings:</h3>
                   <ul>
