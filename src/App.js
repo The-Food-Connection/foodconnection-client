@@ -7,7 +7,6 @@ import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 import RecipeList from "./components/RecipeList";
 import NotFound from "./components/NotFound";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthProvider from "./contexts/AuthProvider";
 // import AuthProvider from "../contexts/AuthProvider";
 
