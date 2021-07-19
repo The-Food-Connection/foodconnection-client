@@ -27,7 +27,7 @@ export class NavigationBar extends Component {
           <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
             <MDBNavbarNav left>
               <MDBNavItem active>
-                <MDBNavLink to="#!">ALL RECIPES</MDBNavLink>
+                <MDBNavLink to="/recipes">ALL RECIPES</MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
                 <MDBNavLink to="#!">My Profile</MDBNavLink>

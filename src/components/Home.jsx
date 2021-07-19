@@ -11,6 +11,7 @@ export default function Home() {
         <p>Welcome {auth.username}!</p> :
         <Link to="Login">Please login</Link>
       }
+      
     </div>
   )
 }
