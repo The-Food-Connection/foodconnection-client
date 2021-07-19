@@ -15,7 +15,9 @@ export default function Recipe({ match }) {
 
     const data = await response.json();
     console.log(data)
-    setRecipe(data);
+    // to keep just one state, I am adding the image url to the recipe object
+    data.recipe.imageUrl = data.image
+    setRecipe(data.recipe);
   };
 
   useEffect(() => {
@@ -30,7 +32,7 @@ export default function Recipe({ match }) {
           <MDBJumbotron className="p-0">
             <MDBCardImage
               className="img-fluid"
-              src={recipe.image}
+              src={recipe.imageUrl}
             />
             <MDBCardBody>
               <MDBCardTitle className="h3">{recipe.recipe_name}</MDBCardTitle>
@@ -57,7 +59,7 @@ export default function Recipe({ match }) {
               <MDBCardText>
                 Serves: {recipe.serves}
               </MDBCardText>
-              {recipe.ratings.length > 0 ?
+              {recipe.ratings && recipe.ratings.length > 0 ?
                 <>
                   <h3>Ratings:</h3>
                   <ul>

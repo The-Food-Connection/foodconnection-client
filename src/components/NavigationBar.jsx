@@ -36,7 +36,7 @@ export class NavigationBar extends Component {
                 <MDBNavLink to="#!">My Recipes</MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
-                <MDBNavLink to="#!">Add Recipe</MDBNavLink>
+                <MDBNavLink to="/recipe-new">Add Recipe</MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
                 {/* <MDBDropdown> */}
