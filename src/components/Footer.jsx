@@ -4,7 +4,8 @@ import fclogo from "../images/FClogo.JPG";
 
 const Footer = () => {
   return (
-    <div className="fixed-bottom">
+    <div>
+      {/* className="fixed-bottom" */}
     <MDBFooter color="mdb-color darken-1" className="font-small pt-4 mt-4">
       <MDBContainer fluid className="text-center text-md-left">
         <MDBRow>

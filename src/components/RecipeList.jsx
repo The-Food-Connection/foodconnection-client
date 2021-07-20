@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBLink } from "mdbreact"
 import { bottom } from '@popperjs/core';
+import { Row, Col } from 'react-bootstrap';
 
 export default function RecipeList() {
 
@@ -27,9 +28,12 @@ export default function RecipeList() {
   return (
     <div>
     <h1>RECIPES</h1>
+
+    <Row className="justify-content-sm-center">
       {recipes.map((recipe) => (
+         <Col lg={true}>
         <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="mdb-color darken-1" expand="md" key={recipe.id}>
-          <MDBCardImage variant="top" src={recipe.image} />
+          <MDBCardImage className="card-img-top" variant="top" src={(recipe.image) ? recipe.image : 'placeholder.jpg'} />
           <MDBCardBody>
             <MDBCardTitle>{recipe.recipe_name}</MDBCardTitle>
             <MDBCardText>
@@ -41,7 +45,10 @@ export default function RecipeList() {
             <MDBLink to={`/recipes/${recipe.id}`} className="btn btn-primary">Learn more</MDBLink>
           </MDBCardBody>
         </MDBCard>
+        </Col>
       ))}
+    </Row>
+
     </div>
   )
 }
