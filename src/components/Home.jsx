@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useAuth } from "../contexts/AuthProvider";
+import RecipeList from './RecipeList';
 
 export default function Home() {
   const { auth, authDispatch } = useAuth();
@@ -8,7 +9,8 @@ export default function Home() {
   return (
     <div>
       {auth.loggedIn ?
-        <p>Welcome {auth.username}!</p> :
+        // <p>Welcome {auth.username}!</p>
+        <RecipeList /> :
         <Link to="Login">Please login</Link>
       }
       

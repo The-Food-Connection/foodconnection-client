@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 import fclogoshort from "../images/FClogoshort.JPG";
 
 export class NavigationBar extends Component {
+
   state = {
     isOpen: false
   };
