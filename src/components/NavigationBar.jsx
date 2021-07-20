@@ -33,7 +33,7 @@ export class NavigationBar extends Component {
                 <MDBNavLink to="/user">My Profile</MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
-                <MDBNavLink to="/myrecipes">My Recipes</MDBNavLink>
+                <MDBNavLink to="/recipes">My Recipes</MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
                 <MDBNavLink to="/newrecipe">Add Recipe</MDBNavLink>
