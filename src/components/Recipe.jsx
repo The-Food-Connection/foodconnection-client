@@ -32,7 +32,7 @@ export default function Recipe({ match }) {
           <MDBJumbotron className="p-0">
             <MDBCardImage
               className="img-fluid"
-              src={recipe.imageUrl}
+              src={(recipe.image) ? recipe.image : 'placeholder.jpg'}
             />
             <MDBCardBody>
               <MDBCardTitle className="h3">{recipe.recipe_name}</MDBCardTitle>
