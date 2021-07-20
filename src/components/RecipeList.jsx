@@ -27,27 +27,27 @@ export default function RecipeList() {
 
   return (
     <div>
-    <h1>RECIPES</h1>
+      <h1>RECIPES</h1>
 
-    <Row className="justify-content-sm-center">
-      {recipes.map((recipe) => (
-         <Col lg={true}>
-        <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="mdb-color darken-1" expand="md" key={recipe.id}>
-          <MDBCardImage className="card-img-top" variant="top" src={(recipe.image) ? recipe.image : 'placeholder.jpg'} />
-          <MDBCardBody>
-            <MDBCardTitle>{recipe.recipe_name}</MDBCardTitle>
-            <MDBCardText>
-              {recipe.cuisine}
-            </MDBCardText>
-            <MDBCardText>
-              {recipe.meal_type}
-            </MDBCardText>
-            <MDBLink to={`/recipes/${recipe.id}`} className="btn btn-primary">Learn more</MDBLink>
-          </MDBCardBody>
-        </MDBCard>
-        </Col>
-      ))}
-    </Row>
+      <Row className="justify-content-sm-center">
+        {recipes.map((recipe) => (
+          <Col lg={true}>
+            <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="mdb-color darken-1" expand="md" key={recipe.id}>
+              <MDBCardImage className="card-img-top" variant="top" src={(recipe.image) ? recipe.image : 'placeholder.jpg'} />
+              <MDBCardBody>
+                <MDBCardTitle>{recipe.recipe_name}</MDBCardTitle>
+                <MDBCardText>
+                  {recipe.cuisine}
+                </MDBCardText>
+                <MDBCardText>
+                  {recipe.meal_type}
+                </MDBCardText>
+                <MDBLink to={`/recipes/${recipe.id}`} className="btn btn-primary">Learn more</MDBLink>
+              </MDBCardBody>
+            </MDBCard>
+          </Col>
+        ))}
+      </Row>
 
     </div>
   )
