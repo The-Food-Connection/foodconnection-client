@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Alert, Button, Form } from 'react-bootstrap'
+import { Alert, Button, Form, Row, Col } from 'react-bootstrap'
 import { useAuth } from "../contexts/AuthProvider";
+import './styling/SignUp.css';
 
 export default function SignUp({ history }) {
   const { authDispatch } = useAuth();
@@ -55,6 +56,11 @@ export default function SignUp({ history }) {
 
   return (
     <>
+      <Row>
+      <Col>
+      <img src="signuppage.jpg" />
+      </Col>
+      <Col>
       {errorMessage ?
         <Alert variant="danger">{errorMessage}</Alert> : null}
 
@@ -83,6 +89,8 @@ export default function SignUp({ history }) {
           Submit
         </Button>
       </Form>
+      </Col>
+      </Row>
     </>
   )
 }

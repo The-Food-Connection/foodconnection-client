@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBLink } from "mdbreact"
 import { bottom } from '@popperjs/core';
 import { Row, Col } from 'react-bootstrap';
+import RecipeRandom from './RecipeRandom';
 
 export default function RecipeList() {
 
@@ -27,6 +28,9 @@ export default function RecipeList() {
 
   return (
     <div>
+
+    <RecipeRandom />
+
     <h1>RECIPES</h1>
 
     <Row className="justify-content-sm-center">
