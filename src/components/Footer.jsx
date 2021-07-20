@@ -4,6 +4,7 @@ import fclogo from "../images/FClogo.JPG";
 
 const Footer = () => {
   return (
+    <div className="fixed-bottom">
     <MDBFooter color="mdb-color darken-1" className="font-small pt-4 mt-4">
       <MDBContainer fluid className="text-center text-md-left">
         <MDBRow>
@@ -16,16 +17,16 @@ const Footer = () => {
             </p> */}
           </MDBCol>
           <MDBCol md="6">
-            <h5 className="title">ALL RECIPES</h5>
+            <h5 className="title"><a href="/recipes">ALL RECIPES</a></h5>
             <ul>
               <li className="list-unstyled">
-                <a href="#!">My Profile</a>
+                <a href="/user">My Profile</a>
               </li>
               <li className="list-unstyled">
-                <a href="#!">My Recipes</a>
+                <a href="/recipes">My Recipes</a>
               </li>
               <li className="list-unstyled">
-                <a href="#!">Add Recipe</a>
+                <a href="/recipe-new">Add Recipe</a>
               </li>
               {/* <li className="list-unstyled">
                 <a href="#!">ABOUT US</a>
@@ -40,6 +41,7 @@ const Footer = () => {
         </MDBContainer>
       </div>
     </MDBFooter>
+    </div>
   );
 }
 

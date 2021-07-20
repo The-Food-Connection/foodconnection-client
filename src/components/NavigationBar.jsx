@@ -3,7 +3,7 @@ import {
   MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
   MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
   } from "mdbreact";
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import fclogoshort from "../images/FClogoshort.JPG";
 
 export class NavigationBar extends Component {
@@ -27,16 +27,25 @@ export class NavigationBar extends Component {
           <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
             <MDBNavbarNav left>
               <MDBNavItem active>
-                <MDBNavLink to="/recipes">ALL RECIPES</MDBNavLink>
+                <a href="/recipes" style={{ marginRight: 20 }}>ALL RECIPES  </a>
+                {/* <Link to="/recipes">ALL RECIPES</Link> */}
+                {/* <MDBNavLink to="/recipes">ALL RECIPES</MDBNavLink> */}
               </MDBNavItem>
               <MDBNavItem>
-                <MDBNavLink to="#!">My Profile</MDBNavLink>
+                {/* <MDBNavLink to="/user">My Profile</MDBNavLink> */}
+                <a href="/user" style={{ marginRight: 20 }}>  My Profile  </a>
               </MDBNavItem>
               <MDBNavItem>
-                <MDBNavLink to="#!">My Recipes</MDBNavLink>
+                {/* <MDBNavLink to="/recipes">My Recipes</MDBNavLink> */}
+                <a href="/recipes" style={{ marginRight: 20 }}>  My Recipes  </a>
               </MDBNavItem>
               <MDBNavItem>
+
+                {/* <MDBNavLink to="/recipe-new">Add Recipe</MDBNavLink> */}
+                <a href="/recipe-new" style={{ marginRight: 20 }}>  Add New Recipe</a>
+
                 <MDBNavLink to="/recipe-new">Add Recipe</MDBNavLink>
+
               </MDBNavItem>
               <MDBNavItem>
                 {/* <MDBDropdown> */}
