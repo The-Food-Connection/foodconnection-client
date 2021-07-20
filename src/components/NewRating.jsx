@@ -4,7 +4,7 @@ import { postData } from '../utils/apiRequest';
 import { MDBJumbotron, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBRow, MDBCol, MDBContainer } from "mdbreact";
 import { Button, Form } from 'react-bootstrap';
 import StarRating from './StarRating';
-import "./NewRating.css";
+import "./styling/NewRating.css";
 
 
 export default function NewRating(props) {
