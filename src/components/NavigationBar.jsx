@@ -40,8 +40,12 @@ export class NavigationBar extends Component {
                 <a href="/recipes" style={{ marginRight: 20 }}>  My Recipes  </a>
               </MDBNavItem>
               <MDBNavItem>
+
                 {/* <MDBNavLink to="/recipe-new">Add Recipe</MDBNavLink> */}
                 <a href="/recipe-new" style={{ marginRight: 20 }}>  Add New Recipe</a>
+
+                <MDBNavLink to="/recipe-new">Add Recipe</MDBNavLink>
+
               </MDBNavItem>
               <MDBNavItem>
                 {/* <MDBDropdown> */}
