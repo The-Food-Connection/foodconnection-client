@@ -29,6 +29,8 @@ export default function RecipeList() {
   return (
     <div>
 
+      <RecipeRandom />
+
       <h1>RECIPES</h1>
 
       <Row className="justify-content-sm-center">
