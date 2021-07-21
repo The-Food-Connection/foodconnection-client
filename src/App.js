@@ -15,6 +15,7 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 // import AuthProvider from "../contexts/AuthProvider";
 
 function App() {
+
   return (
     <div className="App">
       <AuthProvider>
