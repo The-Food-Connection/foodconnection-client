@@ -5,9 +5,14 @@ import { MDBJumbotron, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDB
 import { Button, Form } from 'react-bootstrap';
 import StarRating from './StarRating';
 import "./styling/NewRating.css";
+import RecipeCategories from './RecipeCategories';
 
 
 export default function NewRating(props) {
+
+    const titleStyle = {
+      textAlign: "center",
+    }; 
 
     const ratingInitialState = {
         rating: {
@@ -38,7 +43,8 @@ export default function NewRating(props) {
 
     return (
         <>
-        <h1>ADD A NEW RATING FOR THE DISH BELOW</h1>
+        <br></br>
+        <h2 style={titleStyle}>ADD A NEW RATING FOR THE DISH BELOW</h2>
         <MDBContainer>
 
         <MDBRow>
