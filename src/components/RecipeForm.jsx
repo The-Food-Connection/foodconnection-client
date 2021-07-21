@@ -44,7 +44,7 @@ export default function RecipeForm(history) {
     let newDietariesOptions = [...recipeForm.recipe.recipe_dietaries_attributes]
     // add or remove to state array if checkbox is checked
     if (event.target.checked) {
-      newDietariesOptions.push({dietary_category_id: event.target.value})
+      newDietariesOptions.push({ dietary_category_id: event.target.value })
     } else {
       newDietariesOptions = newDietariesOptions.filter(x => x.dietary_category_id !== event.target.value)
     }
@@ -61,14 +61,17 @@ export default function RecipeForm(history) {
   const recipePost = async (event) => {
     console.log(event.target)
     const formData = new FormData(event.target);
+    // append recipe dietaries as JSON.stringify to work with formData
+    // rails will need to JSON.parse before use 
+    formData.append('recipe_dietaries_attributes', JSON.stringify(recipeForm.recipe.recipe_dietaries_attributes))
+  
     const response = await fetch(process.env.REACT_APP_API_URL + "/recipes", {
       method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-        // "Accept": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Accept": "application/json"
       },
-      body: JSON.stringify(recipeForm)
+      body: formData
     })
 
     const data = await response.json();
@@ -84,12 +87,14 @@ export default function RecipeForm(history) {
     event.preventDefault();
     // postData(process.env.REACT_APP_API_URL + '/recipes', recipeForm)
     recipePost(event)
-    // props.updxate.setUpdate(!props.update.update)
+    // props.update.setUpdate(!props.update.update)
   }
 
   const [dietaries, setDietaries] = useState([]);
 
   const fetchDietaries = async () => {
+    const formData = new FormData();
+
     const response = await fetch(process.env.REACT_APP_API_URL + "/dietaries", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
