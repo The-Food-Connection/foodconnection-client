@@ -16,6 +16,7 @@ export default function NavigationBar(state) {
 
   function toggleCollapse() {
     setIsOpen(!isOpen);
+
   }
 
   return (
@@ -46,7 +47,7 @@ export default function NavigationBar(state) {
               {/* <MDBNavLink to="/recipe-new">Add Recipe</MDBNavLink> */}
               <a href="/recipe-new" style={{ marginRight: 20 }}>  Add New Recipe</a>
 
-              <MDBNavLink to="/recipe-new">Add Recipe</MDBNavLink>
+                {/* <MDBNavLink to="/recipe-new">Add Recipe</MDBNavLink> */}
 
             </MDBNavItem>
             <MDBNavItem>

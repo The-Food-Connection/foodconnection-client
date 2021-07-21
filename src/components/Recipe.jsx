@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText } from "mdbreact"
+import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBLink } from "mdbreact"
 import { useEffect } from 'react';
 
 export default function Recipe({ match }) {
@@ -30,11 +30,19 @@ export default function Recipe({ match }) {
       <MDBRow>
         <MDBCol>
           <MDBJumbotron className="p-0">
-            <MDBCardImage
-              className="img-fluid"
-              src={recipe.imageUrl}
-            />
-            <MDBCardBody>
+            {/* <MDBCardImage
+                // src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"}
+                src="placeholder.jpg"
+                className="img-fluid"
+                alt="recipe image"
+            /> */}
+                <img
+                  // src="placeholder.jpg"
+                  src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"}
+                  class="img-fluid"
+                  alt=""
+                />
+              <MDBCardBody>
               <MDBCardTitle className="h3">{recipe.recipe_name}</MDBCardTitle>
               <MDBCardText>
                 Posted by {recipe.user ? recipe.user.username : null}
@@ -70,6 +78,8 @@ export default function Recipe({ match }) {
                 </> : null}
 
             </MDBCardBody>
+            {/* <button type="button" class="btn btn-secondary">RATE THIS DISH</button> */}
+            <MDBLink to={`/ratings/${recipe.id}`} className="btn btn-secondary">RATE THIS DISH</MDBLink>
           </MDBJumbotron>
         </MDBCol>
       </MDBRow>
