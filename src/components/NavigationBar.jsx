@@ -6,6 +6,7 @@ import {
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import fclogoshort from "../images/FClogoshort.JPG";
 
+
 export class NavigationBar extends Component {
 
   state = {
@@ -28,27 +29,31 @@ export class NavigationBar extends Component {
           <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
             <MDBNavbarNav left>
               <MDBNavItem active>
-                <a href="/recipes" style={{ marginRight: 20 }}>ALL RECIPES  </a>
+                <a class="text-warning" href="/recipes" style={{ marginRight: 20 }}>ALL RECIPES  </a>
                 {/* <Link to="/recipes">ALL RECIPES</Link> */}
                 {/* <MDBNavLink to="/recipes">ALL RECIPES</MDBNavLink> */}
               </MDBNavItem>
               <MDBNavItem>
                 {/* <MDBNavLink to="/user">My Profile</MDBNavLink> */}
-                <a href="/user" style={{ marginRight: 20 }}>  My Profile  </a>
+                <a class="text-warning" href="/user-profile" style={{ marginRight: 20 }}>  User Profile  </a>
               </MDBNavItem>
               <MDBNavItem>
                 {/* <MDBNavLink to="/recipes">My Recipes</MDBNavLink> */}
-                <a href="/recipes" style={{ marginRight: 20 }}>  My Recipes  </a>
+                <a class="text-warning" href="/recipes" style={{ marginRight: 20 }}>  My Recipes  </a>
               </MDBNavItem>
               <MDBNavItem>
 
                 {/* <MDBNavLink to="/recipe-new">Add Recipe</MDBNavLink> */}
-                <a href="/recipe-new" style={{ marginRight: 20 }}>  Add New Recipe</a>
+                <a class="text-warning" href="/recipe-new" style={{ marginRight: 20 }}>  Add New Recipe</a>
 
                 {/* <MDBNavLink to="/recipe-new">Add Recipe</MDBNavLink> */}
 
               </MDBNavItem>
               <MDBNavItem>
+                {/* <MDBNavLink to="/recipes">My Recipes</MDBNavLink> */}
+                <a class="text-warning" href="/admin-dashboard" style={{ marginRight: 20 }}>  ADMIN  </a>
+              </MDBNavItem>
+              {/* <MDBNavItem> */}
                 {/* <MDBDropdown> */}
                   {/* <MDBDropdownToggle nav caret>
                     <span className="mr-2">Dropdown</span>
@@ -60,7 +65,7 @@ export class NavigationBar extends Component {
                     <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
                   </MDBDropdownMenu> */}
                 {/* </MDBDropdown> */}
-              </MDBNavItem>
+              {/* </MDBNavItem> */}
             </MDBNavbarNav>
             <MDBNavbarNav right>
               <MDBNavItem>

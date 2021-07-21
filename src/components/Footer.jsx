@@ -18,16 +18,22 @@ const Footer = () => {
             </p> */}
           </MDBCol>
           <MDBCol md="6">
-            <h5 className="title"><a href="/recipes">ALL RECIPES</a></h5>
+            {/* <h5 class="text-warning" className="title"><a href="/recipes">ALL RECIPES</a></h5> */}
             <ul>
-              <li className="list-unstyled">
-                <a href="/user">My Profile</a>
+            <li className="list-unstyled">
+                <a class="text-warning" href="/recipes">All Recipes</a>
               </li>
               <li className="list-unstyled">
-                <a href="/recipes">My Recipes</a>
+                <a class="text-warning" href="/user-profile">User Profile</a>
               </li>
               <li className="list-unstyled">
-                <a href="/recipe-new">Add Recipe</a>
+                <a class="text-warning" href="/recipes">My Recipes</a>
+              </li>
+              <li className="list-unstyled">
+                <a class="text-warning" href="/recipe-new">Add Recipe</a>
+              </li>
+              <li className="list-unstyled">
+                <a class="text-warning" href="/admin-dashboard"  >ADMIN</a>
               </li>
               {/* <li className="list-unstyled">
                 <a href="#!">ABOUT US</a>

@@ -7,9 +7,9 @@ import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 import RecipeList from "./components/RecipeList";
 import Recipe from "./components/Recipe";
-
+import AdminDashboard from './components/AdminDashboard';
+import UserProfile from './components/UserProfile';
 import NewRating from "./components/NewRating";
-
 import RecipeForm from "./components/RecipeForm";
 
 import NotFound from "./components/NotFound";
@@ -31,6 +31,10 @@ function App() {
             <ProtectedRoute path="/recipes/:id" exact component={Recipe} />
 
             <ProtectedRoute path="/ratings" exact component={NewRating} />
+
+            <ProtectedRoute path="/user-profile" exact component={UserProfile} />
+
+            <ProtectedRoute path="/admin-dashboard" exact component={AdminDashboard} />
 
             <ProtectedRoute path="/recipe-new" exact component={RecipeForm} />
 
