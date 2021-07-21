@@ -3,6 +3,7 @@ import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBLink 
 import { bottom } from '@popperjs/core';
 import { Row, Col } from 'react-bootstrap';
 import RecipeRandom from './RecipeRandom';
+import RecipeCategories from './RecipeCategories';
 
 export default function RecipeList() {
 
@@ -28,6 +29,8 @@ export default function RecipeList() {
 
   return (
     <div>
+
+      <RecipeCategories />  
 
       <RecipeRandom />
 

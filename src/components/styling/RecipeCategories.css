@@ -1,0 +1,15 @@
+.category {
+    width: 40vh;
+    margin: 10px;
+    padding: 5px;
+    /* border: 2px solid salmon; */
+    text-align: center;
+    color: orange;
+}
+
+.jumbo {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    align-items: center;
+}
