@@ -30,12 +30,18 @@ export default function Recipe({ match }) {
       <MDBRow>
         <MDBCol>
           <MDBJumbotron className="p-0">
-            <img
-              // src="placeholder.jpg"
-              src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"}
-              class="img-fluid"
-              alt=""
-            />
+            {/* <MDBCardImage
+                // src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"}
+                src="placeholder.jpg"
+                className="img-fluid"
+                alt="recipe image"
+            /> */}
+                <img
+                  // src="placeholder.jpg"
+                  src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"}
+                  class="img-fluid"
+                  alt=""
+                />
             <MDBCardBody>
               <MDBCardTitle className="h3">{recipe.recipe_name}</MDBCardTitle>
               <MDBCardText>
@@ -85,7 +91,8 @@ export default function Recipe({ match }) {
 
             </MDBCardBody>
             {/* <button type="button" class="btn btn-secondary">RATE THIS DISH</button> */}
-            c
+            <MDBLink to={`/ratings/${recipe.id}`} className="btn btn-secondary">RATE THIS DISH</MDBLink>
+            
           </MDBJumbotron>
         </MDBCol>
       </MDBRow>
