@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBLink } from "mdbreact"
-import { bottom } from '@popperjs/core';
 import { Row, Col } from 'react-bootstrap';
 import RecipeRandom from './RecipeRandom';
 import RecipeCategories from './RecipeCategories';
@@ -8,7 +7,7 @@ import RecipeCategories from './RecipeCategories';
 export default function RecipeList() {
 
   const [recipes, setRecipes] = useState([]);
-
+  const [randomRecipe, setRandomRecipe] = useState([]);
   // const [update, setUpdate] = useState(false);
 
   const fetchRecipes = async () => {
@@ -20,8 +19,9 @@ export default function RecipeList() {
 
     const data = await response.json();
     // data.recipes.imageUrl = data.image
-    console.log(data)
     setRecipes(data);
+    setRandomRecipe(data[Math.floor(Math.random() * data.length)])
+    console.log(data[Math.floor(Math.random() * data.length)])
   };
 
   useEffect(() => {
@@ -33,14 +33,14 @@ export default function RecipeList() {
 
       <RecipeCategories />  
 
-      <RecipeRandom />
+      <RecipeRandom recipe={randomRecipe}/>
 
       <h1>RECIPES</h1>
 
       <Row className="justify-content-sm-center">
         {recipes.map((recipe) => (
-          <Col lg={true}>
-            <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="mdb-color darken-1" expand="md" key={recipe.id}>
+          <Col lg={true} key={recipe.id}>
+            <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="mdb-color darken-1" expand="md">
               <MDBCardImage className="card-img-top" variant="top" src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"} />
               <MDBCardBody>
                 <MDBCardTitle>{recipe.recipe_name}</MDBCardTitle>
