@@ -30,16 +30,9 @@ export default function Recipe({ match }) {
       <MDBRow>
         <MDBCol>
           <MDBJumbotron className="p-0">
-            {/* <MDBCardImage
-                // src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"}
-                src="placeholder.jpg"
-                className="img-fluid"
-                alt="recipe image"
-            /> */}
             <img
-              // src="placeholder.jpg"
               src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"}
-              className="img-fluid"
+              class="img-fluid"
               alt=""
             />
             <MDBCardBody>
@@ -59,10 +52,10 @@ export default function Recipe({ match }) {
               <MDBCardText>
                 Dietaries:
                 <ul>
-                  {recipe.dietary_categories && recipe.dietary_categories.map((dietary) => {
-                    return (
-                      <li key={dietary.id}>{dietary.name}</li>
-                    )
+                {recipe.dietary_categories && recipe.dietary_categories.map((dietary) => {
+                  return (
+                  <li key={dietary.id}>{dietary.name}</li>
+                  )
                   })}
                 </ul>
               </MDBCardText>
@@ -77,23 +70,22 @@ export default function Recipe({ match }) {
               <MDBCardText>
                 Serves: {recipe.serves}
               </MDBCardText>
-              <MDBCardText>
-                {
-                  recipe.ratings && recipe.ratings.length > 0 ?
-                    <>
-                      Ratings:
-                      <ul>
-                        {recipe.ratings.map((rating) => {
-                          return <li key={rating.id}>{rating.review}</li>
-                        })}
-                      </ul>
-                    </> : null
-                }
-              </MDBCardText>
+              {
+                recipe.ratings && recipe.ratings.length > 0 ?
+                  <>
+                    <h3>Ratings:</h3>
+                    <ul>
+                      {recipe.ratings.map((rating) => {
+                        return <li key={rating.id}>{rating.review}</li>
+                      })}
+                    </ul>
+                  </> : null
+              }
+
             </MDBCardBody>
-
-            <MDBLink to={`/recipes/${recipe.id}/rating`} className="btn btn-secondary">RATE THIS DISH</MDBLink>
-
+            {/* <button type="button" class="btn btn-secondary">RATE THIS DISH</button> */}
+            <MDBLink to={`/ratings/${recipe.id}`} className="btn btn-secondary">RATE THIS DISH</MDBLink>
+            
           </MDBJumbotron>
         </MDBCol>
       </MDBRow>
