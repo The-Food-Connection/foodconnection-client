@@ -5,15 +5,17 @@ import { MDBJumbotron, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDB
 import { Button, Form } from 'react-bootstrap';
 import StarRating from './StarRating';
 import "./styling/NewRating.css";
-import RecipeCategories from './RecipeCategories';
 
 
 export default function NewRating(props, {match}) {
 
+    const [ratingForm, setRatingForm] = useState(ratingInitialState)
     const [recipe, setRecipe] = useState({});
 
+    // const [ratingForm, setRatingForm] = useState(ratingInitialState)
+
     const fetchRecipe = async () => {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/ratings/${match.params.id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/recipes/${match.params.id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         }
@@ -40,8 +42,6 @@ export default function NewRating(props, {match}) {
             review: '',
         }
     }
-
-    const [ratingForm, setRatingForm] = useState(ratingInitialState)
 
     const changeInput = (event) => {
         setRatingForm({

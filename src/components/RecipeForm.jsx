@@ -110,6 +110,8 @@ export default function RecipeForm(history) {
     fetchDietaries();
   }, []);
 
+  console.log(dietaries);
+
   return (
     <Form onSubmit={createNewRecipe}>
       <Form.Group className="mb-3" controlId="recipe_name">

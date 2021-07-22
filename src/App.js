@@ -30,7 +30,8 @@ function App() {
             <Route path="/sign-up" exact component={SignUp} />
             <ProtectedRoute path="/recipes" exact component={RecipeList} />
             <ProtectedRoute path="/recipes/:id" exact component={Recipe} />
-            <ProtectedRoute path="/ratings" exact component={NewRating} />
+            {/* <ProtectedRoute path="/ratings" exact component={NewRating} /> */}
+            <ProtectedRoute path="/recipes/:id/rating" exact component={NewRating} />
 
             <ProtectedRoute path="/user-profile" exact component={UserProfile} />
 
