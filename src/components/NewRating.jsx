@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { postData } from '../utils/apiRequest';
 import { MDBJumbotron, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBRow, MDBCol, MDBContainer } from "mdbreact";
@@ -8,7 +8,27 @@ import "./styling/NewRating.css";
 import RecipeCategories from './RecipeCategories';
 
 
-export default function NewRating(props) {
+export default function NewRating(props, {match}) {
+
+    const [recipe, setRecipe] = useState({});
+
+    const fetchRecipe = async () => {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/ratings/${match.params.id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
+      });
+
+      const data = await response.json();
+      console.log(data)
+      // to keep just one state, I am adding the image url to the recipe object
+      // data.recipe.imageUrl = data.image
+      setRecipe(data.recipe);
+    };
+
+    useEffect(() => {
+      fetchRecipe();
+    }, [match.params.id])
 
     const titleStyle = {
       textAlign: "center",
@@ -51,36 +71,51 @@ export default function NewRating(props) {
         <MDBCol>
 
             <MDBJumbotron className="p-0">
-            <MDBCardImage
-              className="img-fluid"
-            //   src= {}
-            />
             <MDBCardBody>
-              <MDBCardTitle className="h3">{}</MDBCardTitle>
+
+              <MDBCardTitle className="h3">{recipe.recipe_name}</MDBCardTitle>
+
               <MDBCardText>
-                Posted by {}
+                Posted by {recipe.user ? recipe.user.username : null}
               </MDBCardText>
+
               <MDBCardText>
-                {} cuisine
+                {recipe.cuisine} cuisine
               </MDBCardText>
+
               <MDBCardText>
-                {}
+                {recipe.meal_type}
               </MDBCardText>
+
               <MDBCardText>
-                Skill level: {}
+                Skill level: {recipe.skill_level}
               </MDBCardText>
+
+              {/* <MDBCardText>
+                Dietaries:
+                <ul>
+                {recipe.dietary_categories && recipe.dietary_categories.map((dietary) => {
+                  return (
+                  <li key={dietary.id}>{dietary.name}</li>
+                  )
+                  })}
+                </ul>
+              </MDBCardText> */}
+
               <MDBCardText>
                 How to prepare:
                 <br></br>
-                {}
+                {recipe.recipe_instructions}
               </MDBCardText>
+
               <MDBCardText>
-                Time: {} minutes
+                Time: {recipe.cooking_time} minutes
               </MDBCardText>
+
               <MDBCardText>
-                Serves: {}
+                Serves: {recipe.serves}
               </MDBCardText>
-            </MDBCardBody>
+          </MDBCardBody>    
           </MDBJumbotron>
 
         </MDBCol>
