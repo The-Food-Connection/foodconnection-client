@@ -14,35 +14,43 @@ export default function RecipeCategories () {
             {/* <MDBJumbotron fluid className="jumbo"> */}
 
             <MDBContainer fluid>
-                <MDBRow class="d-flex justify-content-center">
+                <MDBRow class="d-flex justify-content-center align-items-center">
                 
                 <MDBCol size="2">
                     <div className="category">
-                    <Image src="breakfast.jpg" roundedCircle />
+                    <a href="http://localhost:8080/breakfast"><Image src="breakfast.jpg" roundedCircle /></a>
                     <h4>BREAKFAST</h4>
                     </div>
                 </MDBCol>
 
                 <MDBCol size="2">
                     <div className="category">
-                    <Image src="lunch.jpg" roundedCircle />
+                    <a href="http://localhost:8080/lunch"><Image src="lunch.jpg" roundedCircle /></a>
                     <h4>LUNCH</h4>
                     </div>
                 </MDBCol>
 
                 <MDBCol size="2">
                     <div className="category">
-                    <Image src="dinner.jpg" roundedCircle />
+                    <a href="http://localhost:8080/dinner"><Image src="dinner.jpg" roundedCircle /></a>
                     <h4>DINNER</h4>
                     </div>
                 </MDBCol>
 
                 <MDBCol size="2">
                     <div className="category">
-                    <Image src="dessert.jpg" roundedCircle />
+                    <a href="http://localhost:8080/dessert"><Image src="dessert.jpg" roundedCircle /></a>
                     <h4>DESSERT</h4>
                     </div>
                 </MDBCol>
+
+                <MDBCol size="2">
+                    <div className="category">
+                    <a href="http://localhost:8080/snacks"><Image src="snacks.jpg" roundedCircle /></a>
+                    <h4>SNACKS</h4>
+                    </div>
+                </MDBCol>
+
                 </MDBRow>  
             </MDBContainer>
 {/* 
