@@ -39,7 +39,7 @@ export default function Recipe({ match }) {
             <img
               // src="placeholder.jpg"
               src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"}
-              class="img-fluid"
+              className="img-fluid"
               alt=""
             />
             <MDBCardBody>
@@ -59,10 +59,10 @@ export default function Recipe({ match }) {
               <MDBCardText>
                 Dietaries:
                 <ul>
-                {recipe.dietary_categories && recipe.dietary_categories.map((dietary) => {
-                  return (
-                  <li key={dietary.id}>{dietary.name}</li>
-                  )
+                  {recipe.dietary_categories && recipe.dietary_categories.map((dietary) => {
+                    return (
+                      <li key={dietary.id}>{dietary.name}</li>
+                    )
                   })}
                 </ul>
               </MDBCardText>
@@ -77,22 +77,23 @@ export default function Recipe({ match }) {
               <MDBCardText>
                 Serves: {recipe.serves}
               </MDBCardText>
-              {
-                recipe.ratings && recipe.ratings.length > 0 ?
-                  <>
-                    <h3>Ratings:</h3>
-                    <ul>
-                      {recipe.ratings.map((rating) => {
-                        return <li key={rating.id}>{rating.review}</li>
-                      })}
-                    </ul>
-                  </> : null
-              }
-
+              <MDBCardText>
+                {
+                  recipe.ratings && recipe.ratings.length > 0 ?
+                    <>
+                      Ratings:
+                      <ul>
+                        {recipe.ratings.map((rating) => {
+                          return <li key={rating.id}>{rating.review}</li>
+                        })}
+                      </ul>
+                    </> : null
+                }
+              </MDBCardText>
             </MDBCardBody>
-            {/* <button type="button" class="btn btn-secondary">RATE THIS DISH</button> */}
+
             <MDBLink to={`/recipes/${recipe.id}/rating`} className="btn btn-secondary">RATE THIS DISH</MDBLink>
-            
+
           </MDBJumbotron>
         </MDBCol>
       </MDBRow>
