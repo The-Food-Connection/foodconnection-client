@@ -6,16 +6,16 @@ export default function AdminDashboard() {
 
     const titleStyle = {
         textAlign: "center",
-      };    
-    
+    };
+
     const [recipes, setRecipes] = useState([]);
     const [users, setUsers] = useState([]);
 
     const fetchRecipes = async () => {
         const response = await fetch(process.env.REACT_APP_API_URL + "/recipes", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          }
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
         });
 
         const data = await response.json();
@@ -26,15 +26,15 @@ export default function AdminDashboard() {
     const fetchUsers = async () => {
         const response = await fetch(process.env.REACT_APP_API_URL + "/users", {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
             }
-          });
-  
-          const data = await response.json();
-          console.log(data)
-          setUsers(data);
+        });
+
+        const data = await response.json();
+        console.log(data)
+        setUsers(data);
     };
-    
+
     useEffect(() => {
         fetchRecipes();
     }, []);
@@ -66,11 +66,11 @@ export default function AdminDashboard() {
             <Table responsive striped bordered hover variant="dark">
                 <thead>
                     <tr>
-                    <th>ID #</th>
-                    <th>USERNAME</th>
-                    <th>EMAIL</th>
-                    <th>DATE JOINED</th>
-                    <th>ACTIONS</th>
+                        <th>ID #</th>
+                        <th>USERNAME</th>
+                        <th>EMAIL</th>
+                        <th>DATE JOINED</th>
+                        <th>ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -88,17 +88,17 @@ export default function AdminDashboard() {
                     }
 
                 </tbody>
-                </Table>
+            </Table>
 
             <h3>All Recipes On Site</h3>
-                <Table responsive striped bordered hover variant="dark">
+            <Table responsive striped bordered hover variant="dark">
                 <thead>
                     <tr>
-                    <th>ID #</th>
-                    <th>RECIPE NAME</th>
-                    <th>RECIPE AUTHOR</th>
-                    <th>DATE CREATED</th>
-                    <th>ACTIONS</th>
+                        <th>ID #</th>
+                        <th>RECIPE NAME</th>
+                        <th>RECIPE AUTHOR</th>
+                        <th>DATE CREATED</th>
+                        <th>ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -116,7 +116,7 @@ export default function AdminDashboard() {
                     }
 
                 </tbody>
-                </Table>
+            </Table>
 
         </div>
     )

@@ -133,18 +133,6 @@ export default function RecipeForm(history) {
           <MDBCheckbox name={dietary.name} id={dietary.name} value={dietary.id} label={dietary.name} onChange={changeCheckbox} key={dietary.name} inline />
         ))}
       </Form.Group>
-      {/* <Form>
-        {dietaries.map((dietary) => (
-          <div key={dietary.name} className="mb-3">
-            <Form.Check
-              type={dietary.name}
-              id={dietary.name}
-              label={dietary.name}}
-            />
-          </div>
-        ))}
-      </Form> */}
-
       <Form.Group className="mb-3" controlId="skill_level">
         <Form.Label>Skill Level: </Form.Label>
         <SelectFC name="skill_level" text="Skill Level" options={defaultOptions.skillLevel} changeSelect={changeInput}></SelectFC>

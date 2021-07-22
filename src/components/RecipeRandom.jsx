@@ -4,6 +4,8 @@ import './styling/RecipeRandom.css';
 
 export default function RecipeRandom() {
 
+    const [random, setRandom] = useState({});
+
     return (
         <div>
             <Card className="text-center">
