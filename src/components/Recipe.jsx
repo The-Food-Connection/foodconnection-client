@@ -57,34 +57,37 @@ export default function Recipe({ match }) {
                 Skill level: {recipe.skill_level}
               </MDBCardText>
               <MDBCardText>
-                {recipe.dietary_categories && recipe.dietary_categories
-                  <ul>
-                  (recipes.dietary_categories.map((dietary) => {
-                    return <li key={dietary_category.id}>{dietary}</li>
-                  </ul>
-                  }))}
-              </MDBCardText>
-
-            <MDBCardText>
-              How to prepare:
-              <br></br>
-              {recipe.recipe_instructions}
-            </MDBCardText>
-            <MDBCardText>
-              Time: {recipe.cooking_time} minutes
-            </MDBCardText>
-            <MDBCardText>
-              Serves: {recipe.serves}
-            </MDBCardText>
-            {recipe.ratings && recipe.ratings.length > 0 ?
-              <>
-                <h3>Ratings:</h3>
+                Dietaries:
                 <ul>
-                  {recipe.ratings.map((rating) => {
-                    return <li key={rating.id}>{rating.review}</li>
+                {recipe.dietary_categories && recipe.dietary_categories.map((dietary) => {
+                  return (
+                  <li key={dietary.id}>{dietary.name}</li>
+                  )
                   })}
                 </ul>
-              </> : null}
+              </MDBCardText>
+              <MDBCardText>
+                How to prepare:
+                <br></br>
+                {recipe.recipe_instructions}
+              </MDBCardText>
+              <MDBCardText>
+                Time: {recipe.cooking_time} minutes
+              </MDBCardText>
+              <MDBCardText>
+                Serves: {recipe.serves}
+              </MDBCardText>
+              {
+                recipe.ratings && recipe.ratings.length > 0 ?
+                  <>
+                    <h3>Ratings:</h3>
+                    <ul>
+                      {recipe.ratings.map((rating) => {
+                        return <li key={rating.id}>{rating.review}</li>
+                      })}
+                    </ul>
+                  </> : null
+              }
 
             </MDBCardBody>
           <button type="button" class="btn btn-secondary">RATE THIS DISH</button>

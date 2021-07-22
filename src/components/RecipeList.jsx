@@ -40,7 +40,7 @@ export default function RecipeList() {
         {recipes.map((recipe) => (
           <Col lg={true}>
             <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="mdb-color darken-1" expand="md" key={recipe.id}>
-              <MDBCardImage className="card-img-top" variant="top" src={(recipe.image) ? recipe.image : 'placeholder.jpg'} />
+              <MDBCardImage className="card-img-top" variant="top" src={(recipe.imageUrl) ? recipe.imageUrl : 'placeholder.jpg'} />
               <MDBCardBody>
                 <MDBCardTitle>{recipe.recipe_name}</MDBCardTitle>
                 <MDBCardText>
