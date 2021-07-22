@@ -82,7 +82,7 @@ export default function NewRating({ match, update, history }) {
       })
       const data = await response.json();
 
-      if (response.status === 200) {
+      if (response.status === 200 || 201) {
         history.push("/recipes");
       } else {
         
