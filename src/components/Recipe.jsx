@@ -91,7 +91,7 @@ export default function Recipe({ match }) {
 
             </MDBCardBody>
             {/* <button type="button" class="btn btn-secondary">RATE THIS DISH</button> */}
-            <MDBLink to={`/ratings/${recipe.id}`} className="btn btn-secondary">RATE THIS DISH</MDBLink>
+            <MDBLink to={`/recipes/${recipe.id}/rating`} className="btn btn-secondary">RATE THIS DISH</MDBLink>
             
           </MDBJumbotron>
         </MDBCol>
