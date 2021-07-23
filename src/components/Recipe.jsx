@@ -52,10 +52,20 @@ export default function Recipe({ match }) {
               <MDBCardText>
                 Dietaries:
                 <ul>
-                {recipe.dietary_categories && recipe.dietary_categories.map((dietary) => {
-                  return (
-                  <li key={dietary.id}>{dietary.name}</li>
-                  )
+                  {recipe.dietary_categories && recipe.dietary_categories.map((dietary) => {
+                    return (
+                      <li key={dietary.id}>{dietary.name}</li>
+                    )
+                  })}
+                </ul>
+              </MDBCardText>
+              <MDBCardText>
+              Ingredients:
+                <ul>
+                  {recipe.recipe_ingredients && recipe.recipe_ingredients.map((ingredient) => {
+                    return (
+                      <li key={recipe.recipe_ingredients.id}>{ingredient.quantity} {ingredient.measure_type} {ingredient.name}</li>
+                    )
                   })}
                 </ul>
               </MDBCardText>
@@ -85,7 +95,7 @@ export default function Recipe({ match }) {
             </MDBCardBody>
             {/* <button type="button" class="btn btn-secondary">RATE THIS DISH</button> */}
             <MDBLink to={`/ratings/${recipe.id}`} className="btn btn-secondary">RATE THIS DISH</MDBLink>
-            
+
           </MDBJumbotron>
         </MDBCol>
       </MDBRow>

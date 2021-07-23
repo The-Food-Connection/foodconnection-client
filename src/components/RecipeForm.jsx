@@ -2,7 +2,7 @@ import React, { useState, setErrorMessage, useEffect } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import SelectFC from '../utils/SelectFC'
 import { MDBCheckbox } from 'mdb-react-ui-kit';
-import Ingredients from '../utils/Ingredients';
+import Ingredients from '../utils/Ingredients'
 
 export default function RecipeForm(history) {
 
@@ -18,6 +18,7 @@ export default function RecipeForm(history) {
       image: '',
       recipe_dietaries_attributes: [],
       ingredients: []
+      // recipe_ingredients_attributes: []
     }
   }
 
@@ -66,6 +67,7 @@ export default function RecipeForm(history) {
     // append recipe dietaries as JSON.stringify to work with formData
     // rails will need to JSON.parse before use 
     formData.append('recipe_dietaries_attributes', JSON.stringify(recipeForm.recipe.recipe_dietaries_attributes))
+    formData.append('recipe_ingredients_attributes', JSON.stringify(selectedIngredients))
 
     const response = await fetch(process.env.REACT_APP_API_URL + "/recipes", {
       method: 'POST',
@@ -94,6 +96,7 @@ export default function RecipeForm(history) {
 
   const [dietaries, setDietaries] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+	const [selectedIngredients, setSelectedIngredients] = useState([]);
 
   const fetchDietaries = async () => {
     const response = await fetch(process.env.REACT_APP_API_URL + "/dietaries", {
@@ -124,8 +127,6 @@ export default function RecipeForm(history) {
     fetchIngredients();
   }, []);
 
-  console.log(dietaries);
-
   return (
     <Form onSubmit={createNewRecipe}>
       <Form.Group className="mb-3" controlId="recipe_name">
@@ -134,7 +135,7 @@ export default function RecipeForm(history) {
       </Form.Group>
       <Form.Group className="mb-3" controlId="ingredients">
         <Form.Label>Ingredients: </Form.Label>
-        <Ingredients ingredients={ingredients}></Ingredients>
+        <Ingredients ingredients={ingredients} setIngredients={setSelectedIngredients}></Ingredients>
       </Form.Group>
       <Form.Group className="mb-3" controlId="recipe_instructions">
         <Form.Label>How to prepare: </Form.Label>

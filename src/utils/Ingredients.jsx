@@ -21,6 +21,7 @@ export default function Ingredients(props) {
 			if (!isAdded) {
 				newSelectedIngredients.push(ingObject)
 				setSelectedIngredients(newSelectedIngredients)
+				props.setIngredients(newSelectedIngredients)
 				setMessage({
 					type: "success",
 					text: "Ingredient added to the list."
@@ -49,22 +50,24 @@ export default function Ingredients(props) {
 		let newSelectedIngredients = [...selectedIngredients]
 		newSelectedIngredients.forEach((i) => {
 			if (i.name === e.target.name) {
-				i.measure = e.target.value
+				i.measure_type = e.target.value
 			}
 			return i
 		})
 		setSelectedIngredients(newSelectedIngredients)
+		props.setIngredients(newSelectedIngredients)
 	}
 
 	function handleQtyChange(e) {
 		let newSelectedIngredients = [...selectedIngredients]
 		newSelectedIngredients.forEach((i) => {
 			if (i.name === e.target.name) {
-				i.qty = e.target.value
+				i.quantity = e.target.value
 			}
 			return i
 		})
 		setSelectedIngredients(newSelectedIngredients)
+		props.setIngredients(newSelectedIngredients)
 
 	}
 
@@ -76,6 +79,7 @@ export default function Ingredients(props) {
 			newSelectedIngredients = newSelectedIngredients.filter(i => i.name !== e.target.parentElement.id)
 		}
 		setSelectedIngredients(newSelectedIngredients ? newSelectedIngredients : [])
+		props.setIngredients(newSelectedIngredients ? newSelectedIngredients : [])
 	}
 
 	return (
@@ -99,11 +103,12 @@ export default function Ingredients(props) {
 				<Table striped bordered hover size="sm">
 					<tbody>
 						{selectedIngredients.map((ing) => (
-							<tr key={ing.id}>
+							<tr key={ing.ingredient_id}>
 								<td>{ing.name}</td>
 								<td>
 									<TextField
 										id="qty"
+										key={ing.ingredient_id}
 										label="Quantity"
 										type="number"
 										name={ing.name}
@@ -118,7 +123,8 @@ export default function Ingredients(props) {
 										<InputLabel id="demo-simple-select-label">Measure</InputLabel>
 										<Select
 											labelId="demo-simple-select-label"
-											id="demo-simple-select"
+											id="measure"
+											key={ing.ingredient_id}
 											name={ing.name}
 											onChange={handleSelectChange}
 										>
