@@ -2,6 +2,7 @@ import React, { useState, setErrorMessage, useEffect } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import SelectFC from '../utils/SelectFC'
 import { MDBCheckbox } from 'mdb-react-ui-kit';
+import Ingredients from '../utils/Ingredients'
 
 export default function RecipeForm(history) {
 
@@ -15,7 +16,9 @@ export default function RecipeForm(history) {
       cuisine: '',
       meal_type: '',
       image: '',
-      recipe_dietaries_attributes: []
+      recipe_dietaries_attributes: [],
+      ingredients: []
+      // recipe_ingredients_attributes: []
     }
   }
 
@@ -64,7 +67,8 @@ export default function RecipeForm(history) {
     // append recipe dietaries as JSON.stringify to work with formData
     // rails will need to JSON.parse before use 
     formData.append('recipe_dietaries_attributes', JSON.stringify(recipeForm.recipe.recipe_dietaries_attributes))
-  
+    formData.append('recipe_ingredients_attributes', JSON.stringify(selectedIngredients))
+
     const response = await fetch(process.env.REACT_APP_API_URL + "/recipes", {
       method: 'POST',
       headers: {
@@ -75,7 +79,7 @@ export default function RecipeForm(history) {
     })
 
     const data = await response.json();
-
+    console.log(response.status)
     if (response.status === 200) {
       history.push("/recipes");
     } else {
@@ -91,10 +95,10 @@ export default function RecipeForm(history) {
   }
 
   const [dietaries, setDietaries] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
+	const [selectedIngredients, setSelectedIngredients] = useState([]);
 
   const fetchDietaries = async () => {
-    const formData = new FormData();
-
     const response = await fetch(process.env.REACT_APP_API_URL + "/dietaries", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -106,17 +110,32 @@ export default function RecipeForm(history) {
     setDietaries(data);
   };
 
+  const fetchIngredients = async () => {
+    const response = await fetch(process.env.REACT_APP_API_URL + "/ingredients", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }
+    });
+
+    const data = await response.json();
+    console.log(data)
+    setIngredients(data);
+  };
+
   useEffect(() => {
     fetchDietaries();
+    fetchIngredients();
   }, []);
-
-  console.log(dietaries);
 
   return (
     <Form onSubmit={createNewRecipe}>
       <Form.Group className="mb-3" controlId="recipe_name">
         <Form.Label>Recipe Title: </Form.Label>
         <Form.Control type="text" placeholder="Recipe Title" onChange={changeInput} name="recipe_name" />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="ingredients">
+        <Form.Label>Ingredients: </Form.Label>
+        <Ingredients ingredients={ingredients} setIngredients={setSelectedIngredients}></Ingredients>
       </Form.Group>
       <Form.Group className="mb-3" controlId="recipe_instructions">
         <Form.Label>How to prepare: </Form.Label>
