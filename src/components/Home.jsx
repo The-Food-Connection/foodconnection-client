@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { useAuth } from "../contexts/AuthProvider";
 import RecipeList from './RecipeList';
+import Login from './Login';
 
 export default function Home() {
   const { auth, authDispatch } = useAuth();
@@ -11,7 +12,8 @@ export default function Home() {
       {auth.loggedIn ?
         // <p>Welcome {auth.username}!</p>
         <RecipeList /> :
-        <Link to="Login">Please login</Link>
+        // <Link to="Login">Please login</Link>
+        <Login />
       }
       
     </div>

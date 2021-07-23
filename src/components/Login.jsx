@@ -48,9 +48,10 @@ export default function Login({ history }) {
     <>
     <Row>
       <Col>
-      <img src="loginpage.jpg" />
+      <img className="loginpic" src="loginpage.jpg" />
       </Col>
       <Col>
+      <h2>Please Enter Login Details Below</h2>
       {errorMessage ?
         <Alert variant="danger">{errorMessage}</Alert> : null}
       
@@ -65,7 +66,7 @@ export default function Login({ history }) {
           <Form.Control type="password" placeholder="Password" value={loginForm.password} onChange={changeInput} name="password" />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          LOGIN
         </Button>
       </Form>
       </Col>
