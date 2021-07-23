@@ -19,6 +19,7 @@ const reducer = (state, action) => {
 				loggedIn: true,
 				username: action.username,
         email: action.email,
+        created_at: action.created_at
 			};
 
     case "sign-out":
