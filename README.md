@@ -1,6 +1,6 @@
 # THE FOOD CONNECTION <!-- omit in toc --> 
 
-<img src="docs/FC Logo.JPG" alt="food connection logo" width="600"><br>
+<img src="public/FC Logo.JPG" alt="food connection logo" width="600"><br>
 
 ## T3A2 - PART B <!-- omit in toc --> 
 
