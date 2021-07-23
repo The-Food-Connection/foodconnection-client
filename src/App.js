@@ -20,7 +20,6 @@ import RecipeForm from "./components/RecipeForm";
 import NotFound from "./components/NotFound";
 import AuthProvider from "./contexts/AuthProvider";
 import ProtectedRoute from "./utils/ProtectedRoute";
-// import AuthProvider from "../contexts/AuthProvider";
 
 function App() {
 
@@ -30,7 +29,7 @@ function App() {
         <Router>
           <NavigationBar />
           <Switch>
-            <Route path="/" exact component={Home} />
+            <Route path="/" exact component={Login} />
             <Route path="/login" exact component={Login} />
             <Route path="/sign-up" exact component={SignUp} />
             <ProtectedRoute path="/recipes" exact component={RecipeList} />
