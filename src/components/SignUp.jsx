@@ -58,9 +58,10 @@ export default function SignUp({ history }) {
     <>
       <Row>
       <Col>
-      <img src="signuppage.jpg" />
+      <img className="signuppic" src="signuppage.jpg" />
       </Col>
       <Col>
+      <h2>Please Enter Your Details Below to Sign Up</h2>
       {errorMessage ?
         <Alert variant="danger">{errorMessage}</Alert> : null}
 
@@ -86,7 +87,7 @@ export default function SignUp({ history }) {
         </Form.Group>
 
         <Button variant="primary" type="submit">
-          Submit
+          SIGN UP NOW
         </Button>
       </Form>
       </Col>
@@ -94,4 +95,3 @@ export default function SignUp({ history }) {
     </>
   )
 }
-
