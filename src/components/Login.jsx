@@ -24,7 +24,7 @@ export default function Login({ history }) {
     const data = await response.json();
     console.log(data)
     if (data.token) {
-      authDispatch({ type: "login", token: data.token, username: loginForm.username });
+      authDispatch({ type: "login", token: data.token, username: loginForm.username, admin: data.admin });
       history.push("/");
     } else {
       setErrorMessage(data.error);

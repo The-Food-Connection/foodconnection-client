@@ -8,22 +8,26 @@ export const useAuth = () => {
 
 const reducer = (state, action) => {
   switch (action.type) {
+      
 		case "login":
 			localStorage.setItem('token', action.token)
 			localStorage.setItem('username', action.username)
-      localStorage.setItem('email', action.email)
-      localStorage.setItem('created_at', action.created_at)
+      // localStorage.setItem('email', action.email)
+      // localStorage.setItem('created_at', action.created_at)
+      localStorage.setItem('admin', action.admin)
 
 			return {
 				...state,
 				loggedIn: true,
 				username: action.username,
         email: action.email,
+        admin: action.admin
 			};
 
     case "sign-out":
 			localStorage.removeItem('token');
       localStorage.removeItem('username');
+      localStorage.removeItem('admin')
       // localStorage.removeItem('email');
       // localStorage.removeItem('created_at');
       return {
@@ -40,7 +44,8 @@ export default function AuthProvider({ children }) {
     loggedIn: !!localStorage.getItem("token"),
     username: localStorage.getItem("username"),
     email: localStorage.getItem("email"),
-    created_at: localStorage.getItem("created_at")
+    created_at: localStorage.getItem("created_at"),
+    admin: localStorage.getItem("admin")
   });
 
   return (

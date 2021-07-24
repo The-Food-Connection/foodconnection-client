@@ -34,7 +34,7 @@ export default function SignUp({ history }) {
     const data = await response.json();
     console.log(data)
     if (data.token) {
-      authDispatch({ type: 'login', token: data.token, username: signUpForm.user.username })
+      authDispatch({ type: 'login', token: data.token, username: signUpForm.user.username, admin: data.admin })
       history.push("/");
     } else {
       setErrorMessage(data.error);
