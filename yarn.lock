@@ -8136,6 +8136,11 @@ mdb-react-ui-kit@^1.1.0:
     clsx "1.1.1"
     react-popper "2.2.4"
 
+mdbootstrap@^4.19.2:
+  version "4.19.2"
+  resolved "https://registry.yarnpkg.com/mdbootstrap/-/mdbootstrap-4.19.2.tgz#21007a6b7d89cf5420d803a27db344edfa00be31"
+  integrity sha512-a+LwPflYRYwlmYKTvftW0X7SfOMrRZ02qZjrssNko1lPU/HR5JRFc1uwa3Dmmw+6TwsYH760waqdghBFrucpOw==
+
 mdbreact@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/mdbreact/-/mdbreact-5.1.0.tgz#1528364a48d3ce845994553d74ff6478327fd681"
