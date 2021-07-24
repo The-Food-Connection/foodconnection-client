@@ -45,7 +45,7 @@ export default function UserProfile() {
                         <tbody>
                             <tr>
                             <td>😀</td>
-                            <td>{auth.username}</td>
+                            <td>{auth.username}{auth.email}{auth.created_at}</td>
                             {/* <td>{auth.email}</td> */}
                             {/* <td>{auth.created_at}</td> */}
                             </tr>

@@ -12,8 +12,8 @@ const reducer = (state, action) => {
 		case "login":
 			localStorage.setItem('token', action.token)
 			localStorage.setItem('username', action.username)
-      // localStorage.setItem('email', action.email)
-      // localStorage.setItem('created_at', action.created_at)
+      localStorage.setItem('email', action.email)
+      localStorage.setItem('created_at', action.created_at)
       localStorage.setItem('admin', action.admin)
 
 			return {
