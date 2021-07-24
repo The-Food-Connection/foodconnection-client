@@ -32,8 +32,8 @@ export default function Recipe({ match }) {
           <MDBJumbotron className="p-0">
             <img
               src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"}
-              class="img-fluid"
-              alt=""
+              className="img-fluid"
+              alt={recipe.recipe_name}
             />
             <MDBCardBody>
               <MDBCardTitle className="h3">{recipe.recipe_name}</MDBCardTitle>
@@ -71,7 +71,6 @@ export default function Recipe({ match }) {
               </MDBCardText>
               <MDBCardText>
                 How to prepare:
-                <br></br>
                 {recipe.recipe_instructions}
               </MDBCardText>
               <MDBCardText>

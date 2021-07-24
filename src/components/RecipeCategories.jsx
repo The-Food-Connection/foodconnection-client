@@ -3,7 +3,7 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 import "./styling/RecipeCategories.css";
 
-export default function RecipeCategories () {
+export default function RecipeCategories() {
 
 
 
@@ -53,7 +53,7 @@ export default function RecipeCategories () {
 
                 </MDBRow>  
             </MDBContainer>
-{/* 
+            {/* 
             </MDBJumbotron> */}
             {/* </Container> */}
 

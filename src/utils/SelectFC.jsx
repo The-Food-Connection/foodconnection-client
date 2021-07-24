@@ -8,7 +8,7 @@ class SelectFC extends React.Component {
 	//  this.props.select watches the state from outside
 	render() {
 		return (
-			<Form.Control as="select" onChange={this.props.changeSelect} name={this.props.name} text={this.props.text}>
+			<Form.Control required as="select" onChange={this.props.changeSelect} name={this.props.name} text={this.props.text}>
 				<option>{this.props.text}</option>
 				{this.props.options.map((option) => (
 					<option value={option} key={option}>{option}</option>
