@@ -20,7 +20,10 @@ const Footer = () => {
           <MDBCol md="6">
             {/* <h5 class="text-warning" className="title"><a href="/recipes">ALL RECIPES</a></h5> */}
             <ul>
-            <li className="list-unstyled">
+              <li className="list-unstyled">
+                <a class="text-success" href="/">HOME</a>
+              </li>
+              <li className="list-unstyled">
                 <a class="text-warning" href="/recipes">All Recipes</a>
               </li>
               <li className="list-unstyled">
