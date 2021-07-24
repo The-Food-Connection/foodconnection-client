@@ -48,7 +48,7 @@ export default function NewRating({ match, update, history }) {
     }
 
 
-    const [errorMessage, setErrorMessage] = useState('')
+    // const [errorMessage, setErrorMessage] = useState('')
 
     // setting initial state for ratingForm, and setRatingForm
     const [ratingForm, setRatingForm] = useState(ratingInitialState)
@@ -81,11 +81,14 @@ export default function NewRating({ match, update, history }) {
         body: formData
       })
       const data = await response.json();
+      console.log(data);
+      console.log(response);
+      console.log(response.status);
 
       if (response.status === 200 || 201) {
         history.push("/recipes");
       } else {
-        
+        // setErrorMessage(data.error)
         // console.log(`this is data error ${data.error}`);
         // setErrorMessage(data.error);
       }
@@ -96,12 +99,12 @@ export default function NewRating({ match, update, history }) {
         event.preventDefault();
         ratingPost(event);
         // postData(process.env.REACT_APP_API_URL + '/ratings', ratingForm)
-        setRatingForm(ratingInitialState)
+        // setRatingForm(ratingInitialState)
         // update.setUpdate(!update.update)
         // update.setUpdate(!update.update)
     }
 
-    const {rating, review, date, recipe_id} = ratingForm.rating
+    const {rating, review, date} = ratingForm.rating
 
     return (
         <>
