@@ -16,8 +16,7 @@ import DessertPage from './components/DessertPage';
 import SnacksPage from './components/SnacksPage';
 
 import NewRating from "./components/NewRating";
-import RecipeNew from "./components/RecipeNew";
-import RecipeEdit from "./components/RecipeEdit";
+import RecipeForm from "./components/RecipeForm";
 import NotFound from "./components/NotFound";
 import AuthProvider from "./contexts/AuthProvider";
 import ProtectedRoute from "./utils/ProtectedRoute";
@@ -46,14 +45,14 @@ function App() {
               <ProtectedRoute path="/snacks" exact component={SnacksPage} />
 
               <ProtectedRoute path="/recipes/:id/rating" exact component={NewRating} />
-              <ProtectedRoute path="/recipes/:id/edit" exact component={RecipeEdit} />
+              <ProtectedRoute path="/recipes/:id/edit" exact component={RecipeForm} />
 
               <ProtectedRoute path="/user-profile" exact component={UserProfile} />
 
               <ProtectedRoute path="/admin-dashboard" exact component={AdminDashboard} />
 
 
-              <ProtectedRoute path="/recipe-new" exact component={RecipeNew} />
+              <ProtectedRoute path="/recipe-new" exact component={RecipeForm} />
               <Route render={() => <h1>404 Page not found</h1>} />
             </Switch>
             <Footer />

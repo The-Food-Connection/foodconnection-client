@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Table } from 'react-bootstrap';
 import { Button, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
@@ -40,12 +40,25 @@ export default function Ingredients(props) {
 		}
 	}
 
+	function deleteIngredient(e) {
+		let newSelectedIngredients = [...selectedIngredients]
+		if (e.target.id) {
+			newSelectedIngredients = newSelectedIngredients.filter(i => i.name !== e.target.id)
+		} else {
+			newSelectedIngredients = newSelectedIngredients.filter(i => i.name !== e.target.parentElement.id)
+		}
+		setSelectedIngredients(newSelectedIngredients ? newSelectedIngredients : [])
+		props.setIngredients(newSelectedIngredients ? newSelectedIngredients : [])
+	}
+
+	// autocomplete
 	function handleInput(e, newInputValue) {
 		// clear error message when typing
 		setMessage({type: "", text: ""})
 		setInputValue(newInputValue)
 	}
 
+	// measure_type
 	function handleSelectChange(e) {
 		let newSelectedIngredients = [...selectedIngredients]
 		newSelectedIngredients.forEach((i) => {
@@ -58,6 +71,7 @@ export default function Ingredients(props) {
 		props.setIngredients(newSelectedIngredients)
 	}
 
+	// quantity
 	function handleQtyChange(e) {
 		let newSelectedIngredients = [...selectedIngredients]
 		newSelectedIngredients.forEach((i) => {
@@ -71,17 +85,11 @@ export default function Ingredients(props) {
 
 	}
 
-	function deleteIngredient(e) {
-		let newSelectedIngredients = [...selectedIngredients]
-		if (e.target.id) {
-			newSelectedIngredients = newSelectedIngredients.filter(i => i.name !== e.target.id)
-		} else {
-			newSelectedIngredients = newSelectedIngredients.filter(i => i.name !== e.target.parentElement.id)
+  useEffect(() => {
+    if(props.recipeIngredients){
+			setSelectedIngredients(props.recipeIngredients)
 		}
-		setSelectedIngredients(newSelectedIngredients ? newSelectedIngredients : [])
-		props.setIngredients(newSelectedIngredients ? newSelectedIngredients : [])
-	}
-
+	})
 	return (
 		<>
 			{message ?
@@ -112,6 +120,7 @@ export default function Ingredients(props) {
 										label="Quantity"
 										type="number"
 										name={ing.name}
+										value={ing.quantity}
 										onChange={handleQtyChange}
 										InputLabelProps={{
 											shrink: true,
@@ -126,6 +135,7 @@ export default function Ingredients(props) {
 											id="measure"
 											key={ing.ingredient_id}
 											name={ing.name}
+											value={ing.measure_type}
 											onChange={handleSelectChange}
 										>
 											{defaultOptions.measure.map((option) => (
