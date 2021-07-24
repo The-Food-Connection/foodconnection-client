@@ -4,8 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import fclogoshort from "../images/FClogoshort.JPG";
 import SearchBar from './SearchBar';
 import { MDBBtn } from 'mdb-react-ui-kit'
-import { useAuth } from "../contexts/AuthProvider";
-import { useState } from 'react';
+import { useAuth } from "../contexts/AuthProvider";import { useState } from 'react';
 
 export default function NavigationBar(state) {
 
