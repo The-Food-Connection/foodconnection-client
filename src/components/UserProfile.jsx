@@ -1,12 +1,14 @@
 import React from 'react';
 import { useAuth } from "../contexts/AuthProvider";
-import { Row, Col, Container } from 'react-bootstrap';
+import { Row, Col, Container, Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
+import './styling/UserProfile.css';
 
 export default function UserProfile() {
 
     const titleStyle = {
         textAlign: "center",
+        textTransform: "uppercase"
     };   
 
     const { auth, authDispatch } = useAuth();    
@@ -20,34 +22,42 @@ export default function UserProfile() {
             {auth.loggedIn ?
             <div>
 
-            <p style={titleStyle}>Welcome {auth.username}!</p>
+            <p style={titleStyle}>Welcome back {auth.username}!</p>
 
             <Container>
                 <Row>
 
                     <Col>
-                        <img src="placeholder.jpg" />
+                        <img className="userprofilepic" src="placeholder.jpg" />
 
                     </Col>
                     <Col>
+                    <h2 style={titleStyle}>Your Account Details</h2>
                     <Table striped bordered hover>
                         <thead>
                             <tr>
                             <th>#</th>
                             <th>USERNAME</th>
-                            <th>EMAIL</th>
-                            <th>DATE JOINED</th>
+                            {/* <th>EMAIL</th> */}
+                            {/* <th>DATE JOINED</th> */}
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                            <td>Your Details</td>
+                            <td>😀</td>
                             <td>{auth.username}</td>
-                            <td>{auth.email}</td>
-                            <td>{auth.created_at}</td>
+                            {/* <td>{auth.email}</td> */}
+                            {/* <td>{auth.created_at}</td> */}
                             </tr>
                         </tbody>
                     </Table>
+                    <br></br>
+                    If you're sadly wanting to leave our site, this cannot be undone.
+                    
+                    <br>
+                    </br>
+                    <br></br>
+                    <button type="button" class="btn btn-danger btn-lg">DELETE ACCOUNT</button>
 
                     </Col>
 

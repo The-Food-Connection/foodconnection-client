@@ -15,43 +15,43 @@ export default function RecipeCategories() {
 
             <MDBContainer fluid>
                 <MDBRow class="d-flex justify-content-center align-items-center">
+                
+                <MDBCol size="2">
+                    <div className="category">
+                    <a href="/breakfast"><Image src="breakfast.jpg" roundedCircle /></a>
+                    <h4>BREAKFAST</h4>
+                    </div>
+                </MDBCol>
 
-                    <MDBCol size="2">
-                        <div className="category">
-                            <a href="http://localhost:8080/breakfast"><Image src="breakfast.jpg" roundedCircle /></a>
-                            <h4>BREAKFAST</h4>
-                        </div>
-                    </MDBCol>
+                <MDBCol size="2">
+                    <div className="category">
+                    <a href="/lunch"><Image src="lunch.jpg" roundedCircle /></a>
+                    <h4>LUNCH</h4>
+                    </div>
+                </MDBCol>
 
-                    <MDBCol size="2">
-                        <div className="category">
-                            <a href="http://localhost:8080/lunch"><Image src="lunch.jpg" roundedCircle /></a>
-                            <h4>LUNCH</h4>
-                        </div>
-                    </MDBCol>
+                <MDBCol size="2">
+                    <div className="category">
+                    <a href="/dinner"><Image src="dinner.jpg" roundedCircle /></a>
+                    <h4>DINNER</h4>
+                    </div>
+                </MDBCol>
 
-                    <MDBCol size="2">
-                        <div className="category">
-                            <a href="http://localhost:8080/dinner"><Image src="dinner.jpg" roundedCircle /></a>
-                            <h4>DINNER</h4>
-                        </div>
-                    </MDBCol>
+                <MDBCol size="2">
+                    <div className="category">
+                    <a href="/dessert"><Image src="dessert.jpg" roundedCircle /></a>
+                    <h4>DESSERT</h4>
+                    </div>
+                </MDBCol>
 
-                    <MDBCol size="2">
-                        <div className="category">
-                            <a href="http://localhost:8080/dessert"><Image src="dessert.jpg" roundedCircle /></a>
-                            <h4>DESSERT</h4>
-                        </div>
-                    </MDBCol>
+                <MDBCol size="2">
+                    <div className="category">
+                    <a href="/snacks"><Image src="snacks.jpg" roundedCircle /></a>
+                    <h4>SNACKS</h4>
+                    </div>
+                </MDBCol>
 
-                    <MDBCol size="2">
-                        <div className="category">
-                            <a href="http://localhost:8080/snacks"><Image src="snacks.jpg" roundedCircle /></a>
-                            <h4>SNACKS</h4>
-                        </div>
-                    </MDBCol>
-
-                </MDBRow>
+                </MDBRow>  
             </MDBContainer>
             {/* 
             </MDBJumbotron> */}
