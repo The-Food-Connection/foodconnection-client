@@ -1,6 +1,4 @@
-// arrange act assert
-
-describe('The Home Page', () => {
+describe('Recipe New', () => {
     beforeEach(() => {
       cy.visit("http://localhost:8080/login");
 
@@ -32,11 +30,14 @@ describe('The Home Page', () => {
             statusCode: 200,
         });
         cy.get("Button").contains("LOGIN").click();
+        cy.get("a").contains("Add Recipe").click();
+        cy.get("label").should("contain", "Recipe Title:");
+        cy.get("label").should("contain", "Ingredients");
 
-        cy.url().should("include", "/");
-        cy.get("h1").should("contain", "RECIPES");
-        cy.get("a").should("contain", "HOME");
-        cy.get("h4").should("contain", "LUNCH");
+        // cy.url().should("include", "/");
+        // cy.get("h1").should("contain", "RECIPES");
+        // cy.get("a").should("contain", "HOME");
+        // cy.get("h4").should("contain", "LUNCH");
     });
 
   //   it('successfully loads', () => {
