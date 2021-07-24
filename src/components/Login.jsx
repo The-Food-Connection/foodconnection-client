@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Button, Form, Row, Col } from 'react-bootstrap'
 import { useAuth } from "../contexts/AuthProvider";
+import { Link } from 'react-router-dom';
 
 export default function Login({ history }) {
   const { authDispatch } = useAuth();
@@ -25,6 +26,7 @@ export default function Login({ history }) {
     console.log(data)
     if (data.token) {
       authDispatch({ type: "login", token: data.token, username: loginForm.username, admin: data.admin });
+      console.log('aaaa')
       history.push("/");
     } else {
       setErrorMessage(data.error);
@@ -68,6 +70,8 @@ export default function Login({ history }) {
         <Button variant="primary" type="submit">
           LOGIN
         </Button>
+
+        <Link to="/sign-up" className="btn btn-success">SignUp</Link>
       </Form>
       </Col>
       </Row>
