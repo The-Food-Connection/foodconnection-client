@@ -17,6 +17,7 @@ import SnacksPage from './components/SnacksPage';
 
 import NewRating from "./components/NewRating";
 import RecipeNew from "./components/RecipeNew";
+import RecipeEdit from "./components/RecipeEdit";
 import NotFound from "./components/NotFound";
 import AuthProvider from "./contexts/AuthProvider";
 import ProtectedRoute from "./utils/ProtectedRoute";
@@ -45,6 +46,7 @@ function App() {
               <ProtectedRoute path="/snacks" exact component={SnacksPage} />
 
               <ProtectedRoute path="/recipes/:id/rating" exact component={NewRating} />
+              <ProtectedRoute path="/recipes/:id/edit" exact component={RecipeEdit} />
 
               <ProtectedRoute path="/user-profile" exact component={UserProfile} />
 

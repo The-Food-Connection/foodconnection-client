@@ -6,30 +6,20 @@ import { MDBCheckbox } from 'mdb-react-ui-kit'
 import Ingredients from '../utils/Ingredients'
 
 export default function RecipeForm(props) {
-  const formInitialState = {
-    recipe: {
-      recipe_name: '',
-      recipe_instructions: '',
-      cooking_time: '',
-      serves: '',
-      skill_level: '',
-      cuisine: '',
-      meal_type: '',
-      image: '',
-      recipe_dietaries_attributes: [],
-      ingredients: []
-      // recipe_ingredients_attributes: []
-    }
-  }
-  const [recipeForm, setRecipeForm] = useState(formInitialState)
   const {
     createNewRecipe,
     ingredients,
     setSelectedIngredients,
     dietaries,
     selectedDietaries,
-    setSelectedDietaries
+    setSelectedDietaries,
+    recipe,
+    register,
+    handleSubmit,
+    reset
   } = props
+
+  const [recipeForm, setRecipeForm] = useState(recipe)
 
   const defaultOptions = {
     cuisine: ["Australian", "Brazilian", "Italian", "Indian", "Asian", "Japanese", "American", "Mexican"],
@@ -56,16 +46,18 @@ export default function RecipeForm(props) {
     } else {
       newDietariesOptions = newDietariesOptions.filter(x => x.dietary_category_id !== event.target.value)
     }
-    // console.log(newDietariesOptions)
     // once have the new array, update back to state
     setSelectedDietaries(newDietariesOptions)
   }
-  
+
+  const updateForm = () => {
+  }
+
   return (
-    <Form onSubmit={createNewRecipe}>
+    <Form onSubmit={handleSubmit(createNewRecipe)} onReset={reset}>
       <Form.Group className="mb-3" controlId="recipe_name">
         <Form.Label>Recipe Title: </Form.Label>
-        <Form.Control required type="text" placeholder="Recipe Title" onChange={changeInput} name="recipe_name" />
+        <Form.Control required type="text" placeholder="Recipe Title" onChange={changeInput} {...register('recipe_name')} name="recipe_name"/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="ingredients">
         <Form.Label>Ingredients: </Form.Label>
@@ -73,15 +65,15 @@ export default function RecipeForm(props) {
       </Form.Group>
       <Form.Group className="mb-3" controlId="recipe_instructions">
         <Form.Label>How to prepare: </Form.Label>
-        <Form.Control required as="textarea" rows={10} placeholder="Recipe Instructions" onChange={changeInput} name="recipe_instructions" />
+        <Form.Control required as="textarea" rows={10} placeholder="Recipe Instructions" onChange={changeInput} name="recipe_instructions" {...register('recipe_instructions')}/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="cooking_time">
         <Form.Label>Cooking time: </Form.Label>
-        <Form.Control required type="number" placeholder="minutes" onChange={changeInput} name="cooking_time" />
+        <Form.Control required type="number" placeholder="minutes" onChange={changeInput} name="cooking_time" {...register('cooking_time')} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="serves">
         <Form.Label>Serves: </Form.Label>
-        <Form.Control required type="number" placeholder="serves" onChange={changeInput} name="serves" />
+        <Form.Control required type="number" placeholder="serves" onChange={changeInput} name="serves" {...register('serves')} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="image">
         <Form.Label>Image: </Form.Label>
@@ -95,22 +87,19 @@ export default function RecipeForm(props) {
       </Form.Group>
       <Form.Group className="mb-3" controlId="skill_level">
         <Form.Label>Skill Level: </Form.Label>
-        <SelectFC name="skill_level" text="Skill Level" options={defaultOptions.skillLevel} changeSelect={changeInput}></SelectFC>
+        <SelectFC name="skill_level" text="Skill Level" options={defaultOptions.skillLevel} changeSelect={changeInput} register={register}></SelectFC>
       </Form.Group>
       <Form.Group className="mb-3" controlId="cuisine">
         <Form.Label>Cuisine: </Form.Label>
-        <SelectFC name="cuisine" text="Cuisine" options={defaultOptions.cuisine} changeSelect={changeInput}></SelectFC>
+        <SelectFC name="cuisine" text="Cuisine" options={defaultOptions.cuisine} changeSelect={changeInput} register={register}></SelectFC>
       </Form.Group>
       <Form.Group className="mb-3" controlId="meal_type">
         <Form.Label>Meal Type: </Form.Label>
-        <SelectFC name="meal_type" text="Meal Type" options={defaultOptions.mealType} changeSelect={changeInput}></SelectFC>
+        <SelectFC name="meal_type" text="Meal Type" options={defaultOptions.mealType} changeSelect={changeInput} register={register}></SelectFC>
       </Form.Group>
-
       <Button variant="primary" type="submit">
         Add Recipe
       </Button>
-
     </Form >
   )
 }
-

@@ -3,14 +3,18 @@ import { Snackbar } from 'material-ui';
 import MuiAlert from '@material-ui/lab/Alert';
 import { withRouter } from 'react-router';
 import RecipeForm from '../utils/RecipeForm';
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-function RecipeNew({ history }) {
+function RecipeEdit({ history, match }) {
   const [dietaries, setDietaries] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+  const [recipe, setRecipe] = useState({});
   const [selectedIngredients, setSelectedIngredients] = useState([]);
   const [selectedDietaries, setSelectedDietaries] = useState([]);
   const [message, setMessage] = useState({
@@ -19,25 +23,20 @@ function RecipeNew({ history }) {
     open: false
   })
 
-  useEffect(() => {
-    fetchDietaries();
-    fetchIngredients();
-  }, []);
+  const validationSchema = Yup.object().shape({
+    recipe_name: Yup.string().required(),
+    recipe_instructions: Yup.string().required(),
+    cooking_time: Yup.number().required(),
+    serves: Yup.number().required(),
+    skill_level: Yup.string().required(),
+    meal_type: Yup.string().required(),
+    cuisine: Yup.string().required()
+  })
 
-  const recipe = {
-    recipe: {
-      recipe_name: '',
-      recipe_instructions: '',
-      cooking_time: '',
-      serves: '',
-      skill_level: '',
-      cuisine: '',
-      meal_type: '',
-      image: '',
-      recipe_dietaries_attributes: [],
-      recipe_ingredients_attributes: []
-    }
-  }
+  // functions to build form returned by useForm() hook
+  const { register, handleSubmit, reset, setValue, getValues, errors, formState } = useForm({
+    resolver: yupResolver(validationSchema)
+  });
 
   const recipePost = async (formData) => {
     const response = await fetch(process.env.REACT_APP_API_URL + "/recipes", {
@@ -78,6 +77,24 @@ function RecipeNew({ history }) {
     recipePost(formData)
   }
 
+  const fetchRecipe = async () => {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/recipes/${match.params.id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }
+    });
+
+    const data = await response.json();
+    // console.log(data)
+    // to keep just one state, I am adding the image url to the recipe object
+    data.recipe.imageUrl = data.image
+    const fields = ["recipe_name", "recipe_instructions", "cooking_time", "serves", "skill_level", "meal_type", "cuisine"]
+    fields.forEach(field => {
+      setValue(field, data.recipe[field])
+    })
+    setRecipe(data.recipe);
+  };
+
   const fetchDietaries = async () => {
     const response = await fetch(process.env.REACT_APP_API_URL + "/dietaries", {
       headers: {
@@ -86,7 +103,7 @@ function RecipeNew({ history }) {
     });
 
     const data = await response.json();
-    console.log(data)
+    // console.log(data)
     setDietaries(data);
   };
 
@@ -98,14 +115,19 @@ function RecipeNew({ history }) {
     });
 
     const data = await response.json();
-    console.log(data)
+    // console.log(data)
     setIngredients(data);
   };
 
   function closeSnackBar() {
-    console.log('aaaa')
     setMessage({ text: '', type: '', open: false })
   }
+
+  useEffect(() => {
+    fetchDietaries();
+    fetchIngredients();
+    fetchRecipe();
+  }, []);
 
   return (
     <>
@@ -115,7 +137,10 @@ function RecipeNew({ history }) {
         dietaries={dietaries}
         selectedDietaries={selectedDietaries}
         setSelectedDietaries={setSelectedDietaries}
-        recipe={recipe}>
+        recipe={recipe}
+        register={register}
+        handleSubmit={handleSubmit}
+        reset={reset}>
       </RecipeForm>
       <Snackbar
         anchorOrigin={{
@@ -131,4 +156,4 @@ function RecipeNew({ history }) {
   )
 }
 
-export default withRouter(RecipeNew);
+export default withRouter(RecipeEdit);

@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBLink } from "mdbreact"
 import { useEffect } from 'react';
+import { useAuth } from '../contexts/AuthProvider';
 
 export default function Recipe({ match }) {
 
+  const { auth, authDispatch } = useAuth();
   const [recipe, setRecipe] = useState({});
 
   const fetchRecipe = async () => {
+    console.log(auth.user_id === recipe.user_id)
     const response = await fetch(`${process.env.REACT_APP_API_URL}/recipes/${match.params.id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -19,6 +22,11 @@ export default function Recipe({ match }) {
     data.recipe.imageUrl = data.image
     setRecipe(data.recipe);
   };
+
+  function canEdit() {
+    console.log('aaaa')
+    return false
+  }
 
   useEffect(() => {
     fetchRecipe();
@@ -60,7 +68,7 @@ export default function Recipe({ match }) {
                 </ul>
               </MDBCardText>
               <MDBCardText>
-              Ingredients:
+                Ingredients:
                 <ul>
                   {recipe.recipe_ingredients && recipe.recipe_ingredients.map((ingredient) => {
                     return (
@@ -94,6 +102,9 @@ export default function Recipe({ match }) {
             </MDBCardBody>
             {/* <button type="button" class="btn btn-secondary">RATE THIS DISH</button> */}
             <MDBLink to={`/recipes/${recipe.id}/rating`} className="btn btn-secondary">RATE THIS DISH</MDBLink>
+            {recipe && auth.user_id === recipe.user_id ?
+              <MDBLink to={`/recipes/${recipe.id}/edit`} className="btn btn-primary">EDIT</MDBLink>
+              : null}
 
           </MDBJumbotron>
         </MDBCol>

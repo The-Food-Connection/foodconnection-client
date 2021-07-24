@@ -12,9 +12,8 @@ const reducer = (state, action) => {
 		case "login":
 			localStorage.setItem('token', action.token)
 			localStorage.setItem('username', action.username)
-      // localStorage.setItem('email', action.email)
-      // localStorage.setItem('created_at', action.created_at)
       localStorage.setItem('admin', action.admin)
+      localStorage.setItem('user_id', action.user_id)
 
 			return {
 				...state,
@@ -27,9 +26,8 @@ const reducer = (state, action) => {
     case "sign-out":
 			localStorage.removeItem('token');
       localStorage.removeItem('username');
-      localStorage.removeItem('admin')
-      // localStorage.removeItem('email');
-      // localStorage.removeItem('created_at');
+      localStorage.removeItem('admin');
+      localStorage.removeItem('user_id');
       return {
 				loggedIn: false
 			};
@@ -43,9 +41,8 @@ export default function AuthProvider({ children }) {
   const [auth, authDispatch] = useReducer(reducer, {
     loggedIn: !!localStorage.getItem("token"),
     username: localStorage.getItem("username"),
-    email: localStorage.getItem("email"),
-    created_at: localStorage.getItem("created_at"),
-    admin: localStorage.getItem("admin")
+    admin: localStorage.getItem("admin"),
+    user_id: parseInt(localStorage.getItem("user_id"))
   });
 
   return (
