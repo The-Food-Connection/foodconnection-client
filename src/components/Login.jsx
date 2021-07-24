@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Alert, Button, Form, Row, Col } from 'react-bootstrap'
 import { useAuth } from "../contexts/AuthProvider";
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
-export default function Login({ history }) {
+function Login({ history }) {
   const { authDispatch } = useAuth();
 
   const changeInput = event => {
@@ -79,3 +80,5 @@ export default function Login({ history }) {
     
   )
 }
+
+export default withRouter(Login);
