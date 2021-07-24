@@ -52,7 +52,7 @@ export default function AdminDashboard() {
 
     useEffect(() => {
         fetchRecipes();
-    }, [update]);
+    }, []);
 
     useEffect(() => {
         fetchUsers();
@@ -62,13 +62,14 @@ export default function AdminDashboard() {
         fetchRatings();
     }, [update])
 
-    const deleteRecipe = (recipeId) => {
-        deleteRequest(`${process.env.REACT_APP_API_URL}/users/${recipeId}`)
-        setUpdate(!update);
-    }
+    // const deleteRecipe = (recipeId) => {
+    //     deleteRequest(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}`)
+    //     setUpdate(!update);
+    // }
+    //due to foreign keys have removed the option to delete recipes from admin
 
     const deleteRating = (ratingId) => {
-        deleteRequest(`${process.env.REACT_APP_API_URL}/users/${ratingId}`)
+        deleteRequest(`${process.env.REACT_APP_API_URL}/ratings/${ratingId}`)
         setUpdate(!update);
     }
 
@@ -77,19 +78,6 @@ export default function AdminDashboard() {
             <h1 style={titleStyle}>ADMIN DASHBOARD</h1>
 
             <h3>All User Information</h3>
-
-            {/* {recipes.map((recipe) => (
-                <ul>
-                <li>{recipe.recipe_name}</li>
-                <li>{recipe.cuisine}</li>
-                </ul>
-            ))}
-            {users.map((user) => (
-                <ul>
-                <li>{user.username}</li>
-                <li>{user.email}</li>
-                </ul>
-            ))} */}
 
             <Table responsive striped bordered hover variant="dark">
                 <thead>
@@ -126,7 +114,7 @@ export default function AdminDashboard() {
                         <th>RECIPE NAME</th>
                         <th>RECIPE AUTHOR</th>
                         <th>DATE CREATED</th>
-                        <th>ACTIONS</th>
+                        {/* <th>ACTIONS</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -138,7 +126,7 @@ export default function AdminDashboard() {
                                 <td>{recipe.recipe_name}</td>
                                 <td>{recipe.user_id}</td>
                                 <td>{recipe.created_at}</td>
-                                <td><Button variant="danger" onClick={() => deleteRecipe(recipe.id)}>DELETE</Button> </td>
+                                {/* <td><Button variant="danger" onClick={() => deleteRecipe(recipe.id)}>DELETE</Button> </td> */}
                             </tr>
                         ))
                     }
