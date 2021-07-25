@@ -19,8 +19,7 @@ const reducer = (state, action) => {
 				...state,
 				loggedIn: true,
 				username: action.username,
-        email: action.email,
-        admin: action.admin
+        admin: JSON.parse(action.admin)
 			};
 
     case "sign-out":
@@ -41,7 +40,7 @@ export default function AuthProvider({ children }) {
   const [auth, authDispatch] = useReducer(reducer, {
     loggedIn: !!localStorage.getItem("token"),
     username: localStorage.getItem("username"),
-    admin: localStorage.getItem("admin"),
+    admin: JSON.parse(localStorage.getItem("admin")),
     user_id: parseInt(localStorage.getItem("user_id"))
   });
 

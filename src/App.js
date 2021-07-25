@@ -21,7 +21,7 @@ import NotFound from "./components/NotFound";
 import AuthProvider from "./contexts/AuthProvider";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import { MuiThemeProvider } from "material-ui/styles";
-// import AuthProvider from "../contexts/AuthProvider";
+import AdminRoute from "./utils/AdminRoute";
 
 function App() {
 
@@ -49,7 +49,7 @@ function App() {
 
               <ProtectedRoute path="/user-profile" exact component={UserProfile} />
 
-              <ProtectedRoute path="/admin-dashboard" exact component={AdminDashboard} />
+              <AdminRoute path="/admin-dashboard" exact component={AdminDashboard} />
 
 
               <ProtectedRoute path="/recipe-new" exact component={RecipeForm} />
