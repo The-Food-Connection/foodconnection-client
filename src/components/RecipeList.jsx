@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBLink } from "mdbreact"
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBLink, MDBInput } from "mdbreact"
 import { Row, Col } from 'react-bootstrap';
 import RecipeRandom from './RecipeRandom';
 import RecipeCategories from './RecipeCategories';
@@ -7,6 +7,7 @@ import RecipeCategories from './RecipeCategories';
 export default function RecipeList() {
 
   const [recipes, setRecipes] = useState([]);
+  const [recipesCopy, setRecipesCopy] = useState([]);
   const [randomRecipe, setRandomRecipe] = useState([]);
   // const [update, setUpdate] = useState(false);
 
@@ -20,9 +21,19 @@ export default function RecipeList() {
     const data = await response.json();
     console.log(data)
     setRecipes(data);
+    setRecipesCopy(data);
     setRandomRecipe(data[Math.floor(Math.random() * data.length)])
-    // console.log(data[Math.floor(Math.random() * data.length)])
   };
+
+  const handleSearch = (e) => {
+    if(!e.target.value) {
+      setRecipes(recipesCopy)
+    } 
+    else {
+      const filteredRecipes = recipes.filter(recipe => recipe.recipe_name.toLowerCase().includes(e.target.value.toLowerCase()))
+      setRecipes(filteredRecipes)
+    }
+  }
 
   useEffect(() => {
     fetchRecipes();
@@ -31,11 +42,15 @@ export default function RecipeList() {
   return (
     <div>
 
-      <RecipeCategories />  
+      <RecipeCategories />
 
-      <RecipeRandom recipe={randomRecipe}/>
+      <RecipeRandom recipe={randomRecipe} />
 
       <h1>RECIPES</h1>
+
+      <div className="form-group">
+        <MDBInput hint="Search.." size="lg" onChange={handleSearch}/>
+      </div>
 
       <Row className="justify-content-sm-center">
         {recipes.map((recipe) => (
