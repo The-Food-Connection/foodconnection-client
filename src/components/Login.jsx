@@ -26,7 +26,7 @@ function Login({ history }) {
     const data = await response.json();
     console.log(data)
     if (data.token) {
-      authDispatch({ type: "login", token: data.token, username: loginForm.username, admin: data.admin });
+      authDispatch({ type: "login", token: data.token, username: loginForm.username, admin: data.admin, user_id: data.user_id });
       console.log('aaaa')
       history.push("/");
     } else {

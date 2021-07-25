@@ -42,9 +42,11 @@ export default function NavigationBar(state) {
                 <MDBNavItem>
                   <a class="text-warning" href="/recipe-new" style={{ marginRight: 20 }}>  Add New Recipe</a>
                 </MDBNavItem>
-                <MDBNavItem>
-                  <a class="text-danger" href="/admin-dashboard" style={{ marginRight: 20 }}>  Admin Page  </a>
-                </MDBNavItem>
+                {auth.admin ?
+                  <MDBNavItem>
+                    <a class="text-danger" href="/admin-dashboard" style={{ marginRight: 20 }}>  Admin Page  </a>
+                  </MDBNavItem>
+                  : null}
 
               </MDBNavbarNav>
               <MDBNavbarNav right>

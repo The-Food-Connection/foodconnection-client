@@ -18,10 +18,10 @@ export default function RecipeList() {
     });
 
     const data = await response.json();
-    // data.recipes.imageUrl = data.image
+    console.log(data)
     setRecipes(data);
     setRandomRecipe(data[Math.floor(Math.random() * data.length)])
-    console.log(data[Math.floor(Math.random() * data.length)])
+    // console.log(data[Math.floor(Math.random() * data.length)])
   };
 
   useEffect(() => {
