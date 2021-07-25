@@ -22,9 +22,8 @@ const reducer = (state, action) => {
 				loggedIn: true,
 				username: action.username,
         email: action.email,
-        admin: JSON.parse(action.admin),
-        id: parseInt(action.id),
-        created_at: action.created_at
+        admin: JSON.parse(action.admin)
+
 			};
 
     case "sign-out":

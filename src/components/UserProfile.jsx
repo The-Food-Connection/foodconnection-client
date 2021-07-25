@@ -38,16 +38,16 @@ export default function UserProfile() {
                             <tr>
                             <th>#</th>
                             <th>USERNAME</th>
-                            {/* <th>EMAIL</th> */}
-                            {/* <th>DATE JOINED</th> */}
+                            <th>EMAIL</th>
+                            <th>DATE JOINED</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                             <td>😀</td>
-                            <td>{auth.username}{auth.email}{auth.created_at}</td>
-                            {/* <td>{auth.email}</td> */}
-                            {/* <td>{auth.created_at}</td> */}
+                            <td>{auth.username}</td>
+                            <td>{auth.email}</td>
+                            <td>{auth.created_at}</td>
                             </tr>
                         </tbody>
                     </Table>
