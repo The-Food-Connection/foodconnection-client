@@ -57,7 +57,7 @@ export default function UserProfile() {
                     <br>
                     </br>
                     <br></br>
-                    <button type="button" class="btn btn-danger btn-lg">DELETE ACCOUNT</button>
+                    <button type="button" className="btn btn-danger btn-lg">DELETE ACCOUNT</button>
 
                     </Col>
 

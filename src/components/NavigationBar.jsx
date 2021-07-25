@@ -1,10 +1,9 @@
 import React from 'react'
-import { MDBDropdown, MDBDropdownMenu, MDBDropdownItem, MDBDropdownToggle, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavbarToggler, MDBCollapse } from "mdbreact";
+import { MDBDropdown, MDBDropdownMenu, MDBDropdownItem, MDBDropdownToggle, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavbarToggler, MDBCollapse, MDBFormInline } from "mdbreact";
 import { BrowserRouter as Router } from 'react-router-dom';
 import fclogoshort from "../images/FClogoshort.JPG";
-// import SearchBar from './SearchBar';
 import { MDBBtn } from 'mdb-react-ui-kit'
-import { useAuth } from "../contexts/AuthProvider";import { useState } from 'react';
+import { useAuth } from "../contexts/AuthProvider"; import { useState } from 'react';
 
 export default function NavigationBar(state) {
 
@@ -23,7 +22,6 @@ export default function NavigationBar(state) {
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={isOpen} navbar>
-
           {auth.loggedIn ?
             <>
               <MDBNavbarNav left>
@@ -47,7 +45,6 @@ export default function NavigationBar(state) {
                     <a class="text-danger" href="/admin-dashboard" style={{ marginRight: 20 }}>  Admin Page  </a>
                   </MDBNavItem>
                   : null}
-
               </MDBNavbarNav>
               <MDBNavbarNav right>
                 <MDBNavItem>
@@ -65,26 +62,16 @@ export default function NavigationBar(state) {
                   </MDBDropdown>
                 </MDBNavItem>
                 <MDBNavItem>
-                  {/* <SearchBar /> */}
-                  {/* <MDBFormInline waves>
-                  <div className="md-form my-0">
-                    <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-                  </div>
-                </MDBFormInline> */}
-                </MDBNavItem>
-                <MDBNavItem>
                   <MDBBtn className='mx-2' color='primary' onClick={() => authDispatch({ type: 'sign-out' })} >Logout</MDBBtn>
                 </MDBNavItem>
               </MDBNavbarNav>
             </>
             : null}
-
         </MDBCollapse>
       </MDBNavbar>
     </Router>
   );
 }
-
 <MDBNavItem>
   <MDBDropdown>
     <MDBDropdownToggle nav caret>
@@ -95,7 +82,7 @@ export default function NavigationBar(state) {
       <MDBDropdownItem href="/lunch">Lunch</MDBDropdownItem>
       <MDBDropdownItem href="/dinner">Dinner</MDBDropdownItem>
       <MDBDropdownItem href="/dessert">Dessert</MDBDropdownItem>
-      <MDBDropdownItem href="snacks">Snacks</MDBDropdownItem>
+      <MDBDropdownItem href="/snacks">Snacks</MDBDropdownItem>
     </MDBDropdownMenu>
   </MDBDropdown>
 </MDBNavItem>

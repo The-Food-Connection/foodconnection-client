@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBLink } from "mdbreact"
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBLink, MDBInput } from "mdbreact"
 import { Row, Col } from 'react-bootstrap';
 import RecipeRandom from './RecipeRandom';
 import RecipeCategories from './RecipeCategories';
+import ReactPaginate from 'react-paginate';
+
+const PER_PAGE = 10;
 
 export default function RecipeList() {
 
   const [recipes, setRecipes] = useState([]);
+  const [recipesCopy, setRecipesCopy] = useState([]);
+  const [recipesSearch, setRecipesSearch] = useState([]);
   const [randomRecipe, setRandomRecipe] = useState([]);
-  // const [update, setUpdate] = useState(false);
+
+  // const [perPage, setPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(0);
+  // const [pageCount, setPageCount] = useState(0);
+  // const [offset, setOffset] = useState(0);
 
   const fetchRecipes = async () => {
     const response = await fetch(process.env.REACT_APP_API_URL + "/recipes", {
@@ -19,10 +28,50 @@ export default function RecipeList() {
 
     const data = await response.json();
     console.log(data)
-    setRecipes(data);
+    // setRecipes(data);
+    // store an original copy so it doesnt need to go to rails again
+    setRecipesCopy(data);
+    // this one saves data for the search bar so it work across pages
+    setRecipesSearch(data);
+
     setRandomRecipe(data[Math.floor(Math.random() * data.length)])
-    // console.log(data[Math.floor(Math.random() * data.length)])
+    // setPageCount(Math.ceil(data.length / perPage))
+    // console.log(`pageCount: ${pageCount}`)
+    // const slice = data.slice(offset, offset + perPage)
+    setRecipes(data)
+    // processPagination(data, offset)
   };
+
+  // const processPagination = (data, offset) => {
+  //   const slice = data.slice(offset, offset + perPage)
+  //   // console.log(`slice ${offset}, offset ${offset} + perPage ${perPage} ${offset + perPage}`)
+  //   setRecipes(slice)
+  //   // console.log(slice)
+  // }
+
+  const handleSearch = (e) => {
+    if (!e.target.value) {
+      setRecipes(recipesCopy)
+      // setCurrentPage(0)
+    }
+    else {
+      const filteredRecipes = recipesCopy.filter(recipe => recipe.recipe_name.toLowerCase().includes(e.target.value.toLowerCase()))
+      setRecipes(filteredRecipes)
+    }
+  }
+
+  // const handlePagination = ({ selected: selectedPage }) => {
+  //   setCurrentPage(selectedPage);
+  //   // console.log(`currentPage: ${e.selected}`)
+  //   // setOffset(e.selected * perPage);
+  //   // console.log(`offset: e.selected ${e.selected} * perPage ${perPage} = ${e.selected * perPage}`)
+  //   // processPagination(recipesCopy, offset)
+  // }
+
+  // const offset = currentPage * PER_PAGE;
+  // const currentPageData = recipes
+  //   .slice(offset, offset + PER_PAGE)
+  // const pageCount = Math.ceil(recipes.length / PER_PAGE);
 
   useEffect(() => {
     fetchRecipes();
@@ -31,14 +80,18 @@ export default function RecipeList() {
   return (
     <div>
 
-      <RecipeCategories />  
+      <RecipeCategories />
 
-      <RecipeRandom recipe={randomRecipe}/>
+      <RecipeRandom recipe={randomRecipe} />
 
       <h1>RECIPES</h1>
 
+      <div className="form-group">
+        <MDBInput hint="Search.." size="lg" onChange={handleSearch} />
+      </div>
+
       <Row className="justify-content-sm-center">
-        {recipes.map((recipe) => (
+        {recipes && recipes.map((recipe) => (
           <Col lg={true} key={recipe.id}>
             <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="mdb-color darken-1" expand="md">
               <MDBCardImage className="card-img-top" variant="top" src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"} />
@@ -56,6 +109,20 @@ export default function RecipeList() {
           </Col>
         ))}
       </Row>
+      {/* <Row className="justify-content-sm-center">
+        <ReactPaginate
+          previousLabel={"prev"}
+          nextLabel={"next"}
+          breakLabel={"..."}
+          breakClassName={"break-me"}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePagination}
+          containerClassName={"pagination"}
+          subContainerClassName={"pages pagination"}
+          activeClassName={"active"} />
+      </Row> */}
 
     </div>
   )
