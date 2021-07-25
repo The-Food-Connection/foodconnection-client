@@ -98,13 +98,7 @@ function RecipeForm({ history, match }) {
       });
     }
   }
-
-  const createNewRecipe = (data, e) => {
-    const formData = new FormData(e.target);
-    data.recipe_dietaries_attributes = []
-    data.recipe_ingredients_attributes = []
-
-    // go through the list of existing dieataries
+  const handleDietaries = (dietaries, data) => {
     dietaries.forEach(x => {
       // move the id (id from db table turns into dietary_category_id)
       x.dietary_category_id = x.id
@@ -132,7 +126,7 @@ function RecipeForm({ history, match }) {
             data.recipe_dietaries_attributes.push(x)
           }
         }
-      } 
+      }
       // new recipe, wont have any dietaries on recipe.dietaries
       else {
         if (isCheckboxChecked(data.dietaries, x)) {
@@ -140,22 +134,47 @@ function RecipeForm({ history, match }) {
         }
       }
     })
+    return data
+  }
 
+  const handleIngredients = (ingredientsList) => {
+    // ingredientsList is the list to send to rails
+    // need to identify new ones and ones to delete
+    if (recipe.recipe_ingredients) {
+      // check if any recipe ingredients were deleted to mark for deletion on rails
+      recipe.recipe_ingredients.forEach(recipeIngredient => {
+        const exists = ingredientsList.find(x => {
+          return parseInt(x.ingredient_id) === parseInt(recipeIngredient.ingredient_id)
+        })
+        if (!exists) {
+          recipeIngredient.delete = true
+          ingredientsList.push(recipeIngredient)
+        }
+      })
+    }
 
-    // convert JSON to string as rails don't accept an array
-    // formData.recipe_dietaries_attributes = JSON.stringify(formData.recipe_dietaries_attributes)
-    data.recipe_ingredients_attributes = selectedIngredients
+    return ingredientsList
+  }
+
+  const createNewRecipe = (data, e) => {
+    const formData = new FormData(e.target);
+    data.recipe_dietaries_attributes = []
+    data.recipe_ingredients_attributes = []
+
+    // go through the list of existing dieataries
+    data = handleDietaries(dietaries, data)
+
+    // go through the list of existing ingredients
+    data.recipe_ingredients_attributes = handleIngredients(selectedIngredients)
 
     // clean object before sending to rails
     // delete formData.dietaries
 
-    // console.log(formData)
     // append recipe dietaries as JSON.stringify to work with formData
     // rails will need to JSON.parse before use 
     formData.append('recipe_dietaries_attributes', JSON.stringify(data.recipe_dietaries_attributes))
     formData.append('recipe_ingredients_attributes', JSON.stringify(data.recipe_ingredients_attributes))
 
-    console.log(data)
     recipePost(formData)
   }
 
