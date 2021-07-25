@@ -26,8 +26,15 @@ function Login({ history }) {
     const data = await response.json();
     console.log(data)
     if (data.token) {
-      authDispatch({ type: "login", token: data.token, username: loginForm.username, admin: data.admin, user_id: data.user_id });
-      console.log('aaaa')
+      authDispatch({
+        type: "login",
+        username: data.username,
+        email: data.email,
+        token: data.token,
+        admin: data.admin,
+        id: data.id,
+        created_at: data.created_at
+      });
       history.push("/");
     } else {
       setErrorMessage(data.error);
@@ -49,35 +56,35 @@ function Login({ history }) {
 
   return (
     <>
-    <Row>
-      <Col>
-      <img className="loginpic" src="loginpage.jpg" />
-      </Col>
-      <Col>
-      <h2>Please Enter Login Details Below</h2>
-      {errorMessage ?
-        <Alert variant="danger">{errorMessage}</Alert> : null}
-      
-      <Form onSubmit={submitInput}>
-        <Form.Group className="mb-3" controlId="username">
-          <Form.Label>Username: </Form.Label>
-          <Form.Control type="text" placeholder="Enter username" value={loginForm.username} onChange={changeInput} name="username" />
-        </Form.Group>
+      <Row>
+        <Col>
+          <img className="loginpic" src="loginpage.jpg" />
+        </Col>
+        <Col>
+          <h2>Please Enter Login Details Below</h2>
+          {errorMessage ?
+            <Alert variant="danger">{errorMessage}</Alert> : null}
 
-        <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password: </Form.Label>
-          <Form.Control type="password" placeholder="Password" value={loginForm.password} onChange={changeInput} name="password" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          LOGIN
-        </Button>
+          <Form onSubmit={submitInput}>
+            <Form.Group className="mb-3" controlId="username">
+              <Form.Label>Username: </Form.Label>
+              <Form.Control type="text" placeholder="Enter username" value={loginForm.username} onChange={changeInput} name="username" />
+            </Form.Group>
 
-        <Link to="/sign-up" className="btn btn-success">SignUp</Link>
-      </Form>
-      </Col>
+            <Form.Group className="mb-3" controlId="password">
+              <Form.Label>Password: </Form.Label>
+              <Form.Control type="password" placeholder="Password" value={loginForm.password} onChange={changeInput} name="password" />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              LOGIN
+            </Button>
+
+            <Link to="/sign-up" className="btn btn-success">SignUp</Link>
+          </Form>
+        </Col>
       </Row>
     </>
-    
+
   )
 }
 
