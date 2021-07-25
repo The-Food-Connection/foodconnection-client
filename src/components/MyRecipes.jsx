@@ -41,7 +41,7 @@ export default function MyRecipes() {
 //     this.setState({ userDetails })
 //     ))}; 
 
-  console.log(auth.id);
+  // console.log(auth.id);
 //   console.log(userDetails);
 
     const deleteRecipe = (recipeId) => {
@@ -61,7 +61,7 @@ export default function MyRecipes() {
 
       <Row className="justify-content-sm-center">
         {recipes.map((recipe) => (
-            // recipe.user.username === auth.username ?
+            recipe.user_id === auth.id ?
             
           <Col lg={true} key={recipe.id}>
             <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="mdb-color purple-gradient" expand="md">
