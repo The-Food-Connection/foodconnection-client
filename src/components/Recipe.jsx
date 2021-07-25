@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBLink } from "mdbreact"
+import { MDBJumbotron, MDBContainer, MDBRow, MDBCol, MDBCardBody, MDBCardTitle, MDBCardText, MDBLink } from "mdbreact"
 import { useEffect } from 'react';
 import { useAuth } from '../contexts/AuthProvider';
 

@@ -1,8 +1,8 @@
 import React from 'react'
-import { MDBDropdown, MDBDropdownMenu, MDBDropdownItem, MDBDropdownToggle, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavbarToggler, MDBCollapse, MDBFormInline } from "mdbreact";
+import { MDBDropdown, MDBDropdownMenu, MDBDropdownItem, MDBDropdownToggle, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavbarToggler, MDBCollapse } from "mdbreact";
 import { BrowserRouter as Router } from 'react-router-dom';
 import fclogoshort from "../images/FClogoshort.JPG";
-import SearchBar from './SearchBar';
+// import SearchBar from './SearchBar';
 import { MDBBtn } from 'mdb-react-ui-kit'
 import { useAuth } from "../contexts/AuthProvider";import { useState } from 'react';
 
@@ -19,7 +19,7 @@ export default function NavigationBar(state) {
     <Router>
       <MDBNavbar color="mdb-color darken-1" dark expand="md">
         <MDBNavbarBrand>
-          <img src={fclogoshort} width="110px" />
+          <img src={fclogoshort} alt="fclogoshort" width="110px" />
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={isOpen} navbar>
