@@ -23,7 +23,7 @@ const reducer = (state, action) => {
 				loggedIn: true,
         id: action.id,
 				username: action.username,
-        email: action.email
+        email: action.email,
         admin: JSON.parse(action.admin)
 
 			};
