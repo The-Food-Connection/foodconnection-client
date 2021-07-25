@@ -11,6 +11,7 @@ const reducer = (state, action) => {
       
 		case "login":
 			localStorage.setItem('token', action.token)
+      localStorage.setItem('id', action.id)
 			localStorage.setItem('username', action.username)
       localStorage.setItem('email', action.email)
       localStorage.setItem('created_at', action.created_at)
@@ -20,8 +21,11 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				loggedIn: true,
+        id: action.id,
 				username: action.username,
+        email: action.email
         admin: JSON.parse(action.admin)
+
 			};
 
     case "sign-out":
@@ -41,6 +45,7 @@ const reducer = (state, action) => {
 export default function AuthProvider({ children }) {
   const [auth, authDispatch] = useReducer(reducer, {
     loggedIn: !!localStorage.getItem("token"),
+    id: localStorage.getItem("id"),
     username: localStorage.getItem("username"),
     admin: JSON.parse(localStorage.getItem("admin")),
     user_id: parseInt(localStorage.getItem("user_id"))

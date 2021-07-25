@@ -14,6 +14,7 @@ import LunchPage from './components/LunchPage';
 import DinnerPage from './components/DinnerPage';
 import DessertPage from './components/DessertPage';
 import SnacksPage from './components/SnacksPage';
+import MyRecipes from './components/MyRecipes';
 
 import NewRating from "./components/NewRating";
 import RecipeForm from "./components/RecipeForm";
@@ -36,6 +37,7 @@ function App() {
               <Route path="/login" exact component={Login} />
               <Route path="/sign-up" exact component={SignUp} />
               <ProtectedRoute path="/recipes" exact component={RecipeList} />
+              <ProtectedRoute path="/my-recipes" exact component={MyRecipes} />
               <ProtectedRoute path="/recipes/:id" exact component={Recipe} />
               {/* <ProtectedRoute path="/ratings" exact component={NewRating} /> */}
               <ProtectedRoute path="/breakfast" exact component={BreakfastPage} />

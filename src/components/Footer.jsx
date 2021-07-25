@@ -34,7 +34,7 @@ const Footer = () => {
                   <a class="text-warning" href="/user-profile">User Profile</a>
                 </li>
                 <li className="list-unstyled">
-                  <a class="text-warning" href="/recipes">My Recipes</a>
+                  <a class="text-warning" href="/my-recipes">My Recipes</a>
                 </li>
                 <li className="list-unstyled">
                   <a class="text-warning" href="/recipe-new">Add Recipe</a>
