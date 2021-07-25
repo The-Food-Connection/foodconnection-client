@@ -14,7 +14,7 @@ export default function RecipeCategories() {
             {/* <MDBJumbotron fluid className="jumbo"> */}
 
             <MDBContainer fluid>
-                <MDBRow class="d-flex justify-content-center align-items-center">
+                <MDBRow className="d-flex justify-content-center align-items-center">
                 
                 <MDBCol size="2">
                     <div className="category">
