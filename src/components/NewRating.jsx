@@ -150,22 +150,22 @@ export default function NewRating({ match, update, history }) {
         <MDBCol>
 
                 <Form onSubmit={createNewRating}>
-                    {/* <Form.Group>
+                    <Form.Group controlId="rating">
                         <StarRating />
-                    </Form.Group> */}
-                    <Form.Group className="mb-3" controlId="rating">
+                    </Form.Group>
+                    {/* <Form.Group className="mb-3" controlId="rating">
                     <Form.Label>Rating: </Form.Label>
                     <Form.Control type="number" placeholder="Select Your Rating from 1 to 5" value={rating} onChange={changeInput} name="rating" />
-                    </Form.Group>
+                    </Form.Group> */}
 
                     <Form.Group className="mb-3" controlId="review">
                     <Form.Label>Review: </Form.Label>
-                    <Form.Control type="text" placeholder="Review" value={review} onChange={changeInput} name="review" />
+                    <Form.Control type="text" placeholder="Write Your Review Here" value={review} onChange={changeInput} name="review" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="date">
                     <Form.Label>Date: </Form.Label>
-                    <Form.Control type="date" placeholder="Enter Date" value={date} onChange={changeInput} name="date" />
+                    <Form.Control type="date" placeholder="Select Today's Date" value={date} onChange={changeInput} name="date" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="recipe_id">
