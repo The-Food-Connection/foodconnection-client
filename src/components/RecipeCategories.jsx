@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 import "./styling/RecipeCategories.css";
 

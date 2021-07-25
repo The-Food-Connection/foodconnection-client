@@ -58,7 +58,7 @@ function Login({ history }) {
     <>
       <Row>
         <Col>
-          <img className="loginpic" src="loginpage.jpg" />
+          <img className="loginpic" alt="loginpic" src="loginpage.jpg" />
         </Col>
         <Col>
           <h2>Please Enter Login Details Below</h2>

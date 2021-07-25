@@ -58,7 +58,7 @@ export default function SignUp({ history }) {
     <>
       <Row>
       <Col>
-      <img className="signuppic" src="signuppage.jpg" />
+      <img className="signuppic" alt="signuppic" src="signuppage.jpg" />
       </Col>
       <Col>
       <h2>Please Enter Your Details Below to Sign Up</h2>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { postData } from '../utils/apiRequest';
-import { MDBJumbotron, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBRow, MDBCol, MDBContainer } from "mdbreact";
+import { MDBJumbotron, MDBCardBody, MDBCardTitle, MDBCardText, MDBRow, MDBCol, MDBContainer } from "mdbreact";
 import { Button, Form } from 'react-bootstrap';
 import StarRating from './StarRating';
 import "./styling/NewRating.css";
@@ -28,7 +28,7 @@ export default function NewRating({ match, update, history }) {
 
     // using useEffect to run fetchRecipe function to get data
     useEffect(() => {
-      console.log(match)
+      // console.log(match)
       fetchRecipe();
     }, [])
 
@@ -63,14 +63,14 @@ export default function NewRating({ match, update, history }) {
         })
     }
 
-    console.log(`this is update ${update}`);
-    console.log(`this is match params id ${match.params.id}`);
+    // console.log(`this is update ${update}`);
+    // console.log(`this is match params id ${match.params.id}`);
 
     const ratingPost = async (event) => {
-      console.log(`this is event.target ${event.target}`)
+      // console.log(`this is event.target ${event.target}`)
       const formData = new FormData(event.target);
       // formData.append(match.params.id);
-      console.log(`this is form data appended ${formData}`)
+      // console.log(`this is form data appended ${formData}`)
 
       const response = await fetch(process.env.REACT_APP_API_URL + "/ratings", {
         method: 'POST', 
@@ -82,8 +82,8 @@ export default function NewRating({ match, update, history }) {
       })
       const data = await response.json();
       console.log(data);
-      console.log(response);
-      console.log(response.status);
+      // console.log(response);
+      // console.log(response.status);
 
       if (response.status === 200 || 201) {
         history.push("/recipes");

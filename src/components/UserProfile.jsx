@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth } from "../contexts/AuthProvider";
-import { Row, Col, Container, Button } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import './styling/UserProfile.css';
 
@@ -28,7 +28,7 @@ export default function UserProfile() {
                 <Row>
 
                     <Col>
-                        <img className="userprofilepic" src="placeholder.jpg" />
+                        <img className="userprofilepic" alt="userprofile" src="placeholder.jpg" />
 
                     </Col>
                     <Col>
