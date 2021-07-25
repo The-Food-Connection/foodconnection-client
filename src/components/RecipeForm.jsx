@@ -100,39 +100,45 @@ function RecipeForm({ history, match }) {
   }
 
   const createNewRecipe = (data, e) => {
-    // event.preventDefault();
     const formData = new FormData(e.target);
-    // console.log(e)
-    // console.log(aaa)
-    // // append recipe dietaries as JSON.stringify to work with formData
-    // // rails will need to JSON.parse before use 
-
     data.recipe_dietaries_attributes = []
     data.recipe_ingredients_attributes = []
 
+    // go through the list of existing dieataries
     dietaries.forEach(x => {
+      // move the id (id from db table turns into dietary_category_id)
       x.dietary_category_id = x.id
+      // if recipe have dietaries, that is an edit
       if (recipe.recipe_dietaries) {
+        // check if dietary was already part of the recipe
         const exists = recipe.recipe_dietaries.find(r => r.dietary_category_id === x.dietary_category_id)
+
+        // if exists false it means it's not part of the recipe already
         if (!exists) {
-          console.log(x)
+          // cleanup unnecessary fields to make rails happy
           delete x.id
           delete x.name
-          if (data.dietaries[x.dietary_category_id]) {
+          // check checkbox status, if returns true it means it needs to be added
+          if (isCheckboxChecked(data.dietaries, x)) {
             data.recipe_dietaries_attributes.push(x)
           }
         }
+        // if exists true, just need to check if checkbox is false to add for deletion
         else {
-          if (!data.dietaries[x.dietary_category_id]) {
+          // if checkbox is false, mark x.delete true so rails can delete from db
+          if (!isCheckboxChecked(data.dietaries, x)) {
             x.delete = true
-            delete x.id
             x.id = exists.id
             data.recipe_dietaries_attributes.push(x)
           }
-
+        }
+      } 
+      // new recipe, wont have any dietaries on recipe.dietaries
+      else {
+        if (isCheckboxChecked(data.dietaries, x)) {
+          data.recipe_dietaries_attributes.push(x)
         }
       }
-
     })
 
 
@@ -151,6 +157,10 @@ function RecipeForm({ history, match }) {
 
     console.log(data)
     recipePost(formData)
+  }
+
+  const isCheckboxChecked = (cbList, cb) => {
+    return cbList[cb.dietary_category_id]
   }
 
   const fetchDietaries = async () => {
