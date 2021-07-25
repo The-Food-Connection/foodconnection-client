@@ -37,7 +37,7 @@ export default function NavigationBar(state) {
                   <a class="text-warning" href="/user-profile" style={{ marginRight: 20 }}>  User Profile  </a>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <a class="text-warning" href="/recipes" style={{ marginRight: 20 }}>  My Recipes  </a>
+                  <a class="text-warning" href="/my-recipes" style={{ marginRight: 20 }}>  My Recipes  </a>
                 </MDBNavItem>
                 <MDBNavItem>
                   <a class="text-warning" href="/recipe-new" style={{ marginRight: 20 }}>  Add New Recipe</a>

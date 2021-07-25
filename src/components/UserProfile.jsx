@@ -16,7 +16,7 @@ export default function UserProfile() {
     console.log(auth);
     
     return (
-        <div>
+        <div className="userprofiles">
             <h1 style={titleStyle}>USER PROFILE</h1>
 
             {auth.loggedIn ?

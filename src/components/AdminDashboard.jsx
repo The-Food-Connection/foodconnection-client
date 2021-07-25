@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import { Button } from 'react-bootstrap';
-import {deleteRequest} from '../utils/apiRequest';
+import { deleteRequest } from '../utils/apiRequest';
 
 export default function AdminDashboard() {
 
