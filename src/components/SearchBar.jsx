@@ -1,5 +1,6 @@
 import React from 'react';
 import { MDBFormInline } from "mdbreact";
+import '../App.css';
 
 
 export default function SearchBar() {

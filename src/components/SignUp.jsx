@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Alert, Button, Form, Row, Col } from 'react-bootstrap'
 import { useAuth } from "../contexts/AuthProvider";
 import './styling/SignUp.css';
+import '../App.css';
 
 export default function SignUp({ history }) {
   const { authDispatch } = useAuth();

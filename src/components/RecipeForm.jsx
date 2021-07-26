@@ -9,6 +9,7 @@ import { MDBCheckbox } from 'mdb-react-ui-kit';
 import { useFieldArray, useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import '../App.css';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
