@@ -3,20 +3,25 @@
 describe('The Home Page', () => {
     beforeEach(() => {
       cy.visit("http://localhost:8080/login");
+      cy.clearLocalStorage("The Home Page");
 
-      cy.get('#username').type('suztest240721').should('have.value', 'suztest240721')
+      cy.get('#username').type('#username').should('have.value', 'suztest2007')
       cy.get('#password')
       .type('password')
-      .should('have.value', 'password')
+      .should('have.value', '123456')
       .should('have.attr', 'type', 'password');
 
       cy.contains('Login').click()
       cy.intercept("GET", "/recipes", {
           statusCode: 200,
-      });
+      })
       cy.get("Button").contains("LOGIN").click();
     })
 
+    it('successfully loads', () => {
+      cy.visit('http://localhost:8080')
+    })
+  
     it('Login with correct credentials', () => {
 
         cy.intercept("POST", "/login", {
@@ -26,7 +31,7 @@ describe('The Home Page', () => {
               email: "test@test.com",
               token: "1",
             },
-        });
+        })
 
         cy.intercept("GET", "/recipes", {
             statusCode: 200,

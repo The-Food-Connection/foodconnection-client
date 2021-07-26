@@ -64,13 +64,11 @@ function Login({ history }) {
           <h2>Please Enter Login Details Below</h2>
           {errorMessage ?
             <Alert variant="danger">{errorMessage}</Alert> : null}
-
           <Form onSubmit={submitInput}>
             <Form.Group className="mb-3" controlId="username">
               <Form.Label>Username: </Form.Label>
               <Form.Control type="text" placeholder="Enter username" value={loginForm.username} onChange={changeInput} name="username" />
             </Form.Group>
-
             <Form.Group className="mb-3" controlId="password">
               <Form.Label>Password: </Form.Label>
               <Form.Control type="password" placeholder="Password" value={loginForm.password} onChange={changeInput} name="password" />
@@ -78,13 +76,11 @@ function Login({ history }) {
             <Button variant="primary" type="submit">
               LOGIN
             </Button>
-
             <Link to="/sign-up" className="btn btn-success">SignUp</Link>
           </Form>
         </Col>
       </Row>
     </>
-
   )
 }
 

@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import { MDBJumbotron, MDBContainer, MDBRow, MDBCol, MDBCardBody, MDBCardTitle, MDBCardText, MDBLink } from "mdbreact"
 import { useEffect } from 'react';
 import { useAuth } from '../contexts/AuthProvider';
+import { FaStar } from 'react-icons/fa';
 
 export default function Recipe({ match, history }) {
 
   const { auth, authDispatch } = useAuth();
   const [recipe, setRecipe] = useState({});
+  const [rating, setRating] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchRecipe = async () => {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/recipes/${match.params.id}`, {
@@ -19,9 +22,13 @@ export default function Recipe({ match, history }) {
     if (data.status === 404) {
       history.push("/")
     }
-    // to keep just one state, I am adding the image url to the recipe object
-    // data.recipe.imageUrl = data.image
     setRecipe(data.recipe);
+    console.log(data)
+    let total = 0
+    data.recipe.ratings.map(x => total += x.rating)
+    setRating(Math.ceil(total/data.recipe.ratings.length))
+    setIsLoading(false)
+    
   };
 
   const handleDelete = async () => {
@@ -103,6 +110,12 @@ export default function Recipe({ match, history }) {
                     recipe.ratings && recipe.ratings.length > 0 ?
                       <>
                         <h3>Ratings:</h3>
+                        {[...Array(rating)].map(() => (<FaStar
+                          className="star"
+                          color="#ff1493"
+                          size={30}
+                        />
+                        ))}
                         <ul>
                           {recipe.ratings.map((rating) => {
                             return <li key={rating.id}>{rating.review}</li>
@@ -114,7 +127,7 @@ export default function Recipe({ match, history }) {
                 </MDBCardBody>
                 {/* <button type="button" class="btn btn-secondary">RATE THIS DISH</button> */}
                 <MDBLink to={`/recipes/${recipe.id}/rating`} className="btn btn-secondary">RATE THIS DISH</MDBLink>
-                {auth.user_id === recipe.user_id || auth.admin ?
+                {!isLoading && auth.id === recipe.user_id || auth.admin ?
                   <>
                     <MDBLink to={`/recipes/${recipe.id}/edit`} className="btn btn-primary">EDIT</MDBLink>
                     <MDBLink to="" onClick={handleDelete} className="btn btn-danger">DELETE</MDBLink>
@@ -127,6 +140,5 @@ export default function Recipe({ match, history }) {
         </MDBContainer >
         : null}
     </>
-
   )
 }

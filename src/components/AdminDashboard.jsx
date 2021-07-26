@@ -56,7 +56,7 @@ export default function AdminDashboard() {
 
     useEffect(() => {
         fetchUsers();
-    },[])
+    }, [])
 
     useEffect(() => {
         fetchRatings();
@@ -76,9 +76,7 @@ export default function AdminDashboard() {
     return (
         <div>
             <h1 style={titleStyle}>ADMIN DASHBOARD</h1>
-
             <h3>All User Information</h3>
-
             <Table responsive striped bordered hover variant="dark">
                 <thead>
                     <tr>
@@ -90,7 +88,6 @@ export default function AdminDashboard() {
                     </tr>
                 </thead>
                 <tbody>
-
                     {
                         users && users.map((user) => (
                             <tr key={user.id}>
@@ -102,10 +99,8 @@ export default function AdminDashboard() {
                             </tr>
                         ))
                     }
-
                 </tbody>
             </Table>
-
             <h3>All Recipes On Site</h3>
             <Table responsive striped bordered hover variant="dark">
                 <thead>
@@ -118,7 +113,6 @@ export default function AdminDashboard() {
                     </tr>
                 </thead>
                 <tbody>
-
                     {
                         recipes && recipes.map((recipe) => (
                             <tr key={recipe.id}>
@@ -130,10 +124,8 @@ export default function AdminDashboard() {
                             </tr>
                         ))
                     }
-
                 </tbody>
             </Table>
-
             <h3>All Ratings On Site</h3>
             <Table responsive striped bordered hover variant="dark">
                 <thead>
@@ -146,7 +138,6 @@ export default function AdminDashboard() {
                     </tr>
                 </thead>
                 <tbody>
-
                     {
                         ratings && ratings.map((rating) => (
                             <tr key={rating.id}>
@@ -158,12 +149,8 @@ export default function AdminDashboard() {
                             </tr>
                         ))
                     }
-
                 </tbody>
             </Table>
-
         </div>
     )
-
-
 };

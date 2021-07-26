@@ -70,8 +70,6 @@ function RecipeForm({ history, match }) {
     resolver: yupResolver(validationSchema)
   });
 
-  // const { dietaryValues, remove, append, insert, update } = useFieldArray({ control, name: "dietaries" });
-
   const recipePost = async (formData) => {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/recipes${!isAddMode ? `/${id}` : ""}`, {
       method: isAddMode ? 'POST' : 'PUT',
@@ -89,7 +87,7 @@ function RecipeForm({ history, match }) {
         type: "success",
         open: true
       });
-      // history.push("/recipes");
+      history.push("/recipes");
     } else {
       setMessage({
         text: "Mandatory fields missing.",
@@ -98,6 +96,7 @@ function RecipeForm({ history, match }) {
       });
     }
   }
+
   const handleDietaries = (dietaries, data) => {
     dietaries.forEach(x => {
       // move the id (id from db table turns into dietary_category_id)
@@ -167,9 +166,6 @@ function RecipeForm({ history, match }) {
     // go through the list of existing ingredients
     data.recipe_ingredients_attributes = handleIngredients(selectedIngredients)
 
-    // clean object before sending to rails
-    // delete formData.dietaries
-
     // append recipe dietaries as JSON.stringify to work with formData
     // rails will need to JSON.parse before use 
     formData.append('recipe_dietaries_attributes', JSON.stringify(data.recipe_dietaries_attributes))
@@ -190,7 +186,6 @@ function RecipeForm({ history, match }) {
     });
 
     const data = await response.json();
-    // console.log(data)
     if (data) {
       setDietaries(data);
     }
@@ -249,9 +244,6 @@ function RecipeForm({ history, match }) {
           })
           setRecipe(recipeData.recipe);
           setSelectedIngredients(recipeData.recipe.recipe_ingredients)
-          // setSelectedIngredients(
-          //   ...selectedIngredients,
-          //   recipeData.recipe.recipe_ingredients)
         }
       })
     }

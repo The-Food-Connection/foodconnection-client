@@ -9,14 +9,12 @@ export default function RecipeRandom(props) {
         <div>
             <Card className="text-center">
                 <Card.Header>FEATURED RECIPE OF THE DAY</Card.Header>
-                {/* <Card.Img className="recipeoftheday"  src="placeholder.jpg" /> */}
                 <Card.Body>
                     <Card.Title>Feel Like Spicing Up Dinner?</Card.Title>
                     <Card.Text>
                         Our Creators have picked something amazing for you to cook today, check it out!
                     </Card.Text>
                     <Card.Text>
-                        {/* {props.recipe && props.recipe.recipe_name} */}
                     </Card.Text>
                     <MDBLink to={`/recipes/${props.recipe.id}`} className="btn btn-primary">VIEW RECIPE</MDBLink>
                 </Card.Body>
@@ -24,6 +22,4 @@ export default function RecipeRandom(props) {
             </Card>
         </div>
     )
-
-
 };
