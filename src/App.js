@@ -9,11 +9,6 @@ import RecipeList from "./components/RecipeList";
 import Recipe from "./components/Recipe";
 import AdminDashboard from './components/AdminDashboard';
 import UserProfile from './components/UserProfile';
-import BreakfastPage from './components/BreakfastPage';
-import LunchPage from './components/LunchPage';
-import DinnerPage from './components/DinnerPage';
-import DessertPage from './components/DessertPage';
-import SnacksPage from './components/SnacksPage';
 import MyRecipes from './components/MyRecipes';
 import NewRating from "./components/NewRating";
 import RecipeForm from "./components/RecipeForm";
@@ -21,6 +16,7 @@ import AuthProvider from "./contexts/AuthProvider";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import { MuiThemeProvider } from "material-ui/styles";
 import AdminRoute from "./utils/AdminRoute";
+import Categories from "./components/Categories";
 
 function App() {
   return (
@@ -36,11 +32,7 @@ function App() {
               <ProtectedRoute path="/recipes" exact component={RecipeList} />
               <ProtectedRoute path="/my-recipes" exact component={MyRecipes} />
               <ProtectedRoute path="/recipes/:id" exact component={Recipe} />
-              <ProtectedRoute path="/breakfast" exact component={BreakfastPage} />
-              <ProtectedRoute path="/lunch" exact component={LunchPage} />
-              <ProtectedRoute path="/dinner" exact component={DinnerPage} />
-              <ProtectedRoute path="/dessert" exact component={DessertPage} />
-              <ProtectedRoute path="/snacks" exact component={SnacksPage} />
+              <ProtectedRoute path="/categories/:category" exact component={Categories} />
               <ProtectedRoute path="/recipe-new" exact component={RecipeForm} />
               <ProtectedRoute path="/recipes/:id/rating" exact component={NewRating} />
               <ProtectedRoute path="/recipes/:id/edit" exact component={RecipeForm} />

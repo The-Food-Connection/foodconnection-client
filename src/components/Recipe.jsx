@@ -37,7 +37,7 @@ export default function Recipe({ match, history }) {
   };
 
   const handleDelete = async () => {
-    console.log(match.params.id)
+    // console.log(match.params.id)
     const response = await fetch(`${process.env.REACT_APP_API_URL}/recipes/${match.params.id}`, {
       method: 'DELETE',
       headers: {

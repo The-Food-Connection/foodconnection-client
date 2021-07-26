@@ -34,7 +34,7 @@ function RecipeForm({ history, match }) {
 
   const defaultOptions = {
     cuisine: ["Australian", "Brazilian", "Italian", "Indian", "Asian", "Japanese", "American", "Mexican"],
-    mealType: ["Breakfast", "Lunch", "Dinner", "Dessert", "Snack"],
+    mealType: ["Breakfast", "Lunch", "Dinner", "Dessert", "Snacks"],
     skillLevel: ["Beginner", "Intermediate", "Medium", "Advanced"]
   }
 

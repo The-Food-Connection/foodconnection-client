@@ -53,11 +53,11 @@ export default function NavigationBar(state) {
                       <span className="mr-2">Meal Types</span>
                     </MDBDropdownToggle>
                     <MDBDropdownMenu>
-                      <MDBDropdownItem href="/breakfast">Breakfast</MDBDropdownItem>
-                      <MDBDropdownItem href="/lunch">Lunch</MDBDropdownItem>
-                      <MDBDropdownItem href="/dinner">Dinner</MDBDropdownItem>
-                      <MDBDropdownItem href="/dessert">Dessert</MDBDropdownItem>
-                      <MDBDropdownItem href="/snacks">Snacks</MDBDropdownItem>
+                      <MDBDropdownItem href="/categories/breakfast">Breakfast</MDBDropdownItem>
+                      <MDBDropdownItem href="/categories/lunch">Lunch</MDBDropdownItem>
+                      <MDBDropdownItem href="/categories/dinner">Dinner</MDBDropdownItem>
+                      <MDBDropdownItem href="/categories/dessert">Dessert</MDBDropdownItem>
+                      <MDBDropdownItem href="/categories/snacks">Snacks</MDBDropdownItem>
                     </MDBDropdownMenu>
                   </MDBDropdown>
                 </MDBNavItem>
@@ -78,11 +78,11 @@ export default function NavigationBar(state) {
       <span className="mr-2">Meal Types</span>
     </MDBDropdownToggle>
     <MDBDropdownMenu>
-      <MDBDropdownItem href="/breakfast">Breakfast</MDBDropdownItem>
-      <MDBDropdownItem href="/lunch">Lunch</MDBDropdownItem>
-      <MDBDropdownItem href="/dinner">Dinner</MDBDropdownItem>
-      <MDBDropdownItem href="/dessert">Dessert</MDBDropdownItem>
-      <MDBDropdownItem href="/snacks">Snacks</MDBDropdownItem>
+      <MDBDropdownItem href="/categories/breakfast">Breakfast</MDBDropdownItem>
+      <MDBDropdownItem href="/categories/lunch">Lunch</MDBDropdownItem>
+      <MDBDropdownItem href="/categories/dinner">Dinner</MDBDropdownItem>
+      <MDBDropdownItem href="/categories/dessert">Dessert</MDBDropdownItem>
+      <MDBDropdownItem href="/categories/snacks">Snacks</MDBDropdownItem>
     </MDBDropdownMenu>
   </MDBDropdown>
 </MDBNavItem>

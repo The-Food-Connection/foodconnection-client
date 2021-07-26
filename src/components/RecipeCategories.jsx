@@ -12,35 +12,35 @@ export default function RecipeCategories() {
                 <MDBRow className="d-flex justify-content-center align-items-center">
                     <MDBCol size="2">
                         <div className="category">
-                            <a href="/breakfast"><Image src="breakfast.jpg" roundedCircle /></a>
+                            <a href="/categories/breakfast"><Image src="breakfast.jpg" roundedCircle /></a>
                             <h4>BREAKFAST</h4>
                         </div>
                     </MDBCol>
 
                     <MDBCol size="2">
                         <div className="category">
-                            <a href="/lunch"><Image src="lunch.jpg" roundedCircle /></a>
+                            <a href="/categories/lunch"><Image src="lunch.jpg" roundedCircle /></a>
                             <h4>LUNCH</h4>
                         </div>
                     </MDBCol>
 
                     <MDBCol size="2">
                         <div className="category">
-                            <a href="/dinner"><Image src="dinner.jpg" roundedCircle /></a>
+                            <a href="/categories/dinner"><Image src="dinner.jpg" roundedCircle /></a>
                             <h4>DINNER</h4>
                         </div>
                     </MDBCol>
 
                     <MDBCol size="2">
                         <div className="category">
-                            <a href="/dessert"><Image src="dessert.jpg" roundedCircle /></a>
+                            <a href="/categories/dessert"><Image src="dessert.jpg" roundedCircle /></a>
                             <h4>DESSERT</h4>
                         </div>
                     </MDBCol>
 
                     <MDBCol size="2">
                         <div className="category">
-                            <a href="/snacks"><Image src="snacks.jpg" roundedCircle /></a>
+                            <a href="/categories/snacks"><Image src="snacks.jpg" roundedCircle /></a>
                             <h4>SNACKS</h4>
                         </div>
                     </MDBCol>
