@@ -18,18 +18,23 @@ export default function UserProfile() {
     
     return (
         <div className="userprofiles">
+            <br></br>
             <h1 style={titleStyle}>USER PROFILE</h1>
 
             {auth.loggedIn ?
             <div>
 
             <p style={titleStyle}>Welcome back {auth.username}!</p>
+            <br>
+            </br>
+            <p style={titleStyle}>Thank you for being a valued member of our Food Connection Family</p>
+            <br></br>
 
             <Container>
                 <Row>
 
                     <Col>
-                        <img className="userprofilepic" alt="userprofile" src="placeholder.jpg" />
+                        <img className="userprofilepic" alt="userprofile" src="profilepage.jpg" />
 
                     </Col>
                     <Col>
@@ -53,7 +58,7 @@ export default function UserProfile() {
                         </tbody>
                     </Table>
                     <br></br>
-                    If you're sadly wanting to leave our site, this cannot be undone.
+                    If you're sadly wanting to deactivate your account, this cannot be undone.
                     
                     <br>
                     </br>

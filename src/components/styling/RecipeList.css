@@ -5,11 +5,12 @@
 }
 
 .cardbody {
-    height: 250px !important;
+    height: 120px !important;
 }
 
 .card {
    justify-content: center;
+   margin-bottom: 20px;
 }
 
 .cardrows {
