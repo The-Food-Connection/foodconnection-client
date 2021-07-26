@@ -5,6 +5,7 @@ import { Button, Form } from 'react-bootstrap';
 import StarRating from './StarRating';
 import "./styling/NewRating.css";
 import { matchPath } from 'react-router';
+import '../App.css';
 
 
 export default function NewRating({ match, update, history }) {

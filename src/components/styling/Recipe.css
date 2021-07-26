@@ -1,0 +1,8 @@
+.recipepic {
+    height: 60vh !important;
+}
+
+.recipecontainer {
+    align-items: center;
+    justify-content: center;
+}

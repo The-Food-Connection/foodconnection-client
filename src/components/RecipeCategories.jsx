@@ -2,6 +2,7 @@ import React from 'react';
 import { Image } from 'react-bootstrap';
 import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 import "./styling/RecipeCategories.css";
+import '../App.css';
 
 export default function RecipeCategories() {
 

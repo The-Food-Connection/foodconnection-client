@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
-import { MDBJumbotron, MDBContainer, MDBRow, MDBCol, MDBCardBody, MDBCardTitle, MDBCardText, MDBLink } from "mdbreact"
+import { MDBJumbotron, MDBContainer, MDBRow, MDBCol, MDBCardBody, MDBCardTitle, MDBCardText, MDBLink } from "mdbreact";
+import { Row, Col, Container } from 'react-bootstrap';
 import { useEffect } from 'react';
 import { useAuth } from '../contexts/AuthProvider';
 import { FaStar } from 'react-icons/fa';
+import '../App.css';
+import './styling/Recipe.css';
+import PlaceHolder from '../images/placeholder.jpg';
 
 export default function Recipe({ match, history }) {
 
@@ -49,19 +53,30 @@ export default function Recipe({ match, history }) {
     fetchRecipe();
   }, [match.params.id])
 
+  console.log(recipe);
+
   return (
     <>
       {recipe ?
-        <MDBContainer className="mt-5 text-center">
+        // <MDBContainer className="mt-5 text-center">
+          <Container fluid className="recipecontainer">
           < h1 > RECIPE</h1 >
-          <MDBRow>
-            <MDBCol>
-              <MDBJumbotron className="p-0">
+          <Row className="justify-content-center">
+
+              {/* <MDBJumbotron className="p-0"> */}
+
+              <Col className="text-center">
                 <img
-                  src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"}
-                  className="img-fluid"
+                  src={(recipe.imageURL) ? recipe.imageURL : PlaceHolder}
+                  // src={recipe.imageURL}
+                  className="recipepic"
                   alt={recipe.recipe_name}
                 />
+                {/* <img className="recipepic" alt="recipepic" src={PlaceHolder} /> */}
+                </Col>
+
+                <Col >
+
                 <MDBCardBody>
                   <MDBCardTitle className="h3">{recipe.recipe_name}</MDBCardTitle>
                   <MDBCardText>
@@ -133,11 +148,15 @@ export default function Recipe({ match, history }) {
                     <MDBLink to="" onClick={handleDelete} className="btn btn-danger">DELETE</MDBLink>
                   </>
                   : null}
+                </Col>
 
-              </MDBJumbotron>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer >
+              {/* </MDBJumbotron> */}
+
+            
+          </Row>
+
+        {/* </MDBContainer > */}
+        </Container>
         : null}
     </>
   )
