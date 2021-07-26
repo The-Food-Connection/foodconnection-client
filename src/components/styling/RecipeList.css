@@ -6,14 +6,27 @@
 
 .cardbody {
     height: 120px !important;
+    background-color: #dde1fc;
 }
 
 .card {
    justify-content: center;
    margin-bottom: 20px;
+   background-color: #dde1fc;
 }
 
 .cardrows {
     flex-grow: 0 !important;
 }
 /* s */
+.list-group-flush {
+    background-color: #dde1fc;
+}
+
+.secondcardbody {
+    background-color: #dde1fc;
+}
+
+.listitem {
+    background-color: #dde1fc !important;
+}

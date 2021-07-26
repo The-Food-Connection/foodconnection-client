@@ -4,4 +4,13 @@
 
 .myrecipescardbody {
     height: 120px !important;
+    background-color: #dde1fc;
+}
+
+.list-group-flush {
+    background-color: #dde1fc;
+}
+
+.listitem {
+    background-color: #dde1fc !important;
 }
