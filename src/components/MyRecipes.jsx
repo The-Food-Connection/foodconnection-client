@@ -97,13 +97,13 @@ export default function MyRecipes() {
                 Recipe Cuisine: 
                   {recipe.cuisine}
                 </Card.Text>
-              </Card.Body>
+              </Card.Body >
               <ListGroup className="list-group-flush">
-                <ListGroupItem>Meal Type: {recipe.meal_type}</ListGroupItem>
+                <ListGroupItem className="listitem">Meal Type: {recipe.meal_type}</ListGroupItem>
                 {/* <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
                 <ListGroupItem>Vestibulum at eros</ListGroupItem> */}
               </ListGroup>
-              <Card.Body>
+              <Card.Body className="secondcardbody">
                 {/* <Card.Link href={`/recipes/${recipe.id}`}>Click for Full Recipe</Card.Link> */}
                 <Button href={`/recipes/${recipe.id}`} variant="warning">VIEW RECIPE</Button>
                 <Button href={`/recipes/${recipe.id}`} variant="success">EDIT RECIPE</Button>
