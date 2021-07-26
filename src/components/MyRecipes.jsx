@@ -3,6 +3,7 @@ import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBLink 
 import { Row, Col } from 'react-bootstrap';
 import { AuthContext, useAuth } from "../contexts/AuthProvider";
 import { deleteRequest } from '../utils/apiRequest';
+import '../App.css';
 // import RecipeCategories from './RecipeCategories';
 
 export default function MyRecipes() {
@@ -64,7 +65,7 @@ export default function MyRecipes() {
             recipe.user_id === auth.id ?
             
           <Col lg={true} key={recipe.id}>
-            <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="mdb-color purple-gradient" expand="md">
+            <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="rgba-green-strong" expand="md">
               <MDBCardImage className="card-img-top" variant="top" src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"} />
               <MDBCardBody>
                 <MDBCardTitle>Recipe Name - {recipe.recipe_name}</MDBCardTitle>

@@ -4,6 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 import RecipeRandom from './RecipeRandom';
 import RecipeCategories from './RecipeCategories';
 import ReactPaginate from 'react-paginate';
+import '../App.css';
 
 const PER_PAGE = 10;
 
@@ -93,7 +94,7 @@ export default function RecipeList() {
       <Row className="justify-content-sm-center">
         {recipes && recipes.map((recipe) => (
           <Col lg={true} key={recipe.id}>
-            <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="mdb-color darken-1" expand="md">
+            <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="rgba-green-strong" expand="md">
               <MDBCardImage className="card-img-top" variant="top" src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"} />
               <MDBCardBody>
                 <MDBCardTitle>{recipe.recipe_name}</MDBCardTitle>

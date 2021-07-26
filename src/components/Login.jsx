@@ -3,6 +3,7 @@ import { Alert, Button, Form, Row, Col } from 'react-bootstrap'
 import { useAuth } from "../contexts/AuthProvider";
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import '../App.css';
 
 function Login({ history }) {
   const { authDispatch } = useAuth();
@@ -60,6 +61,7 @@ function Login({ history }) {
         <Col>
           <img className="loginpic" alt="loginpic" src="loginpage.jpg" />
         </Col>
+        
         <Col>
           <h2>Please Enter Login Details Below</h2>
           {errorMessage ?

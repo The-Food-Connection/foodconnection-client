@@ -3,6 +3,7 @@ import { useAuth } from "../contexts/AuthProvider";
 import { Row, Col, Container } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import './styling/UserProfile.css';
+import '../App.css';
 
 export default function UserProfile() {
 
