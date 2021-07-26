@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import { deleteRequest } from '../utils/apiRequest';
 import '../App.css';
 
-export default function AdminDashboard() {
+export default function AdminDashboard({ history }) {
 
     const titleStyle = {
         textAlign: "center",
@@ -51,6 +51,38 @@ export default function AdminDashboard() {
         setRatings(data);
     };
 
+    const handleDelete = async (model, id) => {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/${model}/${id}`, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
+        });
+        const data = await response.json();
+        console.log(data.status)
+        if (data.status === 200 || data.status === 201 || data.status === 204) {
+            console.log('hey')
+            window.location.reload();
+            setUpdate(!update);
+        }
+    }
+
+    const enableUser = async (id) => {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/users/${id}/enable`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
+        });
+        const data = await response.json();
+        console.log(data)
+        if (data.status === 200 || data.status === 201 || data.status === 204) {
+            console.log('hey')
+            window.location.reload();
+            setUpdate(!update);
+        }
+    }
+
     useEffect(() => {
         fetchRecipes();
     }, []);
@@ -62,17 +94,6 @@ export default function AdminDashboard() {
     useEffect(() => {
         fetchRatings();
     }, [update])
-
-    // const deleteRecipe = (recipeId) => {
-    //     deleteRequest(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}`)
-    //     setUpdate(!update);
-    // }
-    //due to foreign keys have removed the option to delete recipes from admin
-
-    const deleteRating = (ratingId) => {
-        deleteRequest(`${process.env.REACT_APP_API_URL}/ratings/${ratingId}`)
-        setUpdate(!update);
-    }
 
     return (
         <div>
@@ -96,7 +117,10 @@ export default function AdminDashboard() {
                                 <td>{user.username}</td>
                                 <td>{user.email}</td>
                                 <td>{user.created_at}</td>
-                                {/* <td><Button variant="danger" onClick={() => deleteUser(user.id)}>DELETE</Button> </td> */}
+                                {!user.disabled ?
+                                    <td><Button variant="danger" onClick={() => handleDelete("users", user.id)}>DISABLE</Button> </td>
+                                    : <td><Button variant="success" onClick={() => enableUser(user.id)}>ENABLE</Button> </td>
+                                }
                             </tr>
                         ))
                     }
@@ -146,7 +170,7 @@ export default function AdminDashboard() {
                                 <td>{rating.rating}</td>
                                 <td>{rating.review}</td>
                                 <td>{rating.created_at}</td>
-                                <td><Button variant="danger" onClick={() => deleteRating(rating.id)}>DELETE</Button> </td>
+                                <td><Button variant="danger" onClick={() => handleDelete("ratings", rating.id)}>DELETE</Button> </td>
                             </tr>
                         ))
                     }
