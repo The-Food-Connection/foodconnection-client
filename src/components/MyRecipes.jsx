@@ -11,8 +11,7 @@ export default function MyRecipes() {
 
   const [recipes, setRecipes] = useState([]);
 
-  const { auth, authDispatch } = useAuth();  
-  // const [update, setUpdate] = useState(false);
+  const { auth, authDispatch } = useAuth();
 
   const [update, setUpdate] = useState(false);
 
@@ -29,7 +28,6 @@ export default function MyRecipes() {
     });
 
     const data = await response.json();
-    // data.recipes.imageUrl = data.image
     setRecipes(data);
   };
 
@@ -37,19 +35,10 @@ export default function MyRecipes() {
     fetchRecipes();
   }, []);
 
-//   componentDidMount(); {
-//     const { array } = recipes.props;
-//     const userDetails = (array.map(({userID}) => fetch(process.env.REACT_APP_API_URL + `users/${userID}`),
-//     this.setState({ userDetails })
-//     ))}; 
-
-  // console.log(auth.id);
-//   console.log(userDetails);
-
-    const deleteRecipe = (recipeId) => {
-        deleteRequest(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}`)
-        setUpdate(!update);
-    }
+  // const deleteRecipe = (recipeId) => {
+  //     deleteRequest(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}`)
+  //     setUpdate(!update);
+  // }
 
 
   return (
@@ -117,7 +106,6 @@ export default function MyRecipes() {
             null
         ))}
       </Row>
-
     </div>
   )
 }

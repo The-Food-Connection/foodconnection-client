@@ -5,6 +5,7 @@ class SelectFC extends React.Component {
 	constructor(props) {
 		super(props)
 	}
+
 	//  this.props.select watches the state from outside
 	render() {
 		return (

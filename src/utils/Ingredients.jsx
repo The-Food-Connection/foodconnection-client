@@ -7,7 +7,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 export default function Ingredients(props) {
 	const [selectedIngredients, setSelectedIngredients] = useState([]);
 	const [inputValue, setInputValue] = useState([]);
-	const [message, setMessage] = useState({type: "", text: ""})
+	const [message, setMessage] = useState({ type: "", text: "" })
 
 	const defaultOptions = {
 		measure: ["unit", "cup", "ml", "l", "g", "kg", "spoon", "teaspoon", "tablespoon"]
@@ -54,7 +54,7 @@ export default function Ingredients(props) {
 	// autocomplete
 	function handleInput(e, newInputValue) {
 		// clear error message when typing
-		setMessage({type: "", text: ""})
+		setMessage({ type: "", text: "" })
 		setInputValue(newInputValue)
 	}
 
@@ -85,11 +85,12 @@ export default function Ingredients(props) {
 
 	}
 
-  useEffect(() => {
-    if(props.recipeIngredients){
+	useEffect(() => {
+		if (props.recipeIngredients) {
 			setSelectedIngredients(props.recipeIngredients)
 		}
 	})
+
 	return (
 		<>
 			{message ?

@@ -15,17 +15,14 @@ import DinnerPage from './components/DinnerPage';
 import DessertPage from './components/DessertPage';
 import SnacksPage from './components/SnacksPage';
 import MyRecipes from './components/MyRecipes';
-
 import NewRating from "./components/NewRating";
 import RecipeForm from "./components/RecipeForm";
-// import NotFound from "./components/NotFound";
 import AuthProvider from "./contexts/AuthProvider";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import { MuiThemeProvider } from "material-ui/styles";
 import AdminRoute from "./utils/AdminRoute";
 
 function App() {
-
   return (
     <div className="App">
       <AuthProvider>
@@ -33,11 +30,9 @@ function App() {
           <Router>
             <NavigationBar />
             <Switch>
-
               <Route path="/" exact component={Home} />
               <Route path="/login" exact component={Login} />
               <Route path="/sign-up" exact component={SignUp} />
-
               <ProtectedRoute path="/recipes" exact component={RecipeList} />
               <ProtectedRoute path="/my-recipes" exact component={MyRecipes} />
               <ProtectedRoute path="/recipes/:id" exact component={Recipe} />
@@ -47,15 +42,11 @@ function App() {
               <ProtectedRoute path="/dessert" exact component={DessertPage} />
               <ProtectedRoute path="/snacks" exact component={SnacksPage} />
               <ProtectedRoute path="/recipe-new" exact component={RecipeForm} />
-
               <ProtectedRoute path="/recipes/:id/rating" exact component={NewRating} />
               <ProtectedRoute path="/recipes/:id/edit" exact component={RecipeForm} />
-
               <ProtectedRoute path="/user-profile" exact component={UserProfile} />
               <AdminRoute path="/admin-dashboard" exact component={AdminDashboard} />
-
               <Route render={() => <h1>404 Page not found</h1>} />
-
             </Switch>
             <Footer />
           </Router>

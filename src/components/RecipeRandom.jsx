@@ -40,6 +40,4 @@ export default function RecipeRandom(props) {
 
         </div>
     )
-
-
 };

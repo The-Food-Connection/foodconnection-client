@@ -57,7 +57,7 @@ export default function NavigationBar(state) {
                       <MDBDropdownItem href="/lunch">Lunch</MDBDropdownItem>
                       <MDBDropdownItem href="/dinner">Dinner</MDBDropdownItem>
                       <MDBDropdownItem href="/dessert">Dessert</MDBDropdownItem>
-                      <MDBDropdownItem href="snacks">Snacks</MDBDropdownItem>
+                      <MDBDropdownItem href="/snacks">Snacks</MDBDropdownItem>
                     </MDBDropdownMenu>
                   </MDBDropdown>
                 </MDBNavItem>

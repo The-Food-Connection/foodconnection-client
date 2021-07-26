@@ -10,17 +10,16 @@ export default function UserProfile() {
     const titleStyle = {
         textAlign: "center",
         textTransform: "uppercase"
-    };   
+    };
 
-    const { auth, authDispatch } = useAuth();    
+    const { auth, authDispatch } = useAuth();
 
-    console.log(auth);
-    
+    // console.log(auth);
+
     return (
         <div className="userprofiles">
             <br></br>
             <h1 style={titleStyle}>USER PROFILE</h1>
-
             {auth.loggedIn ?
             <div>
 
@@ -118,6 +117,4 @@ export default function UserProfile() {
  
         </div>
     )
-
-
 };
