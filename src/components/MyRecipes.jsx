@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBLink } from "mdbreact"
 import { Row, Col, Card, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
-import { AuthContext, useAuth } from "../contexts/AuthProvider";
-import { deleteRequest } from '../utils/apiRequest';
+import { useAuth } from "../contexts/AuthProvider";
 import '../App.css';
 import './styling/MyRecipes.css';
 // import RecipeCategories from './RecipeCategories';
 
-export default function MyRecipes() {
+export default function MyRecipes({history}) {
 
   const [recipes, setRecipes] = useState([]);
 
@@ -35,10 +33,20 @@ export default function MyRecipes() {
     fetchRecipes();
   }, []);
 
-  // const deleteRecipe = (recipeId) => {
-  //     deleteRequest(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}`)
-  //     setUpdate(!update);
-  // }
+  const deleteRecipe = async (id) => {
+    // console.log(id)
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/recipes/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }
+    });
+    const data = await response.json();
+    if (data.status === 200 || data.status === 201 || data.status === 204) {
+      history.push('/')
+      setUpdate(!update);
+    }
+  }
 
 
   return (
@@ -95,7 +103,7 @@ export default function MyRecipes() {
               <Card.Body className="secondcardbody">
                 {/* <Card.Link href={`/recipes/${recipe.id}`}>Click for Full Recipe</Card.Link> */}
                 <Button href={`/recipes/${recipe.id}`} variant="warning">VIEW RECIPE</Button>
-                <Button href={`/recipes/${recipe.id}`} variant="success">EDIT RECIPE</Button>
+                <Button href={`/recipes/${recipe.id}/edit`} variant="success">EDIT RECIPE</Button>
                 <Button onClick={() => deleteRecipe(recipe.id)} variant="danger">DELETE RECIPE</Button>
                 {/* <Card.Link href="#">Another Link</Card.Link> */}
               </Card.Body>
