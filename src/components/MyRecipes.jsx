@@ -4,6 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 import { AuthContext, useAuth } from "../contexts/AuthProvider";
 import { deleteRequest } from '../utils/apiRequest';
 import '../App.css';
+import './styling/MyRecipes.css';
 // import RecipeCategories from './RecipeCategories';
 
 export default function MyRecipes() {
@@ -17,7 +18,7 @@ export default function MyRecipes() {
 
   const titleStyle = {
     textAlign: "center",
-    textTransform: "uppercase"
+    // textTransform: "uppercase"
   }; 
 
   const fetchRecipes = async () => {
@@ -58,16 +59,16 @@ export default function MyRecipes() {
 
       <h1 style={titleStyle}>MY PERSONAL RECIPES</h1>
 
-      <h3 style={titleStyle}>Have a Wonderful Day</h3>
+      <h3 style={titleStyle}>A Collection Of Your Family Favourites and Special Meals</h3>
 
       <Row className="justify-content-sm-center">
         {recipes.map((recipe) => (
             recipe.user_id === auth.id ?
             
           <Col lg={true} key={recipe.id}>
-            <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="rgba-green-strong" expand="md">
+            <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="rgba-indigo-slight" expand="md" className="myrecipescard">
               <MDBCardImage className="card-img-top" variant="top" src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"} />
-              <MDBCardBody>
+              <MDBCardBody className="myrecipescardbody">
                 <MDBCardTitle>Recipe Name - {recipe.recipe_name}</MDBCardTitle>
                 <MDBCardText>
                   Cuisine:

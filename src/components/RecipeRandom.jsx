@@ -9,12 +9,12 @@ import '../App.css';
 export default function RecipeRandom(props) {
 
     return (
-        <div>
+        <div className="recipeoftheday">
 
             <MDBContainer class="row d-flex justify-content-center">
                 <MDBCard style={{ width: "45rem", marginTop: "1rem" }} className="text-center">
                     <MDBCardHeader color="peach-gradient">FOR YOU!</MDBCardHeader>
-                    <MDBCardBody>
+                    <MDBCardBody class="text-center-2">
                     <MDBCardTitle>STAFF PICKED RECIPE OF THE DAY</MDBCardTitle>
                     <MDBCardText>
                     Click through to discover something new and exciting!

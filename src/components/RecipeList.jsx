@@ -5,6 +5,7 @@ import RecipeRandom from './RecipeRandom';
 import RecipeCategories from './RecipeCategories';
 import ReactPaginate from 'react-paginate';
 import '../App.css';
+import './styling/RecipeList.css';
 
 const PER_PAGE = 10;
 
@@ -79,29 +80,32 @@ export default function RecipeList() {
   }, []);
 
   return (
-    <div>
+    <div className="justify-content-center">
 
       <RecipeCategories />
 
       <RecipeRandom recipe={randomRecipe} />
 
-      <h1>RECIPES</h1>
+      <h1>ALL RECIPES</h1>
 
       <div className="form-group">
         <MDBInput hint="Search.." size="lg" onChange={handleSearch} />
       </div>
-
-      <Row className="justify-content-sm-center">
+      <div className="cardrows">
+      <Row class="d-flex align-content-start flex-wrap">
         {recipes && recipes.map((recipe) => (
           <Col lg={true} key={recipe.id}>
-            <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="rgba-green-strong" expand="md">
+            <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="rgba-indigo-slight" expand="md" className="card">
               <MDBCardImage className="card-img-top" variant="top" src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"} />
-              <MDBCardBody>
-                <MDBCardTitle>{recipe.recipe_name}</MDBCardTitle>
+              <MDBCardBody className="cardbody">
+                <MDBCardTitle>Recipe Name:
+                  {recipe.recipe_name}</MDBCardTitle>
                 <MDBCardText>
+                  Recipe Cuisine:
                   {recipe.cuisine}
                 </MDBCardText>
                 <MDBCardText>
+                  Meal Type: 
                   {recipe.meal_type}
                 </MDBCardText>
                 <MDBLink to={`/recipes/${recipe.id}`} className="btn btn-primary">Learn more</MDBLink>
@@ -110,6 +114,7 @@ export default function RecipeList() {
           </Col>
         ))}
       </Row>
+      </div>
       {/* <Row className="justify-content-sm-center">
         <ReactPaginate
           previousLabel={"prev"}
