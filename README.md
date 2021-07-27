@@ -70,6 +70,21 @@ https://github.com/The-Food-Connection/foodconnection-client
 
 - Run **yarn install** for the **client side**, this will install all necessary packages.
 
+- Some environment configurations are required to run the backend, like:
+
+  - AWS IAM conmfiguration to be able to access the S3 Bucket
+  - JWT token is required to configurated api authentication
+
+```yml
+aws:
+  access_key_id: <add value>
+  secret_access_key: <add value>
+
+jwt_secret_key: <add value>
+```
+
+- For the AWS S3 Bucket work it need to configure bucket main `app/config/storage.yml`
+
 - Run **bundle install** for the **api side**, this will install all necessary gems.
 
 - Follow this in the api side by running rails db:create, followed by rails db:migrate, followed by rails db:seed, this will create the test users and recipes/ratings including the dietary categories. 
