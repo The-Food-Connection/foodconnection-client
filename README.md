@@ -12,6 +12,8 @@
 
 TABLE OF CONTENTS
 - [INSTALLING THE APP](#installing-the-app)
+- [TESTS](#tests)
+- [WEBSITE PAGES](#website-pages)
 - [PART A DOCUMENTATION](#part-a-documentation)
 - [PURPOSE](#purpose)
 - [FUNCTIONALITY](#functionality)
@@ -25,8 +27,6 @@ TABLE OF CONTENTS
 - [WIRE FRAMES](#wire-frames)
 - [PLANNING OVERVIEW](#planning-overview)
 - [PROJECT MANAGEMENT SCREENSHOTS AND DIARY](#project-management-screenshots-and-diary)
-- [TESTS](#tests)
-- [WEBSITE PAGES](#website-pages)
 
 
 
@@ -145,6 +145,119 @@ Admin will enable the Admin dashboard, where you can view all users, recipes, an
       "cypress": "^8.0.0",
       "start-server-and-test": "^1.13.0"
     
+# TESTS
+
+## RSPEC
+
+```ruby
+Finished in 0.37687 seconds (files took 1.42 seconds to load)
+26 examples, 0 failures
+
+suziiiiiq@ubuntu:~/Desktop/FOODCONNECTION/foodconnection-api$ rspec -fd
+
+RatingsController
+  GET index
+    has a 200 status code
+
+RecipesController
+  GET index
+    has a 200 status code
+
+UsersController
+  GET index
+    has a 200 status code
+
+Rating
+  has a valid factory
+  validations
+    is invalid without a rating score
+    is invalid without a review
+    is invalid without a date
+
+Recipe
+  validations
+    is invalid without a recipe name
+    is invalid without a recipe name
+    is invalid without recipe instructions
+    is invalid without a cooking time
+    is invalid without serves
+    is invalid without a skill level
+    is invalid without a cuisine
+    is invalid without a meal type
+
+User
+  has a valid factory
+  validations
+    is invalid without a username
+    is invalid without an email
+    is invalid without a password
+    is invalid without a password confirmation
+    is invalid without an @ symbol
+    is invalid without a .com on the email address
+
+Ratings
+  GET /ratings
+    should respond with 200 ok
+    should respond with json
+
+Recipes
+  GET /recipes
+    should respond with 200 ok
+    should respond with json
+
+Finished in 0.40113 seconds (files took 1.04 seconds to load)
+26 examples, 0 failures
+```
+
+<img src="docs/rspec.png" alt="rspec results" width="1000"><br>
+
+<img src="docs/rspec-stats.png" alt="rspec stats" width="1000"><br>
+
+
+## CYPRESS
+
+To run cypress, both `rails s` and `yarn start` need to be running on terminals for then tests can run successfully.
+
+<img src="docs/cypress1.png" alt="cypress results" width="1000"><br>
+
+<img src="docs/cypress2.png" alt="cypress results" width="1000"><br>
+
+<img src="docs/cypress3.png" alt="cypress results" width="1000"><br>
+
+## MANUAL TESTING
+
+[GOOGLE DOCS LINK - MANUAL TESTING](https://docs.google.com/spreadsheets/d/1aiJIk7xkHHAOo1lNhM1I1_1bkyNkH71swNVHkw3LBeA/edit?usp=sharing)
+
+[GOOGLE DOCS LINK - SCREEN RECORDING TEST](https://drive.google.com/file/d/19DMP-1RKS_Sek6ZpAow6yw6dRqL2f_HR/view?usp=sharing)
+
+<!-- [GOOGLE DOCS LINK - SCREEN RECORDING TEST](https://docs.google.com/spreadsheets/d/1aiJIk7xkHHAOo1lNhM1I1_1bkyNkH71swNVHkw3LBeA/edit?usp=sharing) -->
+
+---
+# WEBSITE PAGES
+
+<img src="docs/sign-up-page.png" alt="Sing up page" width="1000"><br>
+
+<img src="docs/login.png" alt="Login page" width="1000"><br>
+
+<img src="docs/user-profile.png" alt="Urser profile" width="1000"><br>
+
+<img src="docs/my-recipes.png" alt="My recipes page" width="1000"><br>
+
+<img src="docs/all-recipes-page.png" alt="All recipes page" width="1000"><br>
+
+<img src="docs/add-recipe-page.png" alt="Add recipe" width="1000"><br>
+
+<img src="docs/edit-recipe.png" alt="Edit recipe" width="1000"><br>
+
+<img src="docs/rating-page.png" alt="Rating page" width="1000"><br>
+
+<img src="docs/recipe-page.png" alt="Single recipe page" width="1000"><br>
+
+<img src="docs/admin-page.png" alt="Admin page part 1" width="1000"><br>
+
+<img src="docs/admin-page2.png" alt="Admin page part 2" width="1000"><br>
+
+---
 
 # PART A DOCUMENTATION
 
@@ -563,115 +676,6 @@ https://docs.google.com/spreadsheets/d/1-GgdEfiidiHSRH7jBYNp9grX8EM-QEGI3NYyMCPJ
 https://docs.google.com/spreadsheets/d/1ywwT4aPi40I_p4o5sl6DZfYnedBeh8RetuDOj8dphSU/edit?usp=sharing
 
 ***THE FOOD CONNECTION***
-
----
-# TESTS
-
-## RSPEC
-
-```ruby
-Finished in 0.37687 seconds (files took 1.42 seconds to load)
-26 examples, 0 failures
-
-suziiiiiq@ubuntu:~/Desktop/FOODCONNECTION/foodconnection-api$ rspec -fd
-
-RatingsController
-  GET index
-    has a 200 status code
-
-RecipesController
-  GET index
-    has a 200 status code
-
-UsersController
-  GET index
-    has a 200 status code
-
-Rating
-  has a valid factory
-  validations
-    is invalid without a rating score
-    is invalid without a review
-    is invalid without a date
-
-Recipe
-  validations
-    is invalid without a recipe name
-    is invalid without a recipe name
-    is invalid without recipe instructions
-    is invalid without a cooking time
-    is invalid without serves
-    is invalid without a skill level
-    is invalid without a cuisine
-    is invalid without a meal type
-
-User
-  has a valid factory
-  validations
-    is invalid without a username
-    is invalid without an email
-    is invalid without a password
-    is invalid without a password confirmation
-    is invalid without an @ symbol
-    is invalid without a .com on the email address
-
-Ratings
-  GET /ratings
-    should respond with 200 ok
-    should respond with json
-
-Recipes
-  GET /recipes
-    should respond with 200 ok
-    should respond with json
-
-Finished in 0.40113 seconds (files took 1.04 seconds to load)
-26 examples, 0 failures
-```
-
-<img src="docs/rspec.png" alt="rspec results" width="1000"><br>
-
-<img src="docs/rspec-stats.png" alt="rspec stats" width="1000"><br>
-
-
-## CYPRESS
-
-To run cypress, both `rails s` and `yarn start` need to be running on terminals for then tests can run successfully.
-
-<img src="docs/cypress1.png" alt="cypress results" width="1000"><br>
-
-<img src="docs/cypress2.png" alt="cypress results" width="1000"><br>
-
-<img src="docs/cypress3.png" alt="cypress results" width="1000"><br>
-
-## MANUAL TESTING
-
-[GOOGLE DOCS LINK - MANUAL TESTING](https://docs.google.com/spreadsheets/d/1aiJIk7xkHHAOo1lNhM1I1_1bkyNkH71swNVHkw3LBeA/edit?usp=sharing)
-
----
-# WEBSITE PAGES
-
-<img src="docs/sign-up-page.png" alt="Sing up page" width="1000"><br>
-
-<img src="docs/login.png" alt="Login page" width="1000"><br>
-
-<img src="docs/user-profile.png" alt="Urser profile" width="1000"><br>
-
-<img src="docs/my-recipes.png" alt="My recipes page" width="1000"><br>
-
-<img src="docs/all-recipes-page.png" alt="All recipes page" width="1000"><br>
-
-<img src="docs/add-recipe-page.png" alt="Add recipe" width="1000"><br>
-
-<img src="docs/edit-recipe.png" alt="Edit recipe" width="1000"><br>
-
-<img src="docs/rating-page.png" alt="Rating page" width="1000"><br>
-
-<img src="docs/recipe-page.png" alt="Single recipe page" width="1000"><br>
-
-<img src="docs/admin-page.png" alt="Admin page part 1" width="1000"><br>
-
-<img src="docs/admin-page2.png" alt="Admin page part 2" width="1000"><br>
 
 ---
 
