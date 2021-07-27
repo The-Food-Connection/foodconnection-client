@@ -145,6 +145,7 @@ Admin will enable the Admin dashboard, where you can view all users, recipes, an
       "cypress": "^8.0.0",
       "start-server-and-test": "^1.13.0"
     
+---
 # TESTS
 
 ## RSPEC
