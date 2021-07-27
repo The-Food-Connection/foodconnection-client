@@ -1,54 +1,53 @@
+// arrange act assert
+
 describe('User Profile', () => {
   beforeEach(() => {
-    cy.visit("http://localhost:8080/login");
-    cy.clearLocalStorage("User Profile");
+      cy.visit("http://localhost:8080/login");
+      cy.clearLocalStorage("Login");
 
 
-    cy.get('#username').type('suztest240721').should('have.value', 'suztest240721')
-    cy.get('#password')
-      .type('password')
-      .should('have.value', 'password')
+      cy.get('#username').type('testaccount3').should('have.value', 'testaccount3')
+      cy.get('#password')
+      .type('testadmin')
+      .should('have.value', 'testadmin')
       .should('have.attr', 'type', 'password');
 
-    cy.contains('Login').click()
-    cy.intercept("GET", "/recipes", {
-      statusCode: 200,
-    });
-    cy.get("Button").contains("LOGIN").click();
-  });
+      cy.contains('Login').click()
+  })
+
+  it('successfully loads', () => {
+    cy.visit('http://localhost:8080/login')
+  })
 
   it('Login with correct credentials', () => {
 
-    cy.get('input[name=username]').type(username)
+      cy.intercept("POST", "/login", {
+          statusCode: 200,
+          body: {
+            username: "name",
+            email: "test@test.com",
+            token: "1",
+          },
+      });
 
-    // {enter} causes the form to submit
-    cy.get('input[name=password]').type(`${password}{enter}`)
-
-    // we should be redirected to /dashboard
-    cy.url().should('include', '/')
-
-    // our auth cookie should be present
-    cy.getCookie('your-session-cookie').should('exist')
-
-    // UI should reflect this user being logged in
-    cy.get('h1').should('contain', 'RECIPES')
-  })
-  // cy.intercept("POST", "/login", {
-  //     statusCode: 200,
-  //     body: {
-  //       username: "name",
-  //       email: "test@test.com",
-  //       token: "1",
-  //     },
-  // });
+      cy.intercept("GET", "/recipes", {
+          statusCode: 200,
+      });
+      cy.get("Button").contains("LOGIN").click();
+  
+      cy.url().should("include", "/");
+      // cy.get("h1").should("contain", "RECIPES");
+      // cy.get("a").should("contain", "HOME");
+        // });
+      cy.get("Button").contains("LOGIN").click();
+      cy.get("a").contains("User Profile").click();
+      cy.get("h1").should("contain", "USER PROFILE");
+      cy.get("th").should("contain", "USERNAME");
+  });
 
   // cy.intercept("GET", "/recipes", {
   //     statusCode: 200,
-  // });
-  // cy.get("Button").contains("LOGIN").click();
-  // cy.get("a").contains("User Profile").click();
-  // cy.get("h1").should("contain", "USER PROFILE");
-  // cy.get("th").should("contain", "USERNAME");
+
 
   // cy.url().should("include", "/");
   // cy.get("h1").should("contain", "RECIPES");

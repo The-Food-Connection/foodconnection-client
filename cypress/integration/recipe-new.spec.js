@@ -39,10 +39,10 @@ describe('Recipe New', () => {
         cy.get("label").should("contain", "Recipe Title:");
         cy.get("label").should("contain", "Ingredients");
 
-        // cy.url().should("include", "/");
-        // cy.get("h1").should("contain", "RECIPES");
-        // cy.get("a").should("contain", "HOME");
-        // cy.get("h4").should("contain", "LUNCH");
+    //     // cy.url().should("include", "/");
+    //     // cy.get("h1").should("contain", "RECIPES");
+    //     // cy.get("a").should("contain", "HOME");
+    //     // cy.get("h4").should("contain", "LUNCH");
     })
 
   //   it('successfully loads', () => {

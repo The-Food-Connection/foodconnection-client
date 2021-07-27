@@ -274,9 +274,13 @@ We want it to be for EVERYONE who loves food.
 
 # ERD
 
-WE UPDATED OUR ERD DURING THE BUILD PROCESS - we realised we were missing some relationships for our recipe table, and we needed to change our ingredients set up in regards to what we needed and what we thought we needed. 
+WE UPDATED OUR ERD DURING THE BUILD PROCESS
 
-<img src="docs/erd-updated.JPG" alt="food connection erd" width="1200"><br>
+To add ingredients to the recipe page, we used an ingredients list saved in a CSV file from the Internet, so the ingredient table was not needed. Instead, the row name was added to the table recipe_ingredients which was serving the application with ingredients.
+
+It was also decided to implement an option to disable the user by the administrator, to serve as an option to delete it in case of need without completely losing all the data entered by the user. For this, the disabled line was also added to the users table, giving the admin the possibility to block the user's access to the site without losing all the data added by him.
+
+<img src="docs/ERD-foodconnection.png" alt="food connection erd" width="1200"><br>
 
 The `user` table is related to `recipe` and `rating` tables, as a user with an account on the website can post recipes as well as ratings and comments on another user's recipe.
 
