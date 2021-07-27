@@ -17,18 +17,18 @@ describe('User Profile', () => {
 
   it('Login with correct credentials', () => {
 
-      cy.intercept("POST", "/login", {
-          statusCode: 200,
-          body: {
-            username: "name",
-            email: "test@test.com",
-            token: "1",
-          },
-      });
+      // cy.intercept("POST", "/login", {
+      //     statusCode: 200,
+      //     body: {
+      //       username: "name",
+      //       email: "test@test.com",
+      //       token: "1",
+      //     },
+      // });
 
-      cy.intercept("GET", "/recipes", {
-          statusCode: 200,
-      });
+      // cy.intercept("GET", "/recipes", {
+      //     statusCode: 200,
+      // });
       cy.get("Button").contains("LOGIN").click();
       cy.get("a").contains("User Profile").click();
       cy.get("h1").should("contain", "USER PROFILE");

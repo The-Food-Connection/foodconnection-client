@@ -102,7 +102,7 @@ export default function RecipeList() {
         {recipes && recipes.map((recipe) => (
                     
             <Col md={3} key={recipe.id}>
-            <Card style={{ width: '18rem' }} className="card">
+            <Card style={{ width: 'auto' }} className="card">
               <Card.Img className="card-img-top" variant="top" alt="recipe image" src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"} />
               <Card.Body className="cardbody">
                 <Card.Title>{recipe.recipe_name}</Card.Title>

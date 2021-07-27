@@ -41,26 +41,26 @@ export default function UserProfile() {
                             <tr>
                             <th>#</th>
                             <th>USERNAME</th>
-                            <th>EMAIL</th>
-                            <th>DATE JOINED</th>
+                            {/* <th>EMAIL</th> */}
+                            {/* <th>DATE JOINED</th> */}
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                             <td>😀</td>
                             <td>{auth.username}</td>
-                            <td>{auth.email}</td>
-                            <td>{auth.created_at}</td>
+                            {/* <td>{auth.email}</td> */}
+                            {/* <td>{auth.created_at}</td> */}
                             </tr>
                         </tbody>
                     </Table>
                     <br></br>
-                    If you're sadly wanting to deactivate your account, this cannot be undone.
-                    
+                    If you're sadly wanting to deactivate your account and leave our Food Connection Family, please contact our admin on the below contact details.
                     <br>
                     </br>
+                    We are currently working on this feature, and will update our settings soon.
                     <br></br>
-                    <button type="button" className="btn btn-danger btn-lg" aria-label= "delete account">DELETE ACCOUNT</button>
+                    {/* <button type="button" className="btn btn-danger btn-lg" aria-label= "delete account">DELETE ACCOUNT</button> */}
 
                     </Col>
 
