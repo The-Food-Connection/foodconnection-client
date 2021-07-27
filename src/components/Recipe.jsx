@@ -63,7 +63,7 @@ export default function Recipe({ match, history }) {
           <Row className="justify-content-center">
             <Col className="text-center">
               <img
-                src={(recipe.imageURL) ? recipe.imageURL : PlaceHolder}
+                src={(recipe.imageUrl) ? recipe.imageUrl : PlaceHolder}
                 className="recipepic"
                 alt={recipe.recipe_name}
               />
