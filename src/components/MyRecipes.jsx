@@ -60,7 +60,7 @@ export default function MyRecipes({history}) {
         {recipes.map((recipe) => (
             recipe.user_id === auth.id ?
           <Col md={3} key={recipe.id}>
-            <Card style={{ width: '18rem' }} className="card">
+            <Card style={{ width: 'auto' }} className="card">
               <Card.Img className="card-img-top" variant="top" src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"} />
               <Card.Body className="myrecipescardbody">
                 <Card.Title>{recipe.recipe_name}</Card.Title>

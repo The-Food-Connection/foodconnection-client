@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthProvider";
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import '../App.css';
+import './styling/Login.css';
 
 function Login({ history }) {
   const { authDispatch } = useAuth();
@@ -57,12 +58,12 @@ function Login({ history }) {
 
   return (
     <>
-      <Row>
-        <Col>
+      <Row className="justify-content-md-center">
+        <Col className="d-flex justify-content-center">
           <img className="loginpic" alt="loginpic" src="loginpage.jpg" />
         </Col>
         
-        <Col>
+        <Col className=" justify-content-center">
           <h2>Please Enter Login Details Below</h2>
           {errorMessage ?
             <Alert variant="danger">{errorMessage}</Alert> : null}
