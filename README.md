@@ -48,12 +48,6 @@ https://github.com/The-Food-Connection/foodconnection-client
 
 ---
 
-Link to Deployed Site
-
-Link to Trello Board
-
-Link to Google Docs Prototype File
-
 # INSTALLING THE APP
 
 ### Dependencies <!-- omit in toc --> 
@@ -64,27 +58,27 @@ Link to Google Docs Prototype File
 * <a href="https://nodejs.org/en/">Node</a>
 * <a href="https://www.postgresql.org/">Postgresql</a>
 
-### How to Install <!-- omit in toc --> 
+### **How to Install** <!-- omit in toc --> 
 
-Clone Both API and CLIENT Repositories to your local machine. (Visit each page, select the cloning option top right, and copy the link given.  Open Terminal on your local machine. Create a directory called foodconnection and cd into it, then run **'git clone -clone line-'** for each of the clone lines)
+- Clone Both API and CLIENT Repositories to your local machine. (Visit each page, select the cloning option top right, and copy the link given.  Open Terminal on your local machine. Create a directory called foodconnection and cd into it, then run **'git clone -clone line-'** for each of the clone lines)
 
-Once the clone has run, **ls into the folder** it creates for both api, and client.
+- Once the clone has run, **ls into the folder** it creates for both api, and client.
 
-Run **yarn install** for the **client side**, this will install all necessary packages.
+- Run **yarn install** for the **client side**, this will install all necessary packages.
 
-Run **bundle install** for the **api side**, this will install all necessary gems.
+- Run **bundle install** for the **api side**, this will install all necessary gems.
 
-Follow this in the api side by running rails db:create, followed by rails db:migrate, followed by rails db:seed, this will create the test users and recipes/ratings including the dietary categories. 
+- Follow this in the api side by running rails db:create, followed by rails db:migrate, followed by rails db:seed, this will create the test users and recipes/ratings including the dietary categories. 
 
-### How to Run Tests <!-- omit in toc --> 
+### **How to Run Tests** <!-- omit in toc --> 
 
-To be able to run the **RSpec** test in the api, in the folder you ran bundle install in, run the command line code '**rspec -fd'**. This will run the tests that are set up for the api, and will show the successful tests and their purpose.
+- To be able to run the **RSpec** test in the api, in the folder you ran bundle install in, run the command line code '**rspec -fd'**. This will run the tests that are set up for the api, and will show the successful tests and their purpose.
 
-We have included Cyrpress screen shots of tests run below.
+- We have included Cyrpress screen shots of tests run below.
 
-CYPRESS TESTS LINK TO GOOGLE DOCS 
+***CYPRESS TESTS LINK TO GOOGLE DOCS ***
 
-To use the site in production mode, as opposed to with the deployed link, you will need to run rails s in the api folder, and the run yarn start in the client folder in the command line. This will then open up the local host 8080 front end of the project.  To view the back end in the browser go to localhost:3000.
+To use the site in production mode, as opposed to with the deployed link, you will need to run rails s in the api folder, and then run yarn start in the client folder in the command line. This will then open up the local host 8080 front end of the project.  To view the back end in the browser go to localhost:3000.
 
 Enjoy!
 
@@ -96,6 +90,57 @@ Navigate to the login page (which will load when you click the above deployed li
 
 Navigate to the login page again, and log in with the username testaccount3, password testadmin.
 Admin will enable the Admin dashboard, where you can view all users, recipes, and ratings on the site, with the option to remove any offensive ratings, and to deactivate user accounts if necessary. 
+
+**API DEPENDENCIES**
+
+    DEPENDENCIES
+      aws-sdk-s3 (~> 1.96)
+      bcrypt (~> 3.1.7)
+      bootsnap (>= 1.4.4)
+      byebug
+      excon (~> 0.85.0)
+      factory_bot_rails
+      jwt (~> 2.2)
+      listen (~> 3.3)
+      pg (~> 1.1)
+      puma (~> 5.0)
+      rack-cors (~> 1.1)
+      rails (~> 6.1.4)
+      rails-controller-testing
+      rspec-rails (~> 5.0.0)
+      spring
+      tzinfo-data
+
+**CLIENT SIDE DEPENDENCIES**
+
+    "dependencies": 
+      "@hookform/resolvers": "^2.6.1",
+      "@material-ui/core": "^4.12.2",
+      "@material-ui/icons": "^4.11.2",
+      "@material-ui/lab": "^4.0.0-alpha.60",
+      "@testing-library/jest-dom": "^5.11.4",
+      "@testing-library/react": "^11.1.0",
+      "@testing-library/user-event": "^12.1.10",
+      "bootstrap": "^5.0.2",
+      "material-ui": "^0.20.2",
+      "mdb-react-ui-kit": "^1.1.0",
+      "mdbootstrap": "^4.19.2",
+      "mdbreact": "^5.1.0",
+      "react": "^17.0.2",
+      "react-bootstrap": "^1.6.1",
+      "react-dom": "^17.0.2",
+      "react-hook-form": "^7.11.1",
+      "react-icons": "^4.2.0",
+      "react-paginate": "^7.1.3",
+      "react-router-dom": "^5.2.0",
+      "react-scripts": "4.0.3",
+      "web-vitals": "^1.0.1",
+      "yup": "^0.32.9"
+
+    "devDependencies": 
+      "cypress": "^8.0.0",
+      "start-server-and-test": "^1.13.0"
+    
 
 # PART A DOCUMENTATION
 
