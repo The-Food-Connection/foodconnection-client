@@ -1,7 +1,8 @@
-describe('Recipe New', () => {
+// arrange act assert
+
+describe('The Home Page', () => {
     beforeEach(() => {
       cy.visit("http://localhost:8080/login");
-      cy.clearLocalStorage("Recipe New");
 
       cy.get('#username').type('suztest240721').should('have.value', 'suztest240721')
       cy.get('#password')
@@ -16,10 +17,6 @@ describe('Recipe New', () => {
       cy.get("Button").contains("LOGIN").click();
     })
 
-    it('successfully loads', () => {
-      cy.visit('http://localhost:8080/recipe-new')
-    })
-  
     it('Login with correct credentials', () => {
 
         cy.intercept("POST", "/login", {
@@ -29,21 +26,18 @@ describe('Recipe New', () => {
               email: "test@test.com",
               token: "1",
             },
-        })
+        });
 
         cy.intercept("GET", "/recipes", {
             statusCode: 200,
         });
         cy.get("Button").contains("LOGIN").click();
-        cy.get("a").contains("Add Recipe").click();
-        cy.get("label").should("contain", "Recipe Title:");
-        cy.get("label").should("contain", "Ingredients");
 
-    //     // cy.url().should("include", "/");
-    //     // cy.get("h1").should("contain", "RECIPES");
-    //     // cy.get("a").should("contain", "HOME");
-    //     // cy.get("h4").should("contain", "LUNCH");
-    })
+        cy.url().should("include", "/");
+        cy.get("h1").should("contain", "RECIPES");
+        cy.get("a").should("contain", "HOME");
+        cy.get("h4").should("contain", "LUNCH");
+    });
 
   //   it('successfully loads', () => {
   //     cy.get("a").contains("HOME").click();
@@ -51,5 +45,4 @@ describe('Recipe New', () => {
   //     // cy.url().should("include", "/");
   //     cy.get("h1").should("contain", "RECIPES");
   //   })
-  
 })
