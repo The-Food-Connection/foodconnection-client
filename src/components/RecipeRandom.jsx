@@ -16,14 +16,14 @@ export default function RecipeRandom(props) {
             <MDBContainer class="justify-content-center">
                 <Row class="row justify-content-md-center"> 
 
-                    <Col class="col-md-auto">
-                        <MDBCard style={{ width: "33rem", marginTop: "1rem" }} className="text-center">
+                    <Col class="col-sm-auto">
+                        <MDBCard style={{ width: "auto", marginTop: "1rem" }} className="text-center">
                             <img src={FCLogo}/>
                         </MDBCard>
                     </Col>
 
-                    <Col class="col-md-auto">
-                    <MDBCard style={{ width: "30rem", marginTop: "1rem" }} className="text-center">
+                    <Col class="col-sm-auto">
+                    <MDBCard style={{ width: "auto", marginTop: "1rem" }} className="text-center">
                         <MDBCardHeader color="peach-gradient">STAFF PICKED RECIPE OF THE DAY</MDBCardHeader>
                         <MDBCardBody class="text-center-2">
                         <MDBLink to={`/recipes/${props.recipe.id}`} className="btn btn-warning">VIEW RECIPE</MDBLink>

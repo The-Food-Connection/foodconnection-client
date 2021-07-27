@@ -1,5 +1,5 @@
 .category {
-    width: 40vh;
+    width: auto;
     margin: 10px;
     padding: 5px;
     /* border: 2px solid salmon; */
@@ -9,7 +9,7 @@
 
 .jumbo {
     display: flex;
-    width: 80%;
+    width: auto;
     margin: auto;
     align-items: center;
 }
