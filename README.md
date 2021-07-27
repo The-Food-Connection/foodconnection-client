@@ -25,6 +25,10 @@ TABLE OF CONTENTS
 - [WIRE FRAMES](#wire-frames)
 - [PLANNING OVERVIEW](#planning-overview)
 - [PROJECT MANAGEMENT SCREENSHOTS AND DIARY](#project-management-screenshots-and-diary)
+- [TESTS](#tests)
+- [WEBSITE PAGES](#website-pages)
+
+
 
 ## **FOOD CONNECTION DEPLOYED SITE**
 
@@ -86,7 +90,7 @@ Enjoy!
 
 Navigate to the login page (which will load when you click the above deployed link).  To log in as user the username is testaccount, with a password of 123456.  This will allow you to view the page as a standard user.
 
-**USING THE SITE AS A CUSTOMER**
+**USING THE SITE AS A ADMIN**
 
 Navigate to the login page again, and log in with the username testaccount3, password testadmin.
 Admin will enable the Admin dashboard, where you can view all users, recipes, and ratings on the site, with the option to remove any offensive ratings, and to deactivate user accounts if necessary. 
@@ -276,15 +280,9 @@ We want it to be for EVERYONE who loves food.
 
 WE UPDATED OUR ERD DURING THE BUILD PROCESS
 
-To add ingredients to the recipe page, we used an ingredients list saved in a CSV file from the Internet, so the ingredient table was not needed. Instead, the row name was added to the table recipe_ingredients which was serving the application with ingredients.
-
-It was also decided to implement an option to disable the user by the administrator, to serve as an option to delete it in case of need without completely losing all the data entered by the user. For this, the disabled line was also added to the users table, giving the admin the possibility to block the user's access to the site without losing all the data added by him.
-
-<img src="docs/ERD-foodconnection.png" alt="food connection erd" width="1200"><br>
-
 The `user` table is related to `recipe` and `rating` tables, as a user with an account on the website can post recipes as well as ratings and comments on another user's recipe.
 
-The `recipe` table is related to `rating`, `user`, `dietary_category` and `ingredient` tables. As dietary_categories and ingredients support a many-to-many relationship with recipes, two intermediate tables have been added to connect them, ie `recipe_dietary` and `recipe_ingredient` act to intermediate the relationship making it easier to handle database content.
+The `recipe` table is related to `rating`, `user`, `dietary_category` and `recipe_ingredient` tables. As dietary_categories support a many-to-many relationship with recipes, a intermediate table have been added to connect them, ie `recipe_dietary` act to intermediate the relationship making it easier to handle database content.
 
 The Food Connection in terms of the model's relationships and associations:
 
@@ -296,36 +294,43 @@ A user `has_many recipes and ratings` and `has_secure_password`
     has_secure_password
 ```
 
-A recipe `has_many ratings`, while rating `belongs_to user and recipe` and is optional
+A recipe `has_many ratings, recipe_ingredients and dietary_categories`, while rating `belongs_to user` and `has_one_attached image`.
 
 ```ruby
-  belongs_to :user, optional: true
-  belongs_to :recipe, optional: true
+  belongs_to :user
+
+  has_many :recipe_ingredients, dependent: :destroy
+
+  has_many :recipe_dietaries, dependent: :destroy
+  has_many :dietary_categories, through: :recipe_dietaries
+
+  has_many :ratings, dependent: :destroy
+  has_one_attached :image, dependent: :destroy
 ```
 
 A recipe `has_many dietary_category` through `recipe_dietary`
 
-A recipe `has_many ingredients` through `recipe_ingredient`
-
 A recipe `has_one_attached image`
 
 ```ruby
-  belongs_to :user
-  has_many :ingredients, through: :recipe_ingredients
-  has_many :dietary_categories, through: :recipe_dietaries
-  has_many :ratings
-  has_one_attached :image
+  belongs_to :recipe
+  belongs_to :dietary_category
 ```
 
-The models `recipe_dietary` and `recipe_ingredient` are collecting information about the dietary_category and ingredient tables to link to the recipe table.
+The model `recipe_dietary` is collecting information about the dietary_category table to link to the recipe table.
 
 ```ruby
-    has_many :recipe_ingredients
+  belongs_to :recipe
 ```
 
-```ruby
-    has_many :recipe_dietary
-```
+The model `recipe_ingredient` is to link to the recipe table and handle ingredients from a CSV file.
+
+
+To add ingredients to the recipe page, we used an ingredients list saved in a CSV file from the Internet, so the ingredient table was not needed. Instead, the row name was added to the table recipe_ingredients which was serving the application with ingredients.
+
+It was also decided to implement an option to disable the user by the administrator, to serve as an option to delete it in case of need without completely losing all the data entered by the user. For this, the disabled line was also added to the users table, giving the admin the possibility to block the user's access to the site without losing all the data added by him.
+
+<img src="docs/ERD-foodconnection.png" alt="food connection erd" width="1200"><br>
 
 ---
 
@@ -558,6 +563,115 @@ https://docs.google.com/spreadsheets/d/1-GgdEfiidiHSRH7jBYNp9grX8EM-QEGI3NYyMCPJ
 https://docs.google.com/spreadsheets/d/1ywwT4aPi40I_p4o5sl6DZfYnedBeh8RetuDOj8dphSU/edit?usp=sharing
 
 ***THE FOOD CONNECTION***
+
+---
+# TESTS
+
+## RSPEC
+
+```ruby
+Finished in 0.37687 seconds (files took 1.42 seconds to load)
+26 examples, 0 failures
+
+suziiiiiq@ubuntu:~/Desktop/FOODCONNECTION/foodconnection-api$ rspec -fd
+
+RatingsController
+  GET index
+    has a 200 status code
+
+RecipesController
+  GET index
+    has a 200 status code
+
+UsersController
+  GET index
+    has a 200 status code
+
+Rating
+  has a valid factory
+  validations
+    is invalid without a rating score
+    is invalid without a review
+    is invalid without a date
+
+Recipe
+  validations
+    is invalid without a recipe name
+    is invalid without a recipe name
+    is invalid without recipe instructions
+    is invalid without a cooking time
+    is invalid without serves
+    is invalid without a skill level
+    is invalid without a cuisine
+    is invalid without a meal type
+
+User
+  has a valid factory
+  validations
+    is invalid without a username
+    is invalid without an email
+    is invalid without a password
+    is invalid without a password confirmation
+    is invalid without an @ symbol
+    is invalid without a .com on the email address
+
+Ratings
+  GET /ratings
+    should respond with 200 ok
+    should respond with json
+
+Recipes
+  GET /recipes
+    should respond with 200 ok
+    should respond with json
+
+Finished in 0.40113 seconds (files took 1.04 seconds to load)
+26 examples, 0 failures
+```
+
+<img src="docs/rspec.png" alt="rspec results" width="1000"><br>
+
+<img src="docs/rspec-stats.png" alt="rspec stats" width="1000"><br>
+
+
+## CYPRESS
+
+To run cypress, both `rails s` and `yarn start` need to be running on terminals for then tests can run successfully.
+
+<img src="docs/cypress1.png" alt="cypress results" width="1000"><br>
+
+<img src="docs/cypress2.png" alt="cypress results" width="1000"><br>
+
+<img src="docs/cypress3.png" alt="cypress results" width="1000"><br>
+
+## MANUAL TESTING
+
+[GOOGLE DOCS LINK - MANUAL TESTING](https://docs.google.com/spreadsheets/d/1aiJIk7xkHHAOo1lNhM1I1_1bkyNkH71swNVHkw3LBeA/edit?usp=sharing)
+
+---
+# WEBSITE PAGES
+
+<img src="docs/sign-up-page.png" alt="Sing up page" width="1000"><br>
+
+<img src="docs/login.png" alt="Login page" width="1000"><br>
+
+<img src="docs/user-profile.png" alt="Urser profile" width="1000"><br>
+
+<img src="docs/my-recipes.png" alt="My recipes page" width="1000"><br>
+
+<img src="docs/all-recipes-page.png" alt="All recipes page" width="1000"><br>
+
+<img src="docs/add-recipe-page.png" alt="Add recipe" width="1000"><br>
+
+<img src="docs/edit-recipe.png" alt="Edit recipe" width="1000"><br>
+
+<img src="docs/rating-page.png" alt="Rating page" width="1000"><br>
+
+<img src="docs/recipe-page.png" alt="Single recipe page" width="1000"><br>
+
+<img src="docs/admin-page.png" alt="Admin page part 1" width="1000"><br>
+
+<img src="docs/admin-page2.png" alt="Admin page part 2" width="1000"><br>
 
 ---
 
