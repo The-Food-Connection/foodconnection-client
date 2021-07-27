@@ -100,30 +100,10 @@ export default function RecipeList() {
       <div className="cardrows">
       <Row class="d-flex align-content-center flex-wrap">
         {recipes && recipes.map((recipe) => (
-          
-          
-          // <Col lg={true} key={recipe.id}>
-          //   <MDBCard style={{ width: '18rem', marginBottom: '10px' }} color="rgba-indigo-slight" expand="md" className="card">
-          //     <MDBCardImage className="card-img-top" variant="top" src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"} />
-          //     <MDBCardBody className="cardbody">
-          //       <MDBCardTitle>Recipe Name:
-          //         {recipe.recipe_name}</MDBCardTitle>
-          //       <MDBCardText>
-          //         Recipe Cuisine:
-          //         {recipe.cuisine}
-          //       </MDBCardText>
-          //       <MDBCardText>
-          //         Meal Type: 
-          //         {recipe.meal_type}
-          //       </MDBCardText>
-          //       <MDBLink to={`/recipes/${recipe.id}`} className="btn btn-primary">Learn more</MDBLink>
-          //     </MDBCardBody>
-          //   </MDBCard>
-          //   </Col>
-
+                    
             <Col md={3} key={recipe.id}>
             <Card style={{ width: '18rem' }} className="card">
-              <Card.Img className="card-img-top" variant="top" src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"} />
+              <Card.Img className="card-img-top" variant="top" alt="recipe image" src={(recipe.imageUrl) ? recipe.imageUrl : "placeholder.jpg"} />
               <Card.Body className="cardbody">
                 <Card.Title>{recipe.recipe_name}</Card.Title>
                 <Card.Text>
@@ -133,13 +113,9 @@ export default function RecipeList() {
               </Card.Body>
               <ListGroup className="list-group-flush">
                 <ListGroupItem className="listitem">Meal Type: {recipe.meal_type}</ListGroupItem>
-                {/* <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-                <ListGroupItem>Vestibulum at eros</ListGroupItem> */}
               </ListGroup>
               <Card.Body className="secondcardbody">
-                {/* <Card.Link href={`/recipes/${recipe.id}`}>Click for Full Recipe</Card.Link> */}
-                <Button href={`/recipes/${recipe.id}`} variant="warning">Click For Recipe</Button>
-                {/* <Card.Link href="#">Another Link</Card.Link> */}
+                <Button href={`/recipes/${recipe.id}`} variant="warning" aria-label="view recipe">Click For Recipe</Button>
               </Card.Body>
             </Card>
           </Col>

@@ -134,7 +134,6 @@ export default function AdminDashboard({ history }) {
                         <th>RECIPE NAME</th>
                         <th>RECIPE AUTHOR</th>
                         <th>DATE CREATED</th>
-                        {/* <th>ACTIONS</th> */}
                     </tr>
                 </thead>
                 <tbody>

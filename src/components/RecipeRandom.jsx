@@ -26,18 +26,12 @@ export default function RecipeRandom(props) {
                     <MDBCard style={{ width: "30rem", marginTop: "1rem" }} className="text-center">
                         <MDBCardHeader color="peach-gradient">STAFF PICKED RECIPE OF THE DAY</MDBCardHeader>
                         <MDBCardBody class="text-center-2">
-                        {/* <MDBCardTitle>STAFF PICKED RECIPE OF THE DAY</MDBCardTitle> */}
-                        {/* <MDBCardText>
-                        Click through to discover something new and exciting!
-                        </MDBCardText> */}
                         <MDBLink to={`/recipes/${props.recipe.id}`} className="btn btn-warning">VIEW RECIPE</MDBLink>
                         </MDBCardBody>
                     </MDBCard>
                     </Col>
-
                 </Row>
             </MDBContainer>
-
         </div>
     )
 };

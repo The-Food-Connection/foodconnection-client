@@ -17,7 +17,6 @@ function Alert(props) {
 
 function RecipeForm({ history, match }) {
   const { id } = match.params;
-  // if id is present on url means that is edit
   const isAddMode = !id;
 
   const [dietaries, setDietaries] = useState([]);
@@ -75,7 +74,6 @@ function RecipeForm({ history, match }) {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/recipes${!isAddMode ? `/${id}` : ""}`, {
       method: isAddMode ? 'POST' : 'PUT',
       headers: {
-        // "Content-type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`
       },
       body: formData

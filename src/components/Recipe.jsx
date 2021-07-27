@@ -37,7 +37,6 @@ export default function Recipe({ match, history }) {
   };
 
   const handleDelete = async () => {
-    // console.log(match.params.id)
     const response = await fetch(`${process.env.REACT_APP_API_URL}/recipes/${match.params.id}`, {
       method: 'DELETE',
       headers: {
@@ -59,23 +58,16 @@ export default function Recipe({ match, history }) {
   return (
     <>
       {recipe ?
-        // <MDBContainer className="mt-5 text-center">
         <Container fluid className="recipecontainer">
           < h1 > RECIPE</h1 >
           <Row className="justify-content-center">
-
-            {/* <MDBJumbotron className="p-0"> */}
-
             <Col className="text-center">
               <img
                 src={(recipe.imageURL) ? recipe.imageURL : PlaceHolder}
-                // src={recipe.imageURL}
                 className="recipepic"
                 alt={recipe.recipe_name}
               />
-              {/* <img className="recipepic" alt="recipepic" src={PlaceHolder} /> */}
             </Col>
-
             <Col >
 
               <MDBCardBody>
@@ -141,7 +133,6 @@ export default function Recipe({ match, history }) {
                 }
 
               </MDBCardBody>
-              {/* <button type="button" class="btn btn-secondary">RATE THIS DISH</button> */}
               <MDBLink to={`/recipes/${recipe.id}/rating`} className="btn btn-secondary">RATE THIS DISH</MDBLink>
               {!isLoading && auth.id === recipe.user_id || auth.admin ?
                 <>
@@ -150,13 +141,7 @@ export default function Recipe({ match, history }) {
                 </>
                 : null}
             </Col>
-
-            {/* </MDBJumbotron> */}
-
-
           </Row>
-
-          {/* </MDBContainer > */}
         </Container>
         : null}
     </>
