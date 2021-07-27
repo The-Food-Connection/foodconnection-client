@@ -4,8 +4,8 @@ import { Row, Col, Container } from 'react-bootstrap';
 import { useEffect } from 'react';
 import { useAuth } from '../contexts/AuthProvider';
 import { FaStar } from 'react-icons/fa';
-import '../App.css';
 import './styling/Recipe.css';
+import '../App.css';
 import PlaceHolder from '../images/placeholder.jpg';
 
 export default function Recipe({ match, history }) {
@@ -60,8 +60,8 @@ export default function Recipe({ match, history }) {
       {recipe ?
         <Container fluid className="recipecontainer">
           < h1 > RECIPE</h1 >
-          <Row className="justify-content-center">
-            <Col className="text-center">
+          <Row className="justify-content-md-center">
+            <Col >
               <img
                 src={(recipe.imageUrl) ? recipe.imageUrl : PlaceHolder}
                 className="recipepic"

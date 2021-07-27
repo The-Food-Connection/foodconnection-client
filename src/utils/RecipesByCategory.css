@@ -1,0 +1,21 @@
+.card-img-top {
+    width: 100%;
+    object-fit: cover;
+}
+
+.categoriescardbody {
+    height: auto;
+    background-color: #dde1fc;
+}
+
+.list-group-flush {
+    background-color: #dde1fc;
+}
+
+.listitem {
+    background-color: #dde1fc !important;
+}
+
+.secondcategorycardbody {
+    background-color: #dde1fc !important;
+}
