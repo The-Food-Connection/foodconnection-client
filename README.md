@@ -244,7 +244,7 @@ To run cypress, both `rails s` and `yarn start` need to be running on terminals 
 
 [GOOGLE DOCS LINK - SCREEN RECORDING TEST](https://drive.google.com/file/d/19DMP-1RKS_Sek6ZpAow6yw6dRqL2f_HR/view?usp=sharing)
 
-<!-- [GOOGLE DOCS LINK - SCREEN RECORDING TEST](https://docs.google.com/spreadsheets/d/1aiJIk7xkHHAOo1lNhM1I1_1bkyNkH71swNVHkw3LBeA/edit?usp=sharing) -->
+[GOOGLE DOCS LINK - SCREEN RECORDING TEST](https://drive.google.com/file/d/1zU05dsy_c121j_zEcHV00bbV4PorRLQL/view?usp=sharing)
 
 ---
 # WEBSITE PAGES
