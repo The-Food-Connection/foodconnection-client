@@ -57,8 +57,8 @@ export default function SignUp({ history }) {
 
   return (
     <>
-      <Row>
-      <Col>
+      <Row className="justify-content-md-center">
+      <Col className="d-flex justify-content-center">
       <img className="signuppic" alt="signuppic" src="signuppage.jpg" />
       </Col>
       <Col>
