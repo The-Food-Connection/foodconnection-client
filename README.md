@@ -95,8 +95,6 @@ jwt_secret_key: <add value>
 
 - We have included Cyrpress screen shots of tests run below.
 
-***CYPRESS TESTS LINK TO GOOGLE DOCS ***
-
 To use the site in production mode, as opposed to with the deployed link, you will need to run rails s in the api folder, and then run yarn start in the client folder in the command line. This will then open up the local host 8080 front end of the project.  To view the back end in the browser go to localhost:3000.
 
 Enjoy!
