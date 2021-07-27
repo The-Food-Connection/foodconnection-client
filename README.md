@@ -10,15 +10,39 @@
 
 ---
 
-GITHUB REPOSITORY FOR DOCUMENTATION
+TABLE OF CONTENTS
+- [INSTALLING THE APP](#installing-the-app)
+- [PART A DOCUMENTATION](#part-a-documentation)
+- [PURPOSE](#purpose)
+- [FUNCTIONALITY](#functionality)
+- [FEATURES](#features)
+- [TARGET AUDIENCE](#target-audience)
+- [TECH STACK](#tech-stack)
+- [ERD](#erd)
+- [DATAFLOW DIAGRAM](#dataflow-diagram)
+- [APPLICATION ARCHITECTURE DIAGRAM](#application-architecture-diagram)
+- [USER STORIES](#user-stories)
+- [WIRE FRAMES](#wire-frames)
+- [PLANNING OVERVIEW](#planning-overview)
+- [PROJECT MANAGEMENT SCREENSHOTS AND DIARY](#project-management-screenshots-and-diary)
+
+## **FOOD CONNECTION DEPLOYED SITE**
+
+https://the-food-connection.netlify.app/
+
+## **HEROKU SITE FOR BACK END**
+
+https://food-connection.herokuapp.com/
+
+**GITHUB REPOSITORY FOR DOCUMENTATION**
 
 https://github.com/The-Food-Connection/foodconnection-docs
 
-GITHUB REPOSITORY FOR API - BACK END
+**GITHUB REPOSITORY FOR API - BACK END**
 
 https://github.com/The-Food-Connection/foodconnection-api
 
-GITHUB REPOSITORY FOR CLIENT - FRONT END
+**GITHUB REPOSITORY FOR CLIENT - FRONT END**
 
 https://github.com/The-Food-Connection/foodconnection-client
 
@@ -34,24 +58,44 @@ Link to Google Docs Prototype File
 
 ### Dependencies <!-- omit in toc --> 
 
-* Ruby
-* React
-* Yarn
-* Node
+* <a href="https://www.ruby-lang.org/en/">Ruby 2.7.2</a>
+* <a href="https://reactjs.org/">React</a>
+* <a href="https://yarnpkg.com/">Yarn</a>
+* <a href="https://nodejs.org/en/">Node</a>
+* <a href="https://www.postgresql.org/">Postgresql</a>
 
 ### How to Install <!-- omit in toc --> 
 
-Clone Both Repositories to your local machine. (Visit each page, select the cloning option top right, and copy the link given.  Open Terminal on your local machine and run git clone code)
+Clone Both API and CLIENT Repositories to your local machine. (Visit each page, select the cloning option top right, and copy the link given.  Open Terminal on your local machine. Create a directory called foodconnection and cd into it, then run **'git clone -clone line-'** for each of the clone lines)
 
-Once the clone has run, ls into the folder it creates.
+Once the clone has run, **ls into the folder** it creates for both api, and client.
 
-Run yarn install for the client side
+Run **yarn install** for the **client side**, this will install all necessary packages.
 
-Run bundle install for the api side
+Run **bundle install** for the **api side**, this will install all necessary gems.
+
+Follow this in the api side by running rails db:create, followed by rails db:migrate, followed by rails db:seed, this will create the test users and recipes/ratings including the dietary categories. 
 
 ### How to Run Tests <!-- omit in toc --> 
 
+To be able to run the **RSpec** test in the api, in the folder you ran bundle install in, run the command line code '**rspec -fd'**. This will run the tests that are set up for the api, and will show the successful tests and their purpose.
 
+We have included Cyrpress screen shots of tests run below.
+
+CYPRESS TESTS LINK TO GOOGLE DOCS 
+
+To use the site in production mode, as opposed to with the deployed link, you will need to run rails s in the api folder, and the run yarn start in the client folder in the command line. This will then open up the local host 8080 front end of the project.  To view the back end in the browser go to localhost:3000.
+
+Enjoy!
+
+**USING THE SITE AS A CUSTOMER**
+
+Navigate to the login page (which will load when you click the above deployed link).  To log in as user the username is testaccount, with a password of 123456.  This will allow you to view the page as a standard user.
+
+**USING THE SITE AS A CUSTOMER**
+
+Navigate to the login page again, and log in with the username testaccount3, password testadmin.
+Admin will enable the Admin dashboard, where you can view all users, recipes, and ratings on the site, with the option to remove any offensive ratings, and to deactivate user accounts if necessary. 
 
 # PART A DOCUMENTATION
 
@@ -89,7 +133,7 @@ Enjoy The Connection of Food.....
 
 - *Easily readable* - use fonts that allow visitors to read the content more easily.
 
-- *Mobile responsiveness* - as more and more users access the Internet through their mobile devices, a website needs to show screens of all sizes and functionality working properly.
+- *Mobile responsiveness* - as more and more users access the Internet through their mobile devices, a website needs to show screens of all sizes and functionality working properly. - THIS IS A WORK IN PROGRESS AND THE HARDEST THING FOR FUNCTIONALITY THAT WE HAD TO FACE AFTER THE LOGIC
 
 - *Contrast colors scheme* - considering the right contrast between background and site content makes the content easier to read, which positively contributes to the user experience.
 
@@ -165,7 +209,7 @@ We want it to be for EVERYONE who loves food.
 
 # TECH STACK
 
-**FRONT END** - HTML5, CSS3, REACT, JAVASCRIPT, JSX, BOOTSTRAP
+**FRONT END** - HTML5, CSS3, REACT, JAVASCRIPT, JSX, BOOTSTRAP, MDBOOTSTRAP
 
 **BACK END** - RUBY ON RAILS, RUBY
 
@@ -173,7 +217,7 @@ We want it to be for EVERYONE who loves food.
 
 **DEPLOYMENT** - FRONT END - NETLIFY, BACK END - HEROKU
 
-**TESTING** - BACK END - RSPEC & MANUAL TESTING, FRONT END - JEST AND MANUAL TESTING
+**TESTING** - BACK END - RSPEC & MANUAL TESTING, FRONT END - CYPRESS AND MANUAL TESTING
 
 **PROJECT MANAGEMENT** - TRELLO FOR TASK MANAGEMENT, GOOGLE DOCS DIARY, FOLDERS AND CHECKLIST FOR MORE PADDED OUT PLANNING
 
@@ -185,7 +229,9 @@ We want it to be for EVERYONE who loves food.
 
 # ERD
 
-<img src="docs/ERD-foodconnection.png" alt="food connection erd" width="1200"><br>
+WE UPDATED OUR ERD DURING THE BUILD PROCESS - we realised we were missing some relationships for our recipe table, and we needed to change our ingredients set up in regards to what we needed and what we thought we needed. 
+
+<img src="docs/erd-updated.JPG" alt="food connection erd" width="1200"><br>
 
 The `user` table is related to `recipe` and `rating` tables, as a user with an account on the website can post recipes as well as ratings and comments on another user's recipe.
 
@@ -364,6 +410,8 @@ As the admin, I want to disable a user account as the user broke the rules.
 
 We used Balsamiq to create our Wireframes.  This allowed us to have low fidelity wireframes, with all the visualations we needed to start creating our app in react. We could also create the journey between elements on each page, and export them to an interactive pdf. The process of creating these relationships allowed us to realise we had missed key design elements, or necessary wireframes needed to complete the user experience. 
 
+DURING BUILD - we tried to stick to wire frames as much as possible within our styling knowledge base
+
 <img src="docs/wf01_home.png" alt="wireframe 1" width="1000"><br>
 
 <img src="docs/wf02_signup.png" alt="wireframe 1" width="1000"><br>
@@ -450,10 +498,22 @@ FIRST WEEKEND
 
 <img src="docs/08_170721.JPG" alt="trello 08" width="1000"><br>
 
-**DIARY OF TASKS PER DAY FROM DAY ONE TO DAY ELEVEN (PART A)**
+**PART B TRELLO UPDATES ARE IN THE TRELLO BOARD**
+
+https://trello.com/b/fd1hUd20/rails-react-app
+
+**DAY BY DAY DIARY OF FULL PROJECT (PART B)**
+
+https://docs.google.com/spreadsheets/d/1-GgdEfiidiHSRH7jBYNp9grX8EM-QEGI3NYyMCPJ1Ws/edit?usp=sharing
+
+https://docs.google.com/spreadsheets/d/1ywwT4aPi40I_p4o5sl6DZfYnedBeh8RetuDOj8dphSU/edit?usp=sharing
 
 ***THE FOOD CONNECTION***
 
 ---
 
 © Suzanne Topp & Vanessa Denardin - July 2021 - Coder Academy T3A2 Final Full Stack Group Project
+
+<a href="https://github.com/suztopp">Suzanne Topp</a>
+
+<a href="https://github.com/vanessadenardin">Vanessa Denardin</a>
